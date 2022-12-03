@@ -34,7 +34,7 @@ public class eng1v1 extends ApplicationAdapter {
 	@Override
 	public void create () {
 		mainmenu = true;
-		mainmenupic = new Texture("mainmeni.png");
+		mainmenupic = new Texture("mainmenu.png");
 
 		pauseScreen = new Texture("pause.png");
 

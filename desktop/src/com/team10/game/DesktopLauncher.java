@@ -10,7 +10,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 			config.setWindowedMode(800, 480);
 			config.useVsync(true);
 			config.setForegroundFPS(60);
-			new Lwjgl3Application(new eng1v1(), config);
+			new Lwjgl3Application(new Eng1Game(), config);
 
 		}
 	}

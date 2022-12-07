@@ -1,11 +1,11 @@
 package com.team10.game;
-public class burger extends food{
+public class Burger extends Food {
 
-    private Boolean isFlipped; //because burger must be flipped, need to know if that's been done
+    private Boolean isFlipped; //because Burger must be flipped, need to know if that's been done
     private Boolean needsSalad;
     private Boolean hasSalad;
 
-    public burger(Integer id) {
+    public Burger(Integer id) {
         super(id);
     }
 

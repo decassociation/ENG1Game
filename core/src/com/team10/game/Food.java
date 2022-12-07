@@ -1,6 +1,6 @@
 package com.team10.game;
 
-public class food {
+public class Food {
 
     private Boolean isReady;
     private Integer timeLeft; //will be done in seconds or milliseconds - either way integer is good enough
@@ -9,7 +9,7 @@ public class food {
 
 
 
-    public food(Integer id){
+    public Food(Integer id){
         foodID = id;
     }
     public Boolean getIsReady(){

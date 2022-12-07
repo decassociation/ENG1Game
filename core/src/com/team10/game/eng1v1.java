@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import sun.jvm.hotspot.types.CIntegerField;
+import sun.print.DialogOwnerAccessor;
 
 
 public class eng1v1 extends ApplicationAdapter {
@@ -20,9 +21,9 @@ public class eng1v1 extends ApplicationAdapter {
 	private Texture chef2img;  //Declares chef2 to be used later as a texture
 	private Boolean paused = false;   //Useful for when we want to implement a pause function
 	private OrthographicCamera camera; //prepares camera for use later
-	private Rectangle chef1;
-	private Rectangle chef2;
-	private Integer activeChef = 1;
+	private chefs chef1;
+	private chefs chef2;
+	private chefs activeChef;
 	private Texture pauseScreen;
 	private Integer foodNumber = 0;
 	private Texture mainmenupic;
@@ -51,17 +52,18 @@ public class eng1v1 extends ApplicationAdapter {
 
 
 
-		chef1 = new Rectangle();
-		chef1.x = 500;
-		chef1.y = 500;
-		chef1.width = 120;
-		chef1.height = 60;
+		chef1 = new chefs(500,500);
+		//chef1.x = 500;
+		//chef1.y = 500;
+		//chef1.width = 120;
+		//chef1.height = 60;
+		activeChef = chef1;
 
-		chef2 = new Rectangle();
-		chef2.x = 873;
-		chef2.y = 400;
-		chef2.width = 120;
-		chef2.height = 60;
+		chef2 = new chefs(873,400);
+		//chef2.x = 873;
+		//chef2.y = 400;
+		//chef2.width = 120;
+		//chef2.height = 60;
 
 	}
 
@@ -125,8 +127,8 @@ public class eng1v1 extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(img, 0, 0);
-		batch.draw(chef1img, chef1.x, chef1.y);
-		batch.draw(chef2img, chef2.x, chef2.y);
+		batch.draw(chef1img, chef1.getX(), chef1.getY());
+		batch.draw(chef2img, chef2.getX(), chef2.getY());
 		batch.end();
 	}
 
@@ -148,10 +150,10 @@ public class eng1v1 extends ApplicationAdapter {
 
 	public void swapChef(){
 		if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {  //For us using two chefs, I have used tab as the key to switch, however with multiple chefs, numbers could be used in place of tab, using an elseif structure.
-			if(activeChef == 1){
-				activeChef = 2;
+			if(activeChef == chef1){
+				activeChef = chef2;
 			} else {
-				activeChef = 1;
+				activeChef = chef1;
 			}
 			//try {Thread.sleep(100);} catch (Exception e) {}  //This is necessary in order to prevent them tabbing back and forth through the different chefs when pressing once, because of how fast it checks without the delay.
 		}
@@ -161,42 +163,47 @@ public class eng1v1 extends ApplicationAdapter {
 
 	public void chefMovement() {
 		//activeChef = chefs.getActiveChef();
-		Integer right = Input.Keys.D;   //This way we can have mappable keys for the controls.
-		if(activeChef == 1){
+		Integer up = Input.Keys.W; //This way we can have mappable keys for the controls.
+		Integer left = Input.Keys.A;
+		Integer down = Input.Keys.S;
+		Integer right = Input.Keys.D;
 
+		/*
+		This section checks if the chef is in a "good" place, i.e. not in a wall.
+		If the chef is in a wall, denoted by them being in the given boundaries shown below,
+		they are moved to be not in that wall.
 
-			/*
-			This section checks if the chef is in a "good" place, i.e. not in a wall.
-			If the chef is in a wall, denoted by them being in the given boundaries shown below,
-			they are moved to be not in that wall.
+		This is an initial and somewhat brutal method, but for now it will stick
 
-			This is an initial and somewhat brutal method, but for now it will stick
+		If later a better option is found, then we can ammend this.
 
-			If later a better option is found, then we can ammend this.
-
-			 */
-			if(chef1.x >= -100 & chef1.x < 873 & chef1.y > 1040 - 390){
-				chef1.y = 1040 - 390;
-			}
-			if(chef1.y < 1040-200 & chef1.y > 1040-500 & chef1.x > 740){
-				chef1.x = 740;
-			}
-
-
-
-
-
-
-			if (Gdx.input.isKeyPressed(right)) chef1.x += 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.A)) chef1.x -= 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.S)) chef1.y -= 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.W)) chef1.y += 250 *Gdx.graphics.getDeltaTime();
-		}else{
-			if (Gdx.input.isKeyPressed(Input.Keys.D)) chef2.x += 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.A)) chef2.x -= 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.S)) chef2.y -= 250 *Gdx.graphics.getDeltaTime();
-			if (Gdx.input.isKeyPressed(Input.Keys.W)) chef2.y += 250 *Gdx.graphics.getDeltaTime();
+		 */
+		if(activeChef.getX() <= 0){  //left side of map
+			activeChef.setX(10);
 		}
+		if(activeChef.getY() <= 0){  //bottom of the map
+			activeChef.setY(10);
+		}
+		if(activeChef.getX() >= -100 & activeChef.getX() < 873 & activeChef.getY() > 650){  //bottom of counter
+			activeChef.setY(-10);
+		}
+		if(activeChef.getY() < 840 & activeChef.getY() > 560 & activeChef.getX() > 740){  //side of burger area
+			activeChef.setX(-10);
+		}
+		if(activeChef.getX() >= 770 & activeChef.getX() < 1850 & activeChef.getY() > 540){  //bottom of burger area
+			activeChef.setY(-10);
+		}
+		if(activeChef.getY() < 830 & activeChef.getY() > 0 & activeChef.getX() > 1500){  //left side of salad area
+			activeChef.setX(-10);
+		}
+		if(activeChef.getX() >= 0 & activeChef.getX() < 1850 & activeChef.getY() < 230){  //top of lower counter
+			activeChef.setY(10);
+		}
+
+		if (Gdx.input.isKeyPressed(right)) activeChef.setX(10);
+		if (Gdx.input.isKeyPressed(left)) activeChef.setX(-10);
+		if (Gdx.input.isKeyPressed(down)) activeChef.setY(-10);
+		if (Gdx.input.isKeyPressed(up)) activeChef.setY(10);
 
 		/*
 		This whole section just checks which chef is activated and uses their section, and moves them by 250 units each loop.

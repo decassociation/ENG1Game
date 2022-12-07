@@ -178,11 +178,26 @@ public class eng1v1 extends ApplicationAdapter {
 		If later a better option is found, then we can ammend this.
 
 		 */
-		if(activeChef.getX() >= -100 & activeChef.getX() < 873 & activeChef.getY() > 1040 - 390){
+		if(activeChef.getX() <= 0){  //left side of map
+			activeChef.setX(10);
+		}
+		if(activeChef.getY() <= 0){  //bottom of the map
+			activeChef.setY(10);
+		}
+		if(activeChef.getX() >= -100 & activeChef.getX() < 873 & activeChef.getY() > 650){  //bottom of counter
 			activeChef.setY(-10);
 		}
-		if(activeChef.getY() < 1040-200 & activeChef.getY() > 1040-500 & activeChef.getX() > 740){
+		if(activeChef.getY() < 840 & activeChef.getY() > 560 & activeChef.getX() > 740){  //side of burger area
 			activeChef.setX(-10);
+		}
+		if(activeChef.getX() >= 770 & activeChef.getX() < 1850 & activeChef.getY() > 540){  //bottom of burger area
+			activeChef.setY(-10);
+		}
+		if(activeChef.getY() < 830 & activeChef.getY() > 0 & activeChef.getX() > 1500){  //left side of salad area
+			activeChef.setX(-10);
+		}
+		if(activeChef.getX() >= 0 & activeChef.getX() < 1850 & activeChef.getY() < 230){  //top of lower counter
+			activeChef.setY(10);
 		}
 
 		if (Gdx.input.isKeyPressed(right)) activeChef.setX(10);

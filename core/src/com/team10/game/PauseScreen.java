@@ -19,6 +19,7 @@ public class PauseScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 
         }
+
     }
 
     @Override
@@ -32,6 +33,7 @@ public class PauseScreen implements Screen {
                 throw new RuntimeException(e);
             }
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.C)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 
     @Override

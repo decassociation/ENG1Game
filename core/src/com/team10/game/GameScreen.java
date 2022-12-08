@@ -50,7 +50,7 @@ public class GameScreen implements Screen {
         //chef2.y = 400;
         //chef2.width = 120;
         //chef2.height = 60;
-
+        if (Gdx.input.isKeyPressed(Input.Keys.C)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 
     @Override
@@ -173,18 +173,14 @@ public class GameScreen implements Screen {
 
     }
 
-    @Override
     public void pause() {
 
     }
 
-
-    @Override
     public void resume() {
 
     }
 
-    @Override
     public void hide() {
 
     }

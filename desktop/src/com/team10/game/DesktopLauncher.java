@@ -15,3 +15,4 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 		}
 	}
 
+//TODO: Add a way to change the screen size automatically based on the screen size of the user's computer

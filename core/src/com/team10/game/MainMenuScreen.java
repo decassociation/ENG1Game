@@ -38,7 +38,7 @@ public class MainMenuScreen implements Screen {
             game.setScreen(new GameScreen(game));
             dispose();
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.C)) Gdx.app.exit();//allows you to close the game when fullscreen
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 
 

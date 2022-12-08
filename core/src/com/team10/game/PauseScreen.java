@@ -33,7 +33,7 @@ public class PauseScreen implements Screen {
                 throw new RuntimeException(e);
             }
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.C)) Gdx.app.exit();//allows you to close the game when fullscreen
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 
     @Override

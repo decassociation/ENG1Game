@@ -28,11 +28,6 @@ public class GameScreen implements Screen {
     public GameScreen(Eng1Game game) {
         this.game = game;
 
-    }
-
-    @Override
-    public void show() {
-
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1850, 1040);
@@ -58,13 +53,12 @@ public class GameScreen implements Screen {
 
     }
 
-    public void renderPause(){
-        try {
-            game.changeScreen("pause");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void show() {
+
     }
+
+
 
 
     public void swapChef(){
@@ -101,19 +95,19 @@ public class GameScreen implements Screen {
         if(activeChef.getY() <= 0){  //bottom of the map
             activeChef.setY(10);
         }
-        if(activeChef.getX() >= -100 & activeChef.getX() < 873 & activeChef.getY() > 650){  //bottom of counter
+        if(activeChef.getX() >= -100 && activeChef.getX() < 873 && activeChef.getY() > 650){  //bottom of counter
             activeChef.setY(-10);
         }
-        if(activeChef.getY() < 840 & activeChef.getY() > 560 & activeChef.getX() > 740){  //side of Burger area
+        if(activeChef.getY() < 840 && activeChef.getY() > 560 && activeChef.getX() > 740){  //side of Burger area
             activeChef.setX(-10);
         }
-        if(activeChef.getX() >= 770 & activeChef.getX() < 1850 & activeChef.getY() > 540){  //bottom of Burger area
+        if(activeChef.getX() >= 770 && activeChef.getX() < 1850 && activeChef.getY() > 540){  //bottom of Burger area
             activeChef.setY(-10);
         }
-        if(activeChef.getY() < 830 & activeChef.getY() > 0 & activeChef.getX() > 1500){  //left side of Salad area
+        if(activeChef.getY() < 830 && activeChef.getY() > 0 && activeChef.getX() > 1500){  //left side of Salad area
             activeChef.setX(-10);
         }
-        if(activeChef.getX() >= 0 & activeChef.getX() < 1850 & activeChef.getY() < 230){  //top of lower counter
+        if(activeChef.getX() >= 0 && activeChef.getX() < 1850 && activeChef.getY() < 230){  //top of lower counter
             activeChef.setY(10);
         }
 
@@ -140,14 +134,13 @@ public class GameScreen implements Screen {
     }
 
     private void gameLogic(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.P) || (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)))  {
-            paused = !paused;
-        }
-        pause(); //constantly checks to see if someone wants to pause/ unpause the game
-        if(paused) {
-
-            renderPause(); //Draws the pause screen. For some reason having it elsewhere made the whole game flash like crazy so this was the solution I found.
-        } else if(!mainmenu){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.P) || (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))) {
+            try {
+                game.changeScreen("pause");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(!mainmenu){
             swapChef(); //checks if the chef needs to be changed
             chefMovement();  //does the movement for the Chef
             drawStuff(); //Does the actual drawing of the game

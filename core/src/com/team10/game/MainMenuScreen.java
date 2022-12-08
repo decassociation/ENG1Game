@@ -2,11 +2,19 @@ package com.team10.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.ScreenUtils;
+
+
 
 public class MainMenuScreen implements Screen {
+    OrthographicCamera camera;
     private Eng1Game game;
     public MainMenuScreen(Eng1Game game) {
         this.game = game;
+
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 480);
     }
 
     public void show() {
@@ -23,11 +31,14 @@ public class MainMenuScreen implements Screen {
     }
 
     public void render(float delta) {
-        // TODO: Set screen to game screen when the mouse is clicked
-        if(Gdx.input.isTouched()){
-            setScreen(new GameScreen(game));
+        ScreenUtils.clear(100, 0, 0, 0);
+
+        if (Gdx.input.isTouched()) {
+            game.setScreen(new GameScreen(game));
+            dispose();
         }
-    }
+        }
+
 
     public void resize(int width, int height) {
 

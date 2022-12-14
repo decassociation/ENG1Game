@@ -1,9 +1,10 @@
-package com.team10.game;
+package com.team10.menus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.team10.game.Eng1Game;
 public class PauseScreen implements Screen {
     private final Eng1Game game;
 
@@ -17,7 +18,7 @@ public class PauseScreen implements Screen {
     public void show() {
         //when p is pressed show an image
         if (Gdx.input.isKeyPressed(Input.Keys.P)) {
-
+            
         }
 
     }

@@ -1,21 +1,35 @@
-package com.team10.game;
+package com.team10.menus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.team10.game.Eng1Game;
+import com.team10.game.GameScreen;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 
 public class MainMenuScreen implements Screen {
     OrthographicCamera camera;
     private Eng1Game game;
+    SpriteBatch batch;
+    MenuButton startGame;
+    BitmapFont font;
     public MainMenuScreen(Eng1Game game) {
         this.game = game;
 
+        batch = new SpriteBatch();
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
+
+        startGame = new StartGameButton(0, 0, 100, 50, "Start Game", game);
+        
+
     }
 
     public void show() {
@@ -34,10 +48,19 @@ public class MainMenuScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(100, 0, 0, 0);
 
+        batch.begin();
+        startGame.draw(batch);
+        batch.end();
+
+        /*
         if (Gdx.input.isTouched()) {
             game.setScreen(new GameScreen(game));
             dispose();
         }
+        */
+
+        startGame.onClick(camera);
+
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 

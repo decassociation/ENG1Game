@@ -2,6 +2,8 @@ package com.team10.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.team10.menus.MainMenuScreen;
+import com.team10.menus.PauseScreen;
 
 public class Eng1Game extends Game {
 

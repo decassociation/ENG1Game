@@ -3,7 +3,6 @@ package com.team10.menus;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -27,7 +26,7 @@ public class MainMenuScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        startGame = new StartGameButton(0, 0, 100, 50, "Start Game", game);
+        startGame = new StartGameButton(350, 200, 100, 50, batch, camera, game);
         
 
     }
@@ -49,7 +48,7 @@ public class MainMenuScreen implements Screen {
         ScreenUtils.clear(100, 0, 0, 0);
 
         batch.begin();
-        startGame.draw(batch);
+        startGame.draw();
         batch.end();
 
         /*
@@ -59,7 +58,7 @@ public class MainMenuScreen implements Screen {
         }
         */
 
-        startGame.onClick(camera);
+        startGame.onClick();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }

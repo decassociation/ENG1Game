@@ -1,6 +1,5 @@
 package com.team10.menus;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
@@ -12,47 +11,105 @@ import com.badlogic.gdx.Gdx;
 public class MenuButton {
     private String text;
     private int xPos, yPos, width, height;
-    private Rectangle buttonRect;
     private Texture texture;
+    private SpriteBatch batch;
+    private Camera camera;
+    private Boolean clicked;
+    private Boolean misclicked;
 
-    public MenuButton(int xPos, int yPos, int width, int height, String text){
+    /**
+     * Constructor for MenuButton
+     * 
+     * @param xPos the x coordinate
+     * @param yPos the y coordinate
+     * @param width the width of the button
+     * @param height the height of the button
+     * @param text the text to display on the button
+     * @param batch the SpriteBatch to draw the button to
+     * @param camera the camera being used to render the game, needed to get correct
+       projections of coordinates for rendering and clicking
+     */
+    public MenuButton(int xPos, int yPos, int width, int height, String text, SpriteBatch batch, Camera camera){
         this.text = text;
         this.xPos = xPos;
         this.yPos = yPos;
         this.width = width;
         this.height = height;
-        buttonRect = new Rectangle();
+        this.batch = batch;
+        this.camera = camera;
         texture = new Texture(Gdx.files.internal("MenuButton.png"));
+        clicked = false;
+        misclicked = false;
     }
 
-    public void onClick(Camera camera){
+    /**
+     * Check if the button has been clicked
+     * 
+     * Should be called every frame in render(), will check if the mouse has been clicked
+     * inside of the button, and then will call the button's clickFunction()
+     */
+    public void onClick(){
         if(Gdx.input.isTouched()){
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-			camera.unproject(touchPos);
-            System.out.println(touchPos.x + "   " + touchPos.y);
-			if (touchPos.x >= xPos && touchPos.x <= xPos + width && touchPos.y >= yPos && touchPos.y <= yPos + height){
-                clickFunction();
+			camera.unproject(touchPos);     // need to unproject as touchPos uses a different coordinate system, so need to convert
+            
+            // check if the touch position is within the rectangle of the button
+            //
+            // clicked is true when clicked inside the rectangle
+            // misclicked is true when clicked outside the rectangle
+            //
+            // use clicked and misclicked booleans to ensure the button only works when you click inside the rectangle and then
+            // let go of click while the cursor is still inside the rectangle
+			if (touchPos.x >= xPos && touchPos.x <= xPos + width && touchPos.y >= yPos && touchPos.y <= yPos + height && misclicked == false){
+                clicked = true;
+            }
+
+            else{
+                misclicked = true;
+                clicked = false;
             }
 		}
+
+        else{
+            if (clicked == true){
+                clicked = false;
+                clickFunction();
+            }
+            misclicked = false;
+
+        }
         
     }
 
+    /**
+     * Function to define what happens when the button is clicked
+     * 
+     * Is blank in this superclass, will need to create a subclass and then override clickFunction
+     * with the desired code
+     */
     public void clickFunction(){
 
     }
 
-    public void draw(SpriteBatch batch){
+    /**
+     * Method to simplify the process of drawing the button, simply call draw() in the render()
+     * 
+     * This is why we need to pass the batch and camera as parameters to the constructor, because draw()
+     * will call some methods from the batch so needs to know which to use
+     */
+    public void draw(){
         BitmapFont font = new BitmapFont();
-        int x = (int) (xPos*2.2727272727);
-        int w = (int) (width*2.2727272727);
-        int y = (int) (yPos*1.6666666666);
-        int h = (int) (height*1.6666666666);
-        batch.draw(texture, x, y, w, h);
+        batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
+        batch.draw(texture, xPos, yPos, width, height);
         font.setColor(Color.BLACK);
-        font.draw(batch, text, x + 10, y + h/2 + 5);
+        font.draw(batch, text, xPos + 10, yPos + height/2 + 5);
     }
 
+
+    /**
+     * Getters and setters for the attributes
+     */
     public Texture getTexture(){
         return texture;
     }

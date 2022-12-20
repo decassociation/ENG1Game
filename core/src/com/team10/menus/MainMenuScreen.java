@@ -63,22 +63,8 @@ public class MainMenuScreen implements Screen {
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
 
-        // Get the dimensions of the image
-        float imageWidth = backgroundImage.getWidth();
-        float imageHeight = backgroundImage.getHeight();
-
-        // Calculate the scale factor for the image
-        float scaleFactor = Math.min(screenWidth / imageWidth, screenHeight / imageHeight);
-
-        // Calculate the scaled dimensions of the image
-        float scaledWidth = imageWidth * scaleFactor;
-        float scaledHeight = imageHeight * scaleFactor;
-
-        // Calculate the position of the image on the screen
-        float x = (screenWidth - scaledWidth) / 2;
-        float y = (screenHeight - scaledHeight) / 2;
-        // Draw the background image, scaling and positioning it to fit the screen
-        batch.draw(backgroundImage, x, y, scaledWidth, scaledHeight);
+        // Draw the background image, scaling it to fit the screen
+        batch.draw(backgroundImage, 0, 0, screenWidth, screenHeight);
 
         // Draw the sprite
         startGame.draw(batch);
@@ -108,6 +94,10 @@ public class MainMenuScreen implements Screen {
     }
 
     public void dispose() {
+        // Dispose of the background image to prevent memory leaks
+        backgroundImage.dispose();
 
+        // Dispose of the SpriteBatch object
+        batch.dispose();
     }
 }

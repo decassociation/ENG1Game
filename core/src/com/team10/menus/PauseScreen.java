@@ -34,8 +34,12 @@ public class PauseScreen implements Screen {
         // Begin rendering
         batch.begin();
 
-        // Draw the background image
-        batch.draw(backgroundImage, 0, 0);
+        // Get the screen dimensions
+        int screenWidth = Gdx.graphics.getWidth();
+        int screenHeight = Gdx.graphics.getHeight();
+
+        // Draw the background image, scaling it to fit the screen
+        batch.draw(backgroundImage, 0, 0, screenWidth, screenHeight);
 
         // End rendering
         batch.end();
@@ -49,6 +53,7 @@ public class PauseScreen implements Screen {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
+
 
     @Override
     public void resize(int width, int height) {

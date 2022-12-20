@@ -59,12 +59,7 @@ public class MainMenuScreen implements Screen {
         // Begin rendering
         batch.begin();
 
-        // Get the screen dimensions
-        int screenWidth = Gdx.graphics.getWidth();
-        int screenHeight = Gdx.graphics.getHeight();
-
-        // Draw the background image, scaling it to fit the screen
-        batch.draw(backgroundImage, 0, 0, screenWidth, screenHeight);
+        batch.draw(backgroundImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         // Draw the sprite
         startGame.draw(batch);

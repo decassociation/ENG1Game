@@ -5,27 +5,40 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.team10.game.Eng1Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class PauseScreen implements Screen {
     private final Eng1Game game;
-
+    private Texture backgroundImage;
+    private SpriteBatch batch;
     public PauseScreen(Eng1Game game) {
         this.game = game;
+        // Load the background image
+        backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
 
+        // Create a SpriteBatch object for rendering
+        batch = new SpriteBatch();
 
     }
 
     @Override
     public void show() {
-        //when p is pressed show an image
-        if (Gdx.input.isKeyPressed(Input.Keys.P)) {
-            
-        }
-
+        // Set the background image as the current screen
+        Gdx.gl.glClearColor(0, 0, 0, 1);
     }
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 100, 0);
+        // Begin rendering
+        batch.begin();
+
+        // Draw the background image
+        batch.draw(backgroundImage, 0, 0);
+
+        // End rendering
+        batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             try {
@@ -59,6 +72,10 @@ public class PauseScreen implements Screen {
 
     @Override
     public void dispose() {
+        // Dispose of the background image to prevent memory leaks
+        backgroundImage.dispose();
 
+        // Dispose of the SpriteBatch object
+        batch.dispose();
     }
 }

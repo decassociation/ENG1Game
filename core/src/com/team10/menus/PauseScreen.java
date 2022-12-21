@@ -11,7 +11,7 @@ import com.team10.game.Eng1Game;
 public class PauseScreen implements Screen {
     private final Eng1Game game;
     // Load the background image
-    private final Texture backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
+    private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
     private final SpriteBatch batch;
     BitmapFont font = new BitmapFont();
 

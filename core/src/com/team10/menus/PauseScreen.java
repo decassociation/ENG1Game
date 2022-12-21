@@ -3,29 +3,43 @@ package com.team10.menus;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
+
 public class PauseScreen implements Screen {
     private final Eng1Game game;
+    // Load the background image
+    private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
+    private final SpriteBatch batch;
+    BitmapFont font = new BitmapFont();
 
     public PauseScreen(Eng1Game game) {
         this.game = game;
 
+        // Create a SpriteBatch object for rendering
+        batch = new SpriteBatch();
 
     }
 
     @Override
     public void show() {
-        //when p is pressed show an image
-        if (Gdx.input.isKeyPressed(Input.Keys.P)) {
-            
-        }
-
+        // Set the background image as the current screen
+        Gdx.gl.glClearColor(0, 0, 0, 1);
     }
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 100, 0);
+        // Begin rendering
+        batch.begin();
+
+        // Draw the background image
+        batch.draw(backgroundImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+
+        // End rendering
+        batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             try {
@@ -36,6 +50,7 @@ public class PauseScreen implements Screen {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
+
 
     @Override
     public void resize(int width, int height) {
@@ -59,6 +74,10 @@ public class PauseScreen implements Screen {
 
     @Override
     public void dispose() {
+        // Dispose of the background image to prevent memory leaks
+        backgroundImage.dispose();
 
+        // Dispose of the SpriteBatch object
+        batch.dispose();
     }
 }

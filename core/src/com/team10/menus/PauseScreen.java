@@ -4,13 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
+
 public class PauseScreen implements Screen {
     private final Eng1Game game;
     // Load the background image
     private final Texture backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
     private final SpriteBatch batch;
+    BitmapFont font = new BitmapFont();
+
     public PauseScreen(Eng1Game game) {
         this.game = game;
 
@@ -30,10 +34,11 @@ public class PauseScreen implements Screen {
         // Begin rendering
         batch.begin();
 
-// Draw the background image to fill the window
+        // Draw the background image
         batch.draw(backgroundImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-// End rendering
+
+        // End rendering
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
@@ -45,6 +50,7 @@ public class PauseScreen implements Screen {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
+
 
     @Override
     public void resize(int width, int height) {

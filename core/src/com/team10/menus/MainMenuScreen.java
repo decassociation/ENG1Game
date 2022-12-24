@@ -47,8 +47,8 @@ public class MainMenuScreen implements Screen {
 
     public void render(float delta) {
         batch.begin();
-        batch.draw(backgroundImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        startGame.draw(batch);
+        batch.draw(backgroundImage, 0, 0, 800, 480);
+        startGame.draw();
         batch.end();
         startGame.onClick();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen

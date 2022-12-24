@@ -98,10 +98,10 @@ public class MenuButton {
      * This is why we need to pass the batch and camera as parameters to the constructor, because draw()
      * will call some methods from the batch so needs to know which to use
      */
-    public void draw(SpriteBatch batch){
+    public void draw(){
         BitmapFont font = new BitmapFont();
-        this.batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
-        this.batch.draw(texture, xPos, yPos, width, height);
+        batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
+        batch.draw(texture, xPos, yPos, width, height);
         font.setColor(Color.BLACK);
         font.draw(this.batch, text, xPos + 10, yPos + height/2 + 5);
     }

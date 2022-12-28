@@ -8,23 +8,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class GameScreen implements Screen {
+public class GameScreen extends Eng1Screen {
     private Boolean paused = false;   //Useful for when we want to implement a pause function
-    private Eng1Game game;
 
     private ChefController chefController;
     private Texture img;
 
     private Boolean mainmenu;
-
-    private SpriteBatch batch;
-
-    private OrthographicCamera camera;
     public GameScreen(Eng1Game game) {
-        this.game = game;
+        super(game);
 
-        batch = new SpriteBatch();
-        camera = new OrthographicCamera();
         camera.setToOrtho(false, 1850, 1040);
         img = new Texture("layout.png"); //img is the background image
 
@@ -80,23 +73,6 @@ public class GameScreen implements Screen {
     public void render (float delta) { //The constantly looping function
         gameLogic(); //Extracts what is being done incase I need to do other none-game logic related things in the render function. This may be changed in future if it turns out nothing else needs doing.
 
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    public void pause() {
-
-    }
-
-    public void resume() {
-
-    }
-
-    public void hide() {
 
     }
 

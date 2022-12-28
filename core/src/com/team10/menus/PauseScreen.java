@@ -8,33 +8,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
+import com.team10.game.Eng1Screen;
 
-public class PauseScreen implements Screen {
-    OrthographicCamera camera;
-    private final Eng1Game game;
+public class PauseScreen extends Eng1Screen {
     // Load the background image
     private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
-    private final SpriteBatch batch;
     BitmapFont font = new BitmapFont();
     MenuButton goMain;
 
     public PauseScreen(Eng1Game game) {
-        this.game = game;
-
-        // Create a SpriteBatch object for rendering
-        batch = new SpriteBatch();
-
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        super(game);
 
         goMain = new ChangeScreenButton(350, 200, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
 
-    }
-
-    @Override
-    public void show() {
-        // Set the background image as the current screen
-        Gdx.gl.glClearColor(0, 0, 0, 1);
     }
 
     @Override
@@ -62,27 +48,6 @@ public class PauseScreen implements Screen {
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
-    }
-
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
     }
 
     @Override

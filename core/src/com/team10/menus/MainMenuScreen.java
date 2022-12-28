@@ -29,7 +29,7 @@ public class MainMenuScreen implements Screen {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
-        startGame = new StartGameButton(350, 200, 100, 50, batch, camera, game);
+        startGame = new ChangeScreenButton(350, 200, 100, 50, "Start Game", batch, camera, game, "game");
     }
 
     public void show() {

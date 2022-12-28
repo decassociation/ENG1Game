@@ -16,7 +16,7 @@ public class PauseScreen implements Screen {
     private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
     private final SpriteBatch batch;
     BitmapFont font = new BitmapFont();
-    ReturnToMainButton goMain;
+    MenuButton goMain;
 
     public PauseScreen(Eng1Game game) {
         this.game = game;
@@ -27,7 +27,7 @@ public class PauseScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        goMain = new ReturnToMainButton(350, 200, 100, 50, batch, camera, game);
+        goMain = new ChangeScreenButton(350, 200, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
 
     }
 

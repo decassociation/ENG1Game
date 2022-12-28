@@ -5,17 +5,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
 import com.team10.game.GameScreen;
 
-public class StartGameButton extends MenuButton{
+public class ChangeScreenButton extends MenuButton{
     private Eng1Game game;
+    private String screen;
 
     /**
      * Constructor for StartGameButton, text is removed as is hardcoded
      * 
      * @param game the Eng1Game object
      */
-    public StartGameButton(int xPos, int yPos, int width, int height, SpriteBatch batch, Camera camera, Eng1Game game){
-        super(xPos, yPos, width, height, "Start Game", batch, camera);
+    public ChangeScreenButton(int xPos, int yPos, int width, int height, String text, SpriteBatch batch, Camera camera, Eng1Game game, String screen){
+        super(xPos, yPos, width, height, text, batch, camera);
         this.game = game;
+        this.screen = screen;
     }
     
     /**
@@ -23,6 +25,10 @@ public class StartGameButton extends MenuButton{
      */
     @Override
     public void clickFunction(){
-        game.setScreen(new GameScreen(game));
+        try{
+            game.changeScreen(screen);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

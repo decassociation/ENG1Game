@@ -149,4 +149,8 @@ public class MenuButton {
     public void setHeight(int value){
         height = value;
     }
+
+    public void setText(String value){
+        text = value;
+    }
 }

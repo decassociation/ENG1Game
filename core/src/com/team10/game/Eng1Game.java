@@ -6,12 +6,14 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.team10.menus.MainMenuScreen;
 import com.team10.menus.PauseScreen;
+import com.team10.menus.SettingsMenuScreen;
 
 public class Eng1Game extends Game {
 
     private Screen gameScreen;
     private Screen mainMenuScreen;
     private Screen pauseScreen;
+    private Screen settingsMenuScreen;
 
 
     @Override
@@ -46,6 +48,12 @@ public class Eng1Game extends Game {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
+                break;
+            case "settings":
+                if(settingsMenuScreen == null){
+                    settingsMenuScreen = new SettingsMenuScreen(this);
+                }
+                setScreen(settingsMenuScreen);
                 break;
             default:
                 throw new Exception("Invalid screen name");

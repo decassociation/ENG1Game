@@ -51,6 +51,11 @@ public class PauseScreen extends Eng1Screen {
     }
 
     @Override
+    public void show() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+    }
+
+    @Override
     public void dispose() {
         // Dispose of the background image to prevent memory leaks
         backgroundImage.dispose();

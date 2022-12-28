@@ -24,7 +24,7 @@ public class Eng1Screen implements Screen{
 
     @Override
     public void show() {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        
     }
 
     @Override

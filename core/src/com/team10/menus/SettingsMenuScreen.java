@@ -10,12 +10,25 @@ public class SettingsMenuScreen extends Eng1Screen{
 
     FullscreenModeButton fullscreenModeButton;
     ChangeScreenButton mainMenuButton;
+    ControlChangeButton upChangeButton;
+    ControlChangeButton downChangeButton;
+    ControlChangeButton leftChangeButton;
+    ControlChangeButton rightChangeButton;
+    ControlChangeButton pauseChangeButton;
+
     FileManager fileManager;
 
     public SettingsMenuScreen(Eng1Game game) {
         super(game);
         fileManager = new FileManager("config/desktop_settings.txt");
+
         fullscreenModeButton = new FullscreenModeButton(25, 405, 100, 50, "fullscreen: " + fileManager.read("fullscreen"), batch, camera);
+        upChangeButton = new ControlChangeButton(25, 330, 100, 50, "up: " + fileManager.read("up"), batch, camera, "up");
+        downChangeButton = new ControlChangeButton(25, 255, 100, 50, "down: " + fileManager.read("down"), batch, camera, "down");
+        leftChangeButton = new ControlChangeButton(25, 180, 100, 50, "left: " + fileManager.read("left"), batch, camera, "left");
+        rightChangeButton = new ControlChangeButton(25, 105, 100, 50, "right: " + fileManager.read("right"), batch, camera, "right");
+        pauseChangeButton = new ControlChangeButton(150, 405, 100, 50, "pause: " + fileManager.read("pause"), batch, camera, "pause");
+
         mainMenuButton = new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
     }
 
@@ -25,10 +38,25 @@ public class SettingsMenuScreen extends Eng1Screen{
 
         batch.begin();
         fullscreenModeButton.draw();
+        upChangeButton.draw();
+        downChangeButton.draw();
+        leftChangeButton.draw();
+        rightChangeButton.draw();
+        pauseChangeButton.draw();
         mainMenuButton.draw();
         batch.end();
 
         fullscreenModeButton.onClick();
+        upChangeButton.onClick();
+        upChangeButton.getInput();
+        downChangeButton.onClick();
+        downChangeButton.getInput();
+        leftChangeButton.onClick();
+        leftChangeButton.getInput();
+        rightChangeButton.onClick();
+        rightChangeButton.getInput();
+        pauseChangeButton.onClick();
+        pauseChangeButton.getInput();
         mainMenuButton.onClick();
     }
 

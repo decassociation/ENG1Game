@@ -57,7 +57,6 @@ public class FileManager {
             reader.close();
             return data;
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
         }
@@ -98,7 +97,6 @@ public class FileManager {
 
             Files.write(file.toPath(), lines);  //Re-write every line back to the file
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

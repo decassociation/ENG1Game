@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
 import com.team10.game.Eng1Screen;
+import com.team10.game.FileManager;
 
 public class PauseScreen extends Eng1Screen {
     // Load the background image
     private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
     BitmapFont font = new BitmapFont();
     MenuButton goMain;
+    FileManager fileManager = new FileManager("config/desktop_settings.txt");
 
     public PauseScreen(Eng1Game game) {
         super(game);
@@ -40,14 +42,14 @@ public class PauseScreen extends Eng1Screen {
 
         goMain.onClick();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("pause")))) {
             try {
                 game.changeScreen("game");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
+        
     }
 
     @Override

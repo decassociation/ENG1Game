@@ -13,6 +13,7 @@ public class GameScreen extends Eng1Screen {
 
     private ChefController chefController;
     private Texture img;
+    FileManager fileManager = new FileManager("config/desktop_settings.txt");
 
     private Boolean mainmenu;
     public GameScreen(Eng1Game game) {
@@ -43,7 +44,7 @@ public class GameScreen extends Eng1Screen {
     }
 
     private void gameLogic(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("pause")))) {
             try {
                 game.changeScreen("pause");
             } catch (Exception e) {

@@ -43,11 +43,13 @@ public class ChefController {
     }
 
     public void chefMovement() {
+        FileManager fileManager = new FileManager("config/desktop_settings.txt");
+
         //activeChef = Chef.getActiveChef();
-        Integer up = Input.Keys.W; //This way we can have mappable keys for the controls.
-        Integer left = Input.Keys.A;
-        Integer down = Input.Keys.S;
-        Integer right = Input.Keys.D;
+        Integer up = Input.Keys.valueOf(fileManager.read("up")); //This way we can have mappable keys for the controls.
+        Integer left = Input.Keys.valueOf(fileManager.read("left"));
+        Integer down = Input.Keys.valueOf(fileManager.read("down"));
+        Integer right = Input.Keys.valueOf(fileManager.read("right"));
 
 		/*
 		This section checks if the chef is in a "good" place, i.e. not in a wall.

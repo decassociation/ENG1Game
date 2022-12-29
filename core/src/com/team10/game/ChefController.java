@@ -13,6 +13,8 @@ public class ChefController {
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
 
+    FileManager fileManager = new FileManager("config/desktop_settings.txt");
+
     public ChefController(){
         chefCount = 2;
 
@@ -28,7 +30,7 @@ public class ChefController {
     }
 
     public void swapChef(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("changeChef")))) {
             if (currentChef < chefCount - 1) currentChef += 1;
             else currentChef = 0;
         }
@@ -43,8 +45,6 @@ public class ChefController {
     }
 
     public void chefMovement() {
-        FileManager fileManager = new FileManager("config/desktop_settings.txt");
-
         //activeChef = Chef.getActiveChef();
         Integer up = Input.Keys.valueOf(fileManager.read("up")); //This way we can have mappable keys for the controls.
         Integer left = Input.Keys.valueOf(fileManager.read("left"));

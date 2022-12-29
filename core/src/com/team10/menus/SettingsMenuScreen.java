@@ -15,6 +15,7 @@ public class SettingsMenuScreen extends Eng1Screen{
     ControlChangeButton leftChangeButton;
     ControlChangeButton rightChangeButton;
     ControlChangeButton pauseChangeButton;
+    ControlChangeButton changeChefButton;
 
     FileManager fileManager;
 
@@ -28,6 +29,7 @@ public class SettingsMenuScreen extends Eng1Screen{
         leftChangeButton = new ControlChangeButton(25, 180, 100, 50, "left: " + fileManager.read("left"), batch, camera, "left");
         rightChangeButton = new ControlChangeButton(25, 105, 100, 50, "right: " + fileManager.read("right"), batch, camera, "right");
         pauseChangeButton = new ControlChangeButton(150, 405, 100, 50, "pause: " + fileManager.read("pause"), batch, camera, "pause");
+        changeChefButton = new ControlChangeButton(150, 330, 100, 50, "changeChef: " + fileManager.read("changeChef"), batch, camera, "changeChef");
 
         mainMenuButton = new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
     }
@@ -43,6 +45,7 @@ public class SettingsMenuScreen extends Eng1Screen{
         leftChangeButton.draw();
         rightChangeButton.draw();
         pauseChangeButton.draw();
+        changeChefButton.draw();
         mainMenuButton.draw();
         batch.end();
 
@@ -57,6 +60,8 @@ public class SettingsMenuScreen extends Eng1Screen{
         rightChangeButton.getInput();
         pauseChangeButton.onClick();
         pauseChangeButton.getInput();
+        changeChefButton.onClick();
+        changeChefButton.getInput();
         mainMenuButton.onClick();
     }
 

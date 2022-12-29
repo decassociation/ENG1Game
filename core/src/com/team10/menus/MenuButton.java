@@ -11,7 +11,9 @@ import com.badlogic.gdx.Gdx;
 public class MenuButton {
     private String text;
     private int xPos, yPos, width, height;
-    private Texture texture;
+    private Texture active_texture;
+    private Texture base_texture;
+    private Texture clicked_texture;
     private SpriteBatch batch;
     private Camera camera;
     private Boolean clicked;
@@ -37,9 +39,13 @@ public class MenuButton {
         this.height = height;
         this.batch = batch;
         this.camera = camera;
-        texture = new Texture(Gdx.files.internal("MenuButton.png"));
+        
         clicked = false;
         misclicked = false;
+
+        base_texture = new Texture(Gdx.files.internal("MenuButton.png"));
+        clicked_texture = new Texture(Gdx.files.internal("MenuButtonClick.png"));
+        active_texture = base_texture;
     }
 
     /**
@@ -79,6 +85,9 @@ public class MenuButton {
             misclicked = false;
 
         }
+
+        if (clicked) active_texture = clicked_texture;
+        else active_texture = base_texture;
         
     }
 
@@ -101,7 +110,7 @@ public class MenuButton {
     public void draw(){
         BitmapFont font = new BitmapFont();
         batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
-        batch.draw(texture, xPos, yPos, width, height);
+        batch.draw(active_texture, xPos, yPos, width, height);
         font.setColor(Color.BLACK);
         font.draw(this.batch, text, xPos + 10, yPos + height/2 + 5);
     }
@@ -111,7 +120,7 @@ public class MenuButton {
      * Getters and setters for the attributes
      */
     public Texture getTexture(){
-        return texture;
+        return active_texture;
     }
 
     public String getText(){

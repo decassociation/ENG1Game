@@ -16,7 +16,7 @@ public class FullscreenModeButton extends MenuButton{
 
     @Override
     public void clickFunction(){
-        FileManager fileManager = new FileManager("config/desktop_settings.txt");		// create instance of fileManager class to manage the desktop settings file
+        FileManager fileManager = new FileManager("ENG1Game/config/desktop_settings.txt");		// create instance of fileManager class to manage the desktop settings file
         Graphics.DisplayMode currentMode = Gdx.graphics.getDisplayMode();
 
         if(fileManager.read("fullscreen").equals("true")){

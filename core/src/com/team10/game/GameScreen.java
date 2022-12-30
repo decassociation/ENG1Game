@@ -13,7 +13,7 @@ public class GameScreen extends Eng1Screen {
 
     private ChefController chefController;
     private Texture img;
-    FileManager fileManager = new FileManager("config/desktop_settings.txt");
+    FileManager fileManager = new FileManager("ENG1Game/config/desktop_settings.txt");
 
     private Boolean mainmenu;
     public GameScreen(Eng1Game game) {

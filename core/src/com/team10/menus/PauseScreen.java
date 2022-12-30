@@ -16,7 +16,7 @@ public class PauseScreen extends Eng1Screen {
     private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
     BitmapFont font = new BitmapFont();
     MenuButton goMain;
-    FileManager fileManager = new FileManager("config/desktop_settings.txt");
+    FileManager fileManager = new FileManager("ENG1Game/config/desktop_settings.txt");
 
     public PauseScreen(Eng1Game game) {
         super(game);

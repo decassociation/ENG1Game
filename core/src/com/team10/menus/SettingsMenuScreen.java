@@ -21,7 +21,7 @@ public class SettingsMenuScreen extends Eng1Screen{
 
     public SettingsMenuScreen(Eng1Game game) {
         super(game);
-        fileManager = new FileManager("ENG1Game/config/desktop_settings.txt");
+        fileManager = new FileManager("config/desktop_settings.txt");
 
         fullscreenModeButton = new FullscreenModeButton(25, 405, 100, 50, "fullscreen: " + fileManager.read("fullscreen"), batch, camera);
         upChangeButton = new ControlChangeButton(25, 330, 100, 50, "up: " + fileManager.read("up"), batch, camera, "up");

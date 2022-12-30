@@ -94,7 +94,8 @@ public class FileManager {
                 added = true;
             }
 
-            Files.write(file.toPath(), lines);  //Re-write every line back to the file
+            System.out.println(lines);
+            Files.write(file.toPath(), lines, StandardCharsets.UTF_8);  //Re-write every line back to the file
         } catch (IOException e) {
             e.printStackTrace();
         }

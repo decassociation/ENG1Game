@@ -1,7 +1,0 @@
-fullscreen=false
-up=W
-down=S
-left=A
-right=D
-pause=P
-changeChef=Tab

@@ -33,6 +33,20 @@ public class FileManager {
     public FileManager(){
         String filepath = System.getenv("APPDATA") + "/PiazzaPanic/desktop_settings.txt";
         file = new File(filepath);
+        String directoryPath = System.getenv("APPDATA") + "/PiazzaPanic";
+        File dir = new File(directoryPath);
+        try {
+            if(dir.mkdir()){
+                if(file.createNewFile()){
+                    FileWriter fileWriter = new FileWriter(filepath);
+                    fileWriter.write("fullscreen=false\nup=W\ndown=S\nleft=A\nright=D\npause=P\nchangeChef=Tab");
+                    fileWriter.close();
+                }
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**

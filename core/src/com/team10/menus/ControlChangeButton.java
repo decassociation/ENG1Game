@@ -16,7 +16,7 @@ public class ControlChangeButton extends MenuButton{
         super(xPos, yPos, width, height, text, batch, camera);
 
         this.control = control;
-        fileManager = new FileManager("config/desktop_settings.txt");
+        fileManager = new FileManager();
         waitingForInput = false;
     }
 

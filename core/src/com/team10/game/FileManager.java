@@ -30,6 +30,10 @@ public class FileManager {
         file = new File(filepath);
     }
 
+    public FileManager(){
+        String filepath = System.getenv("APPDATA") + "/PiazzaPanic/desktop_settings.txt";
+        file = new File(filepath);
+    }
 
     /**
      * Get the data associated with the given variable

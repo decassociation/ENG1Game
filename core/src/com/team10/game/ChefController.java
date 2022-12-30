@@ -13,7 +13,7 @@ public class ChefController {
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
 
-    FileManager fileManager = new FileManager("config/desktop_settings.txt");
+    FileManager fileManager = new FileManager();
 
     public ChefController(){
         chefCount = 2;

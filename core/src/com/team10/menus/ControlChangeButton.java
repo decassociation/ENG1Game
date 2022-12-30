@@ -23,6 +23,7 @@ public class ControlChangeButton extends MenuButton{
     @Override
     public void clickFunction(){
         waitingForInput = true;
+        setText(control + ": [press key]");
     }
 
 

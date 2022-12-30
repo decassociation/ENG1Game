@@ -36,7 +36,6 @@ public class FileManager {
      * 
      * @param variableName the part of the line before the = sign to look for
      * @return the part of the line after the = sign on the same line as variableName
-     * @throws FileNotFoundException
      */
     public String read(String variableName){
         Scanner reader;
@@ -70,7 +69,6 @@ public class FileManager {
      * 
      * @param variableName the part of the line before the = sign to look for
      * @param data the part of the line after the = sign to overwrite
-     * @throws IOException
      */
     public void write(String variableName, String data){
         String[] split;

@@ -10,7 +10,7 @@ public class ChangeScreenButton extends MenuButton{
     private String screen;
 
     /**
-     * Constructor for StartGameButton, text is removed as is hardcoded
+     * Constructor for ChangeScreenButton
      * 
      * @param game the Eng1Game object
      */
@@ -21,7 +21,7 @@ public class ChangeScreenButton extends MenuButton{
     }
     
     /**
-     * Change the screen to the GameScreen when clicked
+     * Change the screen when clicked
      */
     @Override
     public void clickFunction(){

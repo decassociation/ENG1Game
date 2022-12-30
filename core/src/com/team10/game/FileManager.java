@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
@@ -77,7 +78,7 @@ public class FileManager {
 
         List<String> lines;
         try {
-            lines = Files.readAllLines(file.toPath());
+            lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
 
             // Iterate over each line, split over the = and check if the first part matches variable name
             for (int i = 0; i < lines.size(); i++) {

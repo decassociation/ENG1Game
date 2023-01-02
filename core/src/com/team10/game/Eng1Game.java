@@ -7,6 +7,8 @@ import com.badlogic.gdx.Screen;
 import com.team10.menus.MainMenuScreen;
 import com.team10.menus.PauseScreen;
 import com.team10.menus.SettingsMenuScreen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 
 public class Eng1Game extends Game {
 
@@ -14,8 +16,7 @@ public class Eng1Game extends Game {
     private Screen mainMenuScreen;
     private Screen pauseScreen;
     private Screen settingsMenuScreen;
-
-
+    private Music KitchenMusic;
     @Override
     public void create() {
         setScreen(new MainMenuScreen(this));
@@ -27,6 +28,13 @@ public class Eng1Game extends Game {
         screen.render(screenWidth);
         screen.render(screenHeight);
         setScreen(new MainMenuScreen(this));
+
+        KitchenMusic = Gdx.audio.newMusic(Gdx.files.internal("KitchenMusic.mp3"));
+        KitchenMusic.setVolume(0.005f);
+        KitchenMusic.setLooping(true);
+        KitchenMusic.play();
+
+
     }
 
     public void changeScreen(String screenName) throws Exception {
@@ -63,5 +71,9 @@ public class Eng1Game extends Game {
     public void setScreen(Screen screen) {
         super.setScreen(screen);
         System.out.println("Screen changed to: " + screen.getClass().getSimpleName());
+    }
+
+    public void dispose() {
+        KitchenMusic.dispose();
     }
 }

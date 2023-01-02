@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -12,6 +13,7 @@ public class ChefController {
     private int currentChef;
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
+    private Music stepSound;
 
     FileManager fileManager = new FileManager();
 
@@ -40,7 +42,7 @@ public class ChefController {
                 if (chefCount >= i + 1) currentChef = i;
             }
         }
-        
+
 
     }
 
@@ -50,6 +52,8 @@ public class ChefController {
         Integer left = Input.Keys.valueOf(fileManager.read("left"));
         Integer down = Input.Keys.valueOf(fileManager.read("down"));
         Integer right = Input.Keys.valueOf(fileManager.read("right"));
+
+
 
 		/*
 		This section checks if the chef is in a "good" place, i.e. not in a wall.

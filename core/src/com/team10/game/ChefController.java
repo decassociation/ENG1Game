@@ -53,6 +53,19 @@ public class ChefController {
         Integer down = Input.Keys.valueOf(fileManager.read("down"));
         Integer right = Input.Keys.valueOf(fileManager.read("right"));
 
+        if (Gdx.input.isKeyPressed(up) || Gdx.input.isKeyPressed(left) || Gdx.input.isKeyPressed(down) || Gdx.input.isKeyPressed(right)) {
+            // play 'step.mp3' sound file
+            final Music stepSound = Gdx.audio.newMusic(Gdx.files.internal("step.mp3"));
+            stepSound.setVolume(0.001f);
+            stepSound.setOnCompletionListener(new Music.OnCompletionListener() {
+                @Override
+                public void onCompletion(Music music) {
+                    stepSound.dispose();
+                }
+            });
+            stepSound.setLooping(false);
+            stepSound.play();
+        }
 
 
 		/*

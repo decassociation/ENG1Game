@@ -2,13 +2,12 @@ package com.team10.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.team10.menus.MainMenuScreen;
 import com.team10.menus.PauseScreen;
 import com.team10.menus.SettingsMenuScreen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+
 
 public class Eng1Game extends Game {
 

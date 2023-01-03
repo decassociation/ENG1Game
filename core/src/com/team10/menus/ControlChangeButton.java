@@ -24,7 +24,6 @@ public class ControlChangeButton extends MenuButton{
     public void clickFunction(){
         waitingForInput = true;
         setText(control + ": [press key]");
-        System.out.println("click");
     }
 
 

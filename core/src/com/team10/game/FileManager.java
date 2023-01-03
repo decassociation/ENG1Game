@@ -2,7 +2,6 @@ package com.team10.game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -41,8 +40,8 @@ public class FileManager {
         String directoryPath = System.getenv("APPDATA") + "/PiazzaPanic";
         File dir = new File(directoryPath);
         try {
-            if(dir.mkdir() || Files.lines(file.toPath()).count() < 8){
-                if(file.createNewFile() || Files.lines(file.toPath()).count() < 8){
+            if(dir.mkdir() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 8){
+                if(file.createNewFile() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 8){
                     write("fullscreen", "false");
                     write("up", "W");
                     write("down", "S");

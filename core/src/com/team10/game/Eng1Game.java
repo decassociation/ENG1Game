@@ -19,6 +19,7 @@ public class Eng1Game extends Game {
     @Override
     public void create() {
         setScreen(new MainMenuScreen(this));
+        SoundManager.create();      // initialise the sound manager for use throughout the game
 
         // Get the dimensions of the desktop screen
         int screenWidth = Gdx.graphics.getDisplayMode().width;
@@ -28,10 +29,7 @@ public class Eng1Game extends Game {
         screen.render(screenHeight);
         setScreen(new MainMenuScreen(this));
 
-        KitchenMusic = Gdx.audio.newMusic(Gdx.files.internal("KitchenMusic.mp3"));
-        KitchenMusic.setVolume(0.005f);
-        KitchenMusic.setLooping(true);
-        KitchenMusic.play();
+        SoundManager.playKitchenMusic();
 
 
     }

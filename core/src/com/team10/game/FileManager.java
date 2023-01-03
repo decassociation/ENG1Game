@@ -30,17 +30,27 @@ public class FileManager {
         file = new File(filepath);
     }
 
+    /**
+     * Default constructor for FileManager, default to desktop_settings.txt
+     * 
+     * Create the file in appdata if it does not already exist, revert to defaults if there are fewer lines than expected
+     */
     public FileManager(){
         String filepath = System.getenv("APPDATA") + "/PiazzaPanic/desktop_settings.txt";
         file = new File(filepath);
         String directoryPath = System.getenv("APPDATA") + "/PiazzaPanic";
         File dir = new File(directoryPath);
         try {
-            if(dir.mkdir()){
-                if(file.createNewFile()){
-                    FileWriter fileWriter = new FileWriter(filepath);
-                    fileWriter.write("fullscreen=false\nup=W\ndown=S\nleft=A\nright=D\npause=P\nchangeChef=Tab");
-                    fileWriter.close();
+            if(dir.mkdir() || Files.lines(file.toPath()).count() < 8){
+                if(file.createNewFile() || Files.lines(file.toPath()).count() < 8){
+                    write("fullscreen", "false");
+                    write("up", "W");
+                    write("down", "S");
+                    write("left", "A");
+                    write("right", "D");
+                    write("pause", "P");
+                    write("changeChef", "Tab");
+                    write("volume", "50.0");
                 }
             }
         } catch (IOException e) {

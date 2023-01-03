@@ -9,15 +9,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Gdx;
 
 public class MenuButton {
-    private String text;
-    private int xPos, yPos, width, height;
-    private Texture active_texture;
-    private Texture base_texture;
-    private Texture clicked_texture;
-    private SpriteBatch batch;
-    private Camera camera;
-    private Boolean clicked;
-    private Boolean misclicked;
+    protected String text;
+    protected int xPos, yPos, width, height;
+    protected Texture active_texture;
+    protected Texture base_texture;
+    protected Texture clicked_texture;
+    protected SpriteBatch batch;
+    protected Camera camera;
+    protected Boolean clicked;
+    protected Boolean misclicked;
 
     /**
      * Constructor for MenuButton

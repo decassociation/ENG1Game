@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,7 +12,6 @@ public class ChefController {
     private int currentChef;
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
-    private Music stepSound;
 
     FileManager fileManager = new FileManager();
 
@@ -55,16 +53,8 @@ public class ChefController {
 
         if (Gdx.input.isKeyPressed(up) || Gdx.input.isKeyPressed(left) || Gdx.input.isKeyPressed(down) || Gdx.input.isKeyPressed(right)) {
             // play 'step.mp3' sound file
-            final Music stepSound = Gdx.audio.newMusic(Gdx.files.internal("step.mp3"));
-            stepSound.setVolume(0.001f);
-            stepSound.setOnCompletionListener(new Music.OnCompletionListener() {
-                @Override
-                public void onCompletion(Music music) {
-                    stepSound.dispose();
-                }
-            });
-            stepSound.setLooping(false);
-            stepSound.play();
+            
+            SoundManager.playStepSound();
         }
 
 

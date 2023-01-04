@@ -19,14 +19,14 @@ public class ChefController {
         chefCount = 2;
 
         chefs = new ArrayList<Chef>();
-        chefs.add(new Chef(500,500));
-        chefs.add(new Chef(873,400));
+        chefs.add(new Chef(5,5));
+        chefs.add(new Chef(10,10));
 
         currentChef = 0;
 
         chefTextures = new ArrayList<Texture>();
-        chefTextures.add(new Texture(Gdx.files.internal("chef12.png"))); //chef1 takes chef1(version 2) texture
-        chefTextures.add(new Texture(Gdx.files.internal("chef22.png"))); //chef2 takes chef2(version 2) texture
+        chefTextures.add(new Texture(Gdx.files.internal("chefA.png"))); //chef1 takes chef1(version 2) texture
+        chefTextures.add(new Texture(Gdx.files.internal("chefB.png"))); //chef2 takes chef2(version 2) texture
     }
 
     public void swapChef(){
@@ -65,7 +65,9 @@ public class ChefController {
 
 		This is an initial and somewhat brutal method, but for now it will stick
 
-		If later a better option is found, then we can ammend this.
+		If later a better option is found, then we can amend this.
+
+		For now the collisions code is commented while the tilemap collisions are being implemented
 
 		 */
         if(chefs.get(currentChef).getX() <= 0){  //left side of map
@@ -74,21 +76,21 @@ public class ChefController {
         if(chefs.get(currentChef).getY() <= 0){  //bottom of the map
             chefs.get(currentChef).setY(10);
         }
-        if(chefs.get(currentChef).getX() >= -100 && chefs.get(currentChef).getX() < 873 && chefs.get(currentChef).getY() > 650){  //bottom of counter
-            chefs.get(currentChef).setY(-10);
-        }
-        if(chefs.get(currentChef).getY() < 840 && chefs.get(currentChef).getY() > 560 && chefs.get(currentChef).getX() > 740){  //side of Burger area
-            chefs.get(currentChef).setX(-10);
-        }
-        if(chefs.get(currentChef).getX() >= 770 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() > 540){  //bottom of Burger area
-            chefs.get(currentChef).setY(-10);
-        }
-        if(chefs.get(currentChef).getY() < 830 && chefs.get(currentChef).getY() > 0 && chefs.get(currentChef).getX() > 1500){  //left side of Salad area
-            chefs.get(currentChef).setX(-10);
-        }
-        if(chefs.get(currentChef).getX() >= 0 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() < 230){  //top of lower counter
-            chefs.get(currentChef).setY(10);
-        }
+//        if(chefs.get(currentChef).getX() >= -100 && chefs.get(currentChef).getX() < 873 && chefs.get(currentChef).getY() > 650){  //bottom of counter
+//            chefs.get(currentChef).setY(-10);
+//        }
+//        if(chefs.get(currentChef).getY() < 840 && chefs.get(currentChef).getY() > 560 && chefs.get(currentChef).getX() > 740){  //side of Burger area
+//            chefs.get(currentChef).setX(-10);
+//        }
+//        if(chefs.get(currentChef).getX() >= 770 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() > 540){  //bottom of Burger area
+//            chefs.get(currentChef).setY(-10);
+//        }
+//        if(chefs.get(currentChef).getY() < 830 && chefs.get(currentChef).getY() > 0 && chefs.get(currentChef).getX() > 1500){  //left side of Salad area
+//            chefs.get(currentChef).setX(-10);
+//        }
+//        if(chefs.get(currentChef).getX() >= 0 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() < 230){  //top of lower counter
+//            chefs.get(currentChef).setY(10);
+//        }
 
         if (Gdx.input.isKeyPressed(right)) chefs.get(currentChef).setX(10);
         if (Gdx.input.isKeyPressed(left)) chefs.get(currentChef).setX(-10);

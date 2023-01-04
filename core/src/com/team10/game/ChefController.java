@@ -92,10 +92,10 @@ public class ChefController {
 //            chefs.get(currentChef).setY(10);
 //        }
 
-        if (Gdx.input.isKeyPressed(right)) chefs.get(currentChef).setX(10);
-        if (Gdx.input.isKeyPressed(left)) chefs.get(currentChef).setX(-10);
-        if (Gdx.input.isKeyPressed(down)) chefs.get(currentChef).setY(-10);
-        if (Gdx.input.isKeyPressed(up)) chefs.get(currentChef).setY(10);
+        if (Gdx.input.isKeyPressed(right)) chefs.get(currentChef).setX(0.1f);
+        if (Gdx.input.isKeyPressed(left)) chefs.get(currentChef).setX(-0.1f);
+        if (Gdx.input.isKeyPressed(down)) chefs.get(currentChef).setY(-0.1f);
+        if (Gdx.input.isKeyPressed(up)) chefs.get(currentChef).setY(0.1f);
 
 		/*
 		This whole section just checks which chef is activated and uses their section, and moves them by 250 units each loop.
@@ -111,7 +111,8 @@ public class ChefController {
 
     public void drawChefs(SpriteBatch batch){
         for (int i = 0; i < chefCount; i++) {
-            batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY());
+            batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY(), 1.0f, 4.0f);
+            // float parameters scale down the chef images
         }
     }
 }

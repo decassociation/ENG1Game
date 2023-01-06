@@ -11,9 +11,9 @@ name: Development
 
 on:
   push:
-    branches: Master
+    branches: master
   pull_request:
-    branches: Master
+    branches: master
 
 jobs:
   build:

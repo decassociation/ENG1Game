@@ -11,9 +11,9 @@ name: Development
 
 on:
   push:
-    branches: Test
+    branches: Master
   pull_request:
-    branches: main
+    branches: Master
 
 jobs:
   build:

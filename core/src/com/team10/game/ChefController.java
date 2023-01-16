@@ -1,17 +1,23 @@
 package com.team10.game;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 public class ChefController {
     private int chefCount;
     private int currentChef;
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
+    private boolean topRightCollision;
+    private TiledMap tileMap;
 
     FileManager fileManager = new FileManager();
 
@@ -92,7 +98,42 @@ public class ChefController {
 //            chefs.get(currentChef).setY(10);
 //        }
 
-        if (Gdx.input.isKeyPressed(right)) chefs.get(currentChef).setX(0.1f);
+
+        Chef chef=chefs.get(currentChef); // Just helpful so don't have to write this out every time
+        topRightCollision=false;
+        tileMap = new TmxMapLoader().load("pp_assessment_1_tilemap_V2.tmx");
+
+        // The below creates an ArrayList of all the layers that the player could collide with (identified by a
+        // tile with a "Collider" property - only the layers below have tiles with this property)
+        ArrayList<TiledMapTileLayer> collisionLayers = new ArrayList<TiledMapTileLayer>();
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Chairs"));
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Tables"));
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Walls"));
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Worktops"));
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Extras"));
+        collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("SideWallTops"));
+
+        /**
+         * Checks if the right movement key is pressed down and if it is, it loops through each layer in collisionLayers
+         * and if the player is colliding/touching a tile that they shouldn't be able to move through, the movement is
+         * stopped, otherwise the player moves as normal.
+         */
+        if (Gdx.input.isKeyPressed(right)){
+            for(int i=0; i<=collisionLayers.size()-1;i++){
+                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                        (int) (chef.getY() + chef.getHeight() / 16)) != null) { // A layer may not have a tile where the player is
+                    topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    // 16 is the height and the width of each tile
+                }
+            }
+            if(topRightCollision){
+                chef.setX(0); // Stops player movement
+                topRightCollision=false;
+            } else{
+                chefs.get(currentChef).setX(0.1f);
+            }
+        }
         if (Gdx.input.isKeyPressed(left)) chefs.get(currentChef).setX(-0.1f);
         if (Gdx.input.isKeyPressed(down)) chefs.get(currentChef).setY(-0.1f);
         if (Gdx.input.isKeyPressed(up)) chefs.get(currentChef).setY(0.1f);

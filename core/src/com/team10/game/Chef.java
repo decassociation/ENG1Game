@@ -23,6 +23,9 @@ public class Chef {
         chef.height = 36;
     }
 
+    public float getWidth(){return chef.width;}
+    public float getHeight(){return chef.height;}
+
     public float getX() {
         return xPos;
     }

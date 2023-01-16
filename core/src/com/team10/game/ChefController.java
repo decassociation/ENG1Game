@@ -111,7 +111,7 @@ public class ChefController {
 
     public void drawChefs(SpriteBatch batch){
         for (int i = 0; i < chefCount; i++) {
-            batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY(), 1.0f, 4.0f);
+            batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY(), 1.0f, 3.0f);
             // float parameters scale down the chef images
         }
     }

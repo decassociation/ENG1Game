@@ -146,13 +146,13 @@ public class ChefController {
             for(int i=0; i<=collisionLayers.size()-1;i++){
                 if(collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
                     // Checks bottom left corner
-                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                    bottomLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
                             (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
                 }
             }
-            if(topLeftCollision){
+            if(bottomLeftCollision){
                 chef.setX(0); // Stops player movement
-                topLeftCollision=false;
+                bottomLeftCollision=false;
             } else{
                 chefs.get(currentChef).setX(-0.1f);
             }

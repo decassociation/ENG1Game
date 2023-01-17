@@ -129,19 +129,38 @@ public class ChefController {
         if (Gdx.input.isKeyPressed(right)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
                 if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                        (int) (chef.getY() + chef.getHeight() / 16)) != null) { // A layer may not have a tile where the player is
+                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                    // A layer may not have a tile where the player is
                     // This checks the top right corner of a chef's sprite to see if there is a collision there
                     topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
                             (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
                 }
+
+                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                        (int) (chef.getY())) != null) {
+                    // Checks bottom right corner
+                    bottomRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                }
+
+                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                        (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
+                    // Checks middle right
+                    middleRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                }
+
             }
-            if(topRightCollision){
+            if(topRightCollision || bottomRightCollision || middleRightCollision){
                 chef.setX(0); // Stops player movement
                 topRightCollision=false;
+                bottomRightCollision = false;
+                middleRightCollision = false;
             } else{
                 chefs.get(currentChef).setX(0.1f);
             }
         }
+        /**Collision detection on pressing the left movement key**/
         if (Gdx.input.isKeyPressed(left)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
                 if(collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
@@ -149,10 +168,26 @@ public class ChefController {
                     bottomLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
                             (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
                 }
+
+                if(collisionLayers.get(i).getCell((int) (chef.getX()),
+                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                    // Checks top left corner
+                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                }
+
+                if(collisionLayers.get(i).getCell((int) (chef.getX()),
+                        (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
+                    // Checks middle left
+                    middleLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                }
             }
-            if(bottomLeftCollision){
+            if(bottomLeftCollision || topLeftCollision || middleLeftCollision){
                 chef.setX(0); // Stops player movement
                 bottomLeftCollision=false;
+                topLeftCollision = false;
+                middleLeftCollision = false;
             } else{
                 chefs.get(currentChef).setX(-0.1f);
             }

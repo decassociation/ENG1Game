@@ -16,7 +16,8 @@ public class ChefController {
     private int currentChef;
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
-    private boolean topRightCollision;
+    private boolean topRightCollision, topLeftCollision, bottomRightCollision, bottomLeftCollision,
+            middleRightCollision, middleLeftCollision;
     private TiledMap tileMap;
 
     FileManager fileManager = new FileManager();
@@ -100,7 +101,12 @@ public class ChefController {
 
 
         Chef chef=chefs.get(currentChef); // Just helpful so don't have to write this out every time
+        topLeftCollision=false;
         topRightCollision=false;
+        bottomLeftCollision=false;
+        bottomRightCollision=false;
+        middleLeftCollision=false;
+        middleRightCollision=false;
         tileMap = new TmxMapLoader().load("pp_assessment_1_tilemap_V2.tmx");
 
         // The below creates an ArrayList of all the layers that the player could collide with (identified by a
@@ -117,14 +123,16 @@ public class ChefController {
          * Checks if the right movement key is pressed down and if it is, it loops through each layer in collisionLayers
          * and if the player is colliding/touching a tile that they shouldn't be able to move through, the movement is
          * stopped, otherwise the player moves as normal.
+         *
+         * Note: 16 is the height and the width of each tile
          */
         if (Gdx.input.isKeyPressed(right)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
                 if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
                         (int) (chef.getY() + chef.getHeight() / 16)) != null) { // A layer may not have a tile where the player is
+                    // This checks the top right corner of a chef's sprite to see if there is a collision there
                     topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
                             (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
-                    // 16 is the height and the width of each tile
                 }
             }
             if(topRightCollision){
@@ -134,7 +142,21 @@ public class ChefController {
                 chefs.get(currentChef).setX(0.1f);
             }
         }
-        if (Gdx.input.isKeyPressed(left)) chefs.get(currentChef).setX(-0.1f);
+        if (Gdx.input.isKeyPressed(left)){
+            for(int i=0; i<=collisionLayers.size()-1;i++){
+                if(collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
+                    // Checks bottom left corner
+                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                }
+            }
+            if(topLeftCollision){
+                chef.setX(0); // Stops player movement
+                topLeftCollision=false;
+            } else{
+                chefs.get(currentChef).setX(-0.1f);
+            }
+        }
         if (Gdx.input.isKeyPressed(down)) chefs.get(currentChef).setY(-0.1f);
         if (Gdx.input.isKeyPressed(up)) chefs.get(currentChef).setY(0.1f);
 

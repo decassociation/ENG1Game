@@ -37,6 +37,7 @@ public class GameScreen extends Eng1Screen {
         camera.setToOrtho(false, 35, 30);
 
         chefController = new ChefController();
+        customerController = new CustomerController();
 
         mainmenu = false;
     }
@@ -56,6 +57,7 @@ public class GameScreen extends Eng1Screen {
             }
         }else if(!mainmenu){
             chefController.update();
+            
 
 
         } else {
@@ -87,7 +89,7 @@ public class GameScreen extends Eng1Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         chefController.drawChefs(batch);
-        customerController.drawCustomers(batch);
+        customerController.update(batch, camera);
         batch.end();
     }
 

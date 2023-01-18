@@ -19,6 +19,7 @@ public class CustomerController {
     ArrayList<Customer> customers;
     int customerCount;
     Texture texture = new Texture(Gdx.files.internal("Customer.png"));
+    BitmapFont font = new BitmapFont();
 
 
     public CustomerController(){
@@ -35,19 +36,20 @@ public class CustomerController {
 
     public void update(SpriteBatch batch, Camera camera){
         // draw timer
-        BitmapFont font = new BitmapFont();
-        batch.setProjectionMatrix(camera.combined);
         font.setColor(Color.BLACK);
-        font.getData().setScale(5);
-        font.draw(batch, Long.toString(getCurrentTime()/1000), 10, 1030);
+        font.getData().setScale(0.1f, 0.15f);
+        font.draw(batch, Long.toString(getCurrentTime()/1000), 1, 30);
 
         // create new customers
         createCustomers_scenario(5);
+
+        // draw customers
+        drawCustomers(batch);
     }
 
     public void drawCustomers(SpriteBatch batch){
         for (int i = 0; i < customers.size(); i++) {
-            batch.draw(texture, 50, i + 50, 100.0f, 100.0f);
+            batch.draw(texture, 30, i * 5, 3.0f, 3.0f);
         }
     }
 
@@ -58,5 +60,6 @@ public class CustomerController {
             timeOfLastCustomer = getCurrentTime();
             System.out.println(customers.toString());
         }
+        
     }
 }

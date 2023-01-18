@@ -67,16 +67,8 @@ public class ChefController {
 
 
 		/*
-		This section checks if the chef is in a "good" place, i.e. not in a wall.
-		If the chef is in a wall, denoted by them being in the given boundaries shown below,
-		they are moved to be not in that wall.
-
-		This is an initial and somewhat brutal method, but for now it will stick
-
-		If later a better option is found, then we can amend this.
-
-		For now the collisions code is commented while the tilemap collisions are being implemented
-
+		This section checks if the chef is touching the left side or the bottom of the map and moves them back
+		into the middle of the map if they are; can be taken out be staying in for now.
 		 */
         if(chefs.get(currentChef).getX() <= 0){  //left side of map
             chefs.get(currentChef).setX(10);
@@ -84,21 +76,6 @@ public class ChefController {
         if(chefs.get(currentChef).getY() <= 0){  //bottom of the map
             chefs.get(currentChef).setY(10);
         }
-//        if(chefs.get(currentChef).getX() >= -100 && chefs.get(currentChef).getX() < 873 && chefs.get(currentChef).getY() > 650){  //bottom of counter
-//            chefs.get(currentChef).setY(-10);
-//        }
-//        if(chefs.get(currentChef).getY() < 840 && chefs.get(currentChef).getY() > 560 && chefs.get(currentChef).getX() > 740){  //side of Burger area
-//            chefs.get(currentChef).setX(-10);
-//        }
-//        if(chefs.get(currentChef).getX() >= 770 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() > 540){  //bottom of Burger area
-//            chefs.get(currentChef).setY(-10);
-//        }
-//        if(chefs.get(currentChef).getY() < 830 && chefs.get(currentChef).getY() > 0 && chefs.get(currentChef).getX() > 1500){  //left side of Salad area
-//            chefs.get(currentChef).setX(-10);
-//        }
-//        if(chefs.get(currentChef).getX() >= 0 && chefs.get(currentChef).getX() < 1850 && chefs.get(currentChef).getY() < 230){  //top of lower counter
-//            chefs.get(currentChef).setY(10);
-//        }
 
         chef=chefs.get(currentChef); // Just helpful so don't have to write this out every time
 
@@ -120,7 +97,7 @@ public class ChefController {
         collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("Extras"));
         collisionLayers.add((TiledMapTileLayer) tileMap.getLayers().get("SideWallTops"));
 
-        /**
+        /*
          * Checks if the right movement key is pressed down and if it is, it loops through each layer in collisionLayers
          * and if the player is colliding/touching a tile that they shouldn't be able to move through, the movement is
          * stopped, otherwise the player moves as normal.
@@ -161,7 +138,7 @@ public class ChefController {
                 chefs.get(currentChef).setX(0.1f);
             }
         }
-        /**Collision detection on pressing the left movement key**/
+        // Collision detection on pressing the left movement key
         if (Gdx.input.isKeyPressed(left)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
                 if(collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
@@ -193,6 +170,8 @@ public class ChefController {
                 chefs.get(currentChef).setX(-0.1f);
             }
         }
+
+        // Collision detection on pressing the down movement key
         if (Gdx.input.isKeyPressed(down)){
             for(int i=0; i<=collisionLayers.size()-1;i++) {
                 if (collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
@@ -218,7 +197,7 @@ public class ChefController {
             }
         }
 
-        // Upwards movement collision detection
+        // Collision detection on pressing the up movement key
         if (Gdx.input.isKeyPressed(up)) {
             for (int i = 0; i <= collisionLayers.size() - 1; i++) {
 
@@ -245,11 +224,16 @@ public class ChefController {
             }
         }
 
-		/*
-		This whole section just checks which chef is activated and uses their section, and moves them by 250 units each loop.
-		If one were to add more Chef, then they could use an elseif structure to check between Chef,
-		but in this case, since there are only two option, an if/ else is sufficient
-		*/
+
+        ArrayList<TiledMapTileLayer> stationLayers = new ArrayList<TiledMapTileLayer>();
+        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations"));
+        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("frying stations"));
+        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations"));
+        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("baking_stations"));
+        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("serving_stations"));
+
+        // Below will check if a chef is at a cooking station or not
+
     }
 
     public void update(){

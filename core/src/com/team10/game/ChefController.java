@@ -193,8 +193,57 @@ public class ChefController {
                 chefs.get(currentChef).setX(-0.1f);
             }
         }
-        if (Gdx.input.isKeyPressed(down)) chefs.get(currentChef).setY(-0.1f);
-        if (Gdx.input.isKeyPressed(up)) chefs.get(currentChef).setY(0.1f);
+        if (Gdx.input.isKeyPressed(down)){
+            for(int i=0; i<=collisionLayers.size()-1;i++) {
+                if (collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
+                    // Checks bottom left corner
+                    bottomLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                }
+
+                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                        (int) (chef.getY())) != null) {
+                    // Checks bottom right corner
+                    bottomRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                }
+            }
+
+            if(bottomLeftCollision || bottomRightCollision){
+                chefs.get(currentChef).setY(0);
+                bottomRightCollision = false;
+                bottomLeftCollision = false;
+            } else {
+                chefs.get(currentChef).setY(-0.1f);
+            }
+        }
+
+        // Upwards movement collision detection
+        if (Gdx.input.isKeyPressed(up)) {
+            for (int i = 0; i <= collisionLayers.size() - 1; i++) {
+
+                if (collisionLayers.get(i).getCell((int) (chef.getX()),
+                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                    // Checks top left corner
+                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                }
+
+                if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                    // Check top right corner
+                    topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                }
+            }
+            if (topLeftCollision || topRightCollision) {
+                chefs.get(currentChef).setY(0);
+                topRightCollision = false;
+                topLeftCollision = false;
+            } else {
+                chefs.get(currentChef).setY(0.1f);
+            }
+        }
 
 		/*
 		This whole section just checks which chef is activated and uses their section, and moves them by 250 units each loop.

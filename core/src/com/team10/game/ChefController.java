@@ -18,7 +18,8 @@ public class ChefController {
     private ArrayList<Texture> chefTextures;
     private boolean topRightCollision, topLeftCollision, bottomRightCollision, bottomLeftCollision,
             middleRightCollision, middleLeftCollision;
-    private TiledMap tileMap;
+    private TiledMap tileMap = new TmxMapLoader().load("pp_assessment_1_tilemap_V2.tmx");
+    Chef chef;
 
     FileManager fileManager = new FileManager();
 
@@ -99,15 +100,15 @@ public class ChefController {
 //            chefs.get(currentChef).setY(10);
 //        }
 
+        chef=chefs.get(currentChef); // Just helpful so don't have to write this out every time
 
-        Chef chef=chefs.get(currentChef); // Just helpful so don't have to write this out every time
         topLeftCollision=false;
         topRightCollision=false;
         bottomLeftCollision=false;
         bottomRightCollision=false;
         middleLeftCollision=false;
         middleRightCollision=false;
-        tileMap = new TmxMapLoader().load("pp_assessment_1_tilemap_V2.tmx");
+        
 
         // The below creates an ArrayList of all the layers that the player could collide with (identified by a
         // tile with a "Collider" property - only the layers below have tiles with this property)

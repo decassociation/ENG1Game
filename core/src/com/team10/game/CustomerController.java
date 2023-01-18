@@ -1,10 +1,13 @@
 package com.team10.game;
 
+
 import java.time.Clock;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -15,6 +18,7 @@ public class CustomerController {
     long timeOfLastCustomer;
     ArrayList<Customer> customers;
     int customerCount;
+    Texture texture = new Texture(Gdx.files.internal("Customer.png"));
 
 
     public CustomerController(){
@@ -39,6 +43,12 @@ public class CustomerController {
 
         // create new customers
         createCustomers_scenario(5);
+    }
+
+    public void drawCustomers(SpriteBatch batch){
+        for (int i = 0; i < customers.size(); i++) {
+            batch.draw(texture, 50, i + 50, 100.0f, 100.0f);
+        }
     }
 
     private void createCustomers_scenario(int totalCustomers){

@@ -13,7 +13,7 @@ import com.team10.game.FileManager;
 
 public class PauseScreen extends Eng1Screen {
     // Load the background image
-    private final Texture backgroundImage = new Texture(Gdx.files.internal("PauseTitle.png"));
+    private final Texture backgroundImage = new Texture(Gdx.files.internal("BlurredMenu.png"));
     BitmapFont font = new BitmapFont();
     MenuButton goMain;
     FileManager fileManager = new FileManager();
@@ -21,7 +21,7 @@ public class PauseScreen extends Eng1Screen {
     public PauseScreen(Eng1Game game) {
         super(game);
 
-        goMain = new ChangeScreenButton(350, 200, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
+        goMain = new ChangeScreenButton(350, 200, 100, 50, "Main Menu", batch, camera, game, "mainMenu");
 
     }
 

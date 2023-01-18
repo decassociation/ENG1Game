@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Chef {
     private Rectangle chef;
-    private Integer xPos;
-    private Integer yPos;
+    private float xPos;
+    private float yPos;
     private Boolean isWorking;
 
 
@@ -19,24 +19,28 @@ public class Chef {
         chef = new Rectangle();
         chef.x = x;
         chef.y = y;
-        chef.width = 120;
-        chef.height = 60;
+        chef.width = 20;
+        chef.height = 36;
     }
 
-    public Integer getX() {
+    public float getWidth(){return chef.width;}
+    public float getHeight(){return chef.height;}
+
+    public float getX() {
         return xPos;
     }
-    public Integer getY() {
+
+    public float getY() {
         return yPos;
     }
-    public void setX(Integer xValue) {
+    public void setX(float xValue) {
         //chef will only move if the chef is not currently working at a station
         if (!isWorking) {
             chef.x += xValue * Gdx.graphics.getDeltaTime();
             xPos += xValue;
         }
     }
-    public void setY(Integer yValue) {
+    public void setY(float yValue) {
         if (!isWorking) {
             chef.y += yValue * Gdx.graphics.getDeltaTime();
             yPos += yValue;

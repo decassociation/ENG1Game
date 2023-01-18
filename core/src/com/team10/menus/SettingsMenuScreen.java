@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.team10.game.Eng1Game;
 import com.team10.game.Eng1Screen;
 import com.team10.game.FileManager;
+import com.badlogic.gdx.graphics.Texture;
 
 public class SettingsMenuScreen extends Eng1Screen{
 
@@ -19,6 +20,8 @@ public class SettingsMenuScreen extends Eng1Screen{
     MenuSlider volumeSlider;
 
     FileManager fileManager;
+
+    private final Texture Background = new Texture(Gdx.files.internal("BlurredMenu.png"));
 
     public SettingsMenuScreen(Eng1Game game) {
         super(game);
@@ -39,7 +42,9 @@ public class SettingsMenuScreen extends Eng1Screen{
     @Override
     public void render(float delta){
         ScreenUtils.clear(0, 1, 0.5f, 0);
-
+        batch.begin();
+        batch.draw(Background, 0, 0, 800, 480);
+        batch.end();
         batch.begin();
         fullscreenModeButton.draw();
         upChangeButton.draw();
@@ -73,5 +78,4 @@ public class SettingsMenuScreen extends Eng1Screen{
     public void show() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
     }
-    
 }

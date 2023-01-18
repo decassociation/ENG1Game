@@ -37,7 +37,6 @@ public class GameScreen extends Eng1Screen {
         camera.setToOrtho(false, 35, 30);
 
         chefController = new ChefController();
-        customerController = new CustomerController();
 
         mainmenu = false;
     }

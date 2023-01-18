@@ -29,7 +29,7 @@ public class Chef {
     public float getX() {
         return xPos;
     }
-
+    
     public float getY() {
         return yPos;
     }

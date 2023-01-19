@@ -105,26 +105,31 @@ public class ChefController {
          */
         if (Gdx.input.isKeyPressed(right)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
-                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
-                    // A layer may not have a tile where the player is
-                    // This checks the top right corner of a chef's sprite to see if there is a collision there
-                    topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
-                }
+                /* This if statement checks if the top of the player is touching a tile at the very back of the kitchen
+                    (that isn't a wall) and if they are then collision detection is ignored so the player can access
+                    the stations at the back.  Otherwise, the player wouldn't be able to reach the stations */
+                if((int) (chef.getY() + chef.getHeight() / 16) != 27) {
+                    if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                        // A layer may not have a tile where the player is
+                        // This checks the top right corner of a chef's sprite to see if there is a collision there
+                        topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                                (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    }
 
-                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                        (int) (chef.getY())) != null) {
-                    // Checks bottom right corner
-                    bottomRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
-                }
+                    if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY())) != null) {
+                        // Checks bottom right corner
+                        bottomRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                                (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                    }
 
-                if(collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                        (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
-                    // Checks middle right
-                    middleRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                    if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
+                        // Checks middle right
+                        middleRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                                (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                    }
                 }
 
             }
@@ -140,24 +145,26 @@ public class ChefController {
         // Collision detection on pressing the left movement key
         if (Gdx.input.isKeyPressed(left)){
             for(int i=0; i<=collisionLayers.size()-1;i++){
-                if(collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
-                    // Checks bottom left corner
-                    bottomLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
-                            (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
-                }
+                if((int) (chef.getY() + chef.getHeight() / 16) != 27) {
+                    if (collisionLayers.get(i).getCell((int) (chef.getX()), (int) (chef.getY())) != null) {
+                        // Checks bottom left corner
+                        bottomLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                                (int) (chef.getY())).getTile().getProperties().containsKey("Collider");
+                    }
 
-                if(collisionLayers.get(i).getCell((int) (chef.getX()),
-                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
-                    // Checks top left corner
-                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
-                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
-                }
+                    if (collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                        // Checks top left corner
+                        topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                                (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    }
 
-                if(collisionLayers.get(i).getCell((int) (chef.getX()),
-                        (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
-                    // Checks middle left
-                    middleLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
-                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                    if (collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + ((chef.getHeight() / 2) / 16))) != null) {
+                        // Checks middle left
+                        middleLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                                (int) (chef.getY() + ((chef.getHeight() / 2) / 16))).getTile().getProperties().containsKey("Collider");
+                    }
                 }
             }
             if(bottomLeftCollision || topLeftCollision || middleLeftCollision){
@@ -199,19 +206,20 @@ public class ChefController {
         // Collision detection on pressing the up movement key
         if (Gdx.input.isKeyPressed(up)) {
             for (int i = 0; i <= collisionLayers.size() - 1; i++) {
+                if((int) (chef.getY() + chef.getHeight() / 16) != 27){
+                    if (collisionLayers.get(i).getCell((int) (chef.getX()),
+                            (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                        // Checks top left corner
+                        topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
+                                (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    }
 
-                if (collisionLayers.get(i).getCell((int) (chef.getX()),
-                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
-                    // Checks top left corner
-                    topLeftCollision = collisionLayers.get(i).getCell((int) (chef.getX()),
-                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
-                }
-
-                if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                        (int) (chef.getY() + chef.getHeight() / 16)) != null) {
-                    // Check top right corner
-                    topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
-                            (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    if (collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                            (int) (chef.getY() + chef.getHeight() / 16)) != null) {
+                        // Check top right corner
+                        topRightCollision = collisionLayers.get(i).getCell((int) (chef.getX() + chef.getWidth() / 16),
+                                (int) (chef.getY() + chef.getHeight() / 16)).getTile().getProperties().containsKey("Collider");
+                    }
                 }
             }
             if (topLeftCollision || topRightCollision) {

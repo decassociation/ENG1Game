@@ -34,6 +34,6 @@ jobs:
           arguments: build
       - name: Upload library JAR
         uses: actions/upload-artifact@v3.1.1
-          with:
-            name: lib.jar
-            path: ENG1Game/lib/build/lib.jar
+        with:
+          name: lib.jar
+          path: ENG1Game/lib/build/lib.jar

@@ -225,15 +225,34 @@ public class ChefController {
         }
 
 
-        ArrayList<TiledMapTileLayer> stationLayers = new ArrayList<TiledMapTileLayer>();
-        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations"));
-        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("frying stations"));
-        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations"));
-        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("baking_stations"));
-        stationLayers.add((TiledMapTileLayer) tileMap.getLayers().get("serving_stations"));
-
         // Below will check if a chef is at a cooking station or not
+        float chefx = chefs.get(currentChef).getX();
+        float chefy = chefs.get(currentChef).getY();
 
+        if(((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations")).getCell((int) chefx, (int) chefy) != null){
+            // Do something for ingredient station
+            Gdx.app.log("Ingredient Station", "Current position");
+        }
+
+        if(((TiledMapTileLayer) tileMap.getLayers().get("frying_stations")).getCell((int) chefx, (int) chefy) != null){
+            // Do something for frying station
+            Gdx.app.log("Frying Station", "Current position");
+        }
+
+        if(((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations")).getCell((int) chefx, (int) chefy) != null){
+            // Do something for cutting station
+            Gdx.app.log("Cutting Station", "Current position");
+        }
+
+        if(((TiledMapTileLayer) tileMap.getLayers().get("baking_stations")).getCell((int) chefx, (int) chefy) != null){
+            // Do something for baking station
+            Gdx.app.log("Baking Station", "Current position");
+        }
+
+        if(((TiledMapTileLayer) tileMap.getLayers().get("serving_stations")).getCell((int) chefx, (int) chefy) != null){
+            // Do something for serving station
+            Gdx.app.log("Serving Station", "Current position");
+        }
     }
 
     public void update(){

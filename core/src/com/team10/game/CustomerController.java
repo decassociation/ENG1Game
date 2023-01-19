@@ -89,7 +89,7 @@ public class CustomerController {
             if(customers.get(i).yPos < 9 - (3*i)){
                 customers.get(i).yPos += 0.2f;
             }
-            if(i == 0 && customers.get(0).yPos >= 10 - (3*i)){
+            if(i == 0 && customers.get(0).yPos >= 9 - (3*i)){
                 font2.draw(batch, customers.get(i).recipe, 0, customers.get(i).yPos + 1.75f);
             }
         }

@@ -1,6 +1,5 @@
 package com.team10.game;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
@@ -35,6 +34,9 @@ public class ChefController {
         chefTextures.add(new Texture(Gdx.files.internal("chefB.png"))); //chef2 takes chef2(version 2) texture
     }
 
+    /**
+     * Controls the functionality of swapping between chefs
+     */
     public void swapChef(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("changeChef")))) {
             if (currentChef < chefCount - 1) currentChef += 1;
@@ -50,6 +52,9 @@ public class ChefController {
 
     }
 
+    /**
+     * Controls chef movement and collisions (with stations and anything the player shouldn't be able to move through)
+     */
     public void chefMovement() {
         //activeChef = Chef.getActiveChef();
         Integer up = Input.Keys.valueOf(fileManager.read("up")); //This way we can have mappable keys for the controls.
@@ -65,8 +70,8 @@ public class ChefController {
 
 
 		/*
-		This section checks if the chef is touching the left side or the bottom of the map and moves them back
-		into the middle of the map if they are; can be taken out be staying in for now.
+		Checks if the chef is touching the left side or the bottom of the map and moves them back
+		near the middle of the map if they are
 		 */
         if(chefs.get(currentChef).getX() <= 0){  //left side of map
             chefs.get(currentChef).setX(10);
@@ -219,10 +224,11 @@ public class ChefController {
         }
 
 
-        // Below will check if a chef is at a cooking station or not
+        // Chef's current co-ordinates on the tilemap
         float chefx = chefs.get(currentChef).getX();
         float chefy = chefs.get(currentChef).getY();
 
+        // The set of if statements control detection of whether the player is at a cooking station
         if(((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for ingredient station
             Gdx.app.log("Ingredient Station", "Current position");
@@ -254,6 +260,10 @@ public class ChefController {
         chefMovement();
     }
 
+    /**
+     * Draws all of the chef sprites
+     * @param batch - the set of sprites (rectangle objects) and their co-ordinates to be rendered/drawn on the screen
+     */
     public void drawChefs(SpriteBatch batch){
         for (int i = 0; i < chefCount; i++) {
             batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY(), 1.0f, 3.0f);

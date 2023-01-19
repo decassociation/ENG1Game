@@ -30,6 +30,9 @@ public class CustomerController {
     Random generator = new Random();
 
 
+    /**
+     * Constructor for CustomerController
+     */
     public CustomerController(){
         timer = Clock.systemUTC();
         startTime = timer.millis();
@@ -44,26 +47,46 @@ public class CustomerController {
 
     }
 
+    /**
+     * Function for getting the current game time in milliseconds
+     */
     public long getCurrentTime(){
         return timer.millis() - startTime;
     }
 
-    public void update(SpriteBatch batch, Camera camera){
+    /**
+     * Function for updating customers
+     * 
+     * Draw the timer, draw the customers, manage the creation and deletion of customers. Should be called in render()
+     * 
+     * @param batch the SpriteBatch to draw all the customers and text to
+     */
+    public void update(SpriteBatch batch){
         // draw timer
-        
         font.draw(batch, Long.toString(getCurrentTime()/1000), 1, 30);
 
         // create new customers
-        createCustomers_scenario(5);
+        createCustomers();
 
         // draw customers
         drawCustomers(batch);
+
+        /* need some code along the lines of:
+         * if (customers.get(0).isServed()) customers.remove(0);
+         */
     }
 
+    /**
+     * Draw the customers and text for their requests
+     * 
+     * @param batch the SpriteBatch to draw all images and text to
+     */
     public void drawCustomers(SpriteBatch batch){
         for (int i = 0; i < customers.size(); i++) {
-            batch.draw(texture, 5, customers.get(i).yPos, 2.0f, 2.0f);
-            if(customers.get(i).yPos < 10 - (3*i)){
+            batch.draw(texture, 4, customers.get(i).yPos, 2.0f, 2.0f);
+
+            // move the customers up to their position in the queue from the bottom of the screen
+            if(customers.get(i).yPos < 9 - (3*i)){
                 customers.get(i).yPos += 0.2f;
             }
             if(i == 0 && customers.get(0).yPos >= 10 - (3*i)){
@@ -72,17 +95,14 @@ public class CustomerController {
         }
     }
 
-    private void createCustomers_scenario(int totalCustomers){
-        if (customers.size() == 0 || getCurrentTime()-timeOfLastCustomer >= 10000 && customerCount < totalCustomers){
-            customers.add(new Customer(recipes[generator.nextInt(recipes.length)]));
-            customerCount += 1;
-            timeOfLastCustomer = getCurrentTime();
-            System.out.println(customers.toString());
-        }
+    /**
+     * Procedure for managing the behaviour of creating customers, such as when to add a new one
+     * 
+     * Should be overwritten in a new subclass to allow for different styles of game
+     */
+    protected void createCustomers(){
 
-        if (customers.size() >= 5 && getCurrentTime()-timeOfLastCustomer >= 10000){
-            customers.remove(0);
-        }
-        
     }
+
+    
 }

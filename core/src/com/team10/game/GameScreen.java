@@ -10,7 +10,7 @@ public class GameScreen extends Eng1Screen {
     private Boolean paused = false;   //Useful for when we want to implement a pause function
 
     private ChefController chefController;
-    private CustomerController customerController;
+    private CustomerControllerScenario customerController;
     FileManager fileManager = new FileManager();
 
     private OrthogonalTiledMapRenderer renderer;
@@ -35,7 +35,7 @@ public class GameScreen extends Eng1Screen {
         camera.setToOrtho(false, 35, 30);
 
         chefController = new ChefController();
-        customerController = new CustomerController();
+        customerController = new CustomerControllerScenario(5);
 
         mainmenu = false;
     }
@@ -87,7 +87,7 @@ public class GameScreen extends Eng1Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         chefController.drawChefs(batch);
-        customerController.update(batch, camera);
+        customerController.update(batch);
         batch.end();
     }
 

@@ -2,8 +2,6 @@ package com.team10.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -30,7 +28,7 @@ public class GameScreen extends Eng1Screen {
     public GameScreen(Eng1Game game) {
         super(game);
 
-        tileMap = new TmxMapLoader().load("pp_assessment_1_tilemap_V2.tmx");
+        tileMap = new TmxMapLoader().load("tilemap_V3.tmx");
         unitScale = 1 / 16f; // 1 tile is 16x16 pixels hence 1/16f which means 16 pixels = 1 world unit
         renderer = new OrthogonalTiledMapRenderer(tileMap, unitScale);
 

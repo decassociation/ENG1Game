@@ -1,6 +1,7 @@
 package com.team10.game;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 public class ChefController {
+    private int foodID = 0;
     private int chefCount;
     private int currentChef;
     private ArrayList<Chef> chefs;
@@ -266,6 +268,7 @@ public class ChefController {
     public void update(){
         swapChef();
         chefMovement();
+        tryGetFood();
     }
 
     /**
@@ -278,4 +281,46 @@ public class ChefController {
             // float parameters scale down the chef images
         }
     }
+
+    /**
+     * This section will detect actions attempted by the player, such as grabbing an ingredient.
+     * It will check if the button has been pressed, i.e. b for a burger, and if they are in the
+     * appropriate zone (indicated by the chef-object's "isIn[location]"), then they will be able
+     * to pick things up.
+     */
+
+
+
+
+    public void tryGetFood(){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea() == true) {
+            Burger b = new Burger(foodID);
+            foodID += 1;
+            chef.addFood(b);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("S")) & chef.getIsInIngredientsArea() == true) {
+            Salad b = new Salad(foodID);
+            foodID += 1;
+            chef.addFood(b);
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf("L"))){ //outputs the inventory stack
+//            Stack<Object> m = new Stack<Object>();
+//
+//            int b = m.size();
+//            for(int x = 0; x < b; x++);{
+//                System.out.println(m.pop());
+//            }
+            System.out.println(chef.getInventory());
+
+        }
+
+
+
+
+
+    }
+
+
 }

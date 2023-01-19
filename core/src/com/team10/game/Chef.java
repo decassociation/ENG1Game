@@ -3,6 +3,8 @@ package com.team10.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.Stack;
+
 public class Chef {
     private Rectangle chef;
     private float xPos;
@@ -12,7 +14,7 @@ public class Chef {
     private Boolean isInSaladArea; //Where they can chop salad
     private Boolean isInIngredientsArea; //Where they can get ingredients
     private Boolean isInCounterArea; //Where they can interact with customers
-
+    private Stack inventory; //Where the items the chef is carrying can be stored
 
 
 
@@ -20,6 +22,7 @@ public class Chef {
         xPos = x;
         yPos = y;
         isWorking = false;
+        inventory = new Stack();
 
         //Chef instantiation
         chef = new Rectangle();
@@ -27,6 +30,7 @@ public class Chef {
         chef.y = y;
         chef.width = 20;
         chef.height = 36;
+
 
         //This should be changed later ===============================================================================================================
         isInFryingArea = true;
@@ -54,6 +58,23 @@ public class Chef {
 
     public void setIsInCounterArea(Boolean thing){isInCounterArea = thing;}
     public Boolean getIsInCounterArea (){return isInCounterArea ;}
+
+    //Inventory thing. Kinda temporary cos I think lucy is working on a better one,
+    //but I needed one to test the burger and zone stuff
+    public Stack getInventory(){
+        return(inventory);
+    }
+//    public void addBurger(Burger b){
+//        inventory.push(b);
+//
+//    }
+    public void addFood(Object obj){
+        if(obj instanceof Salad){
+            inventory.push(obj);
+        } else if (obj instanceof Burger) {
+            inventory.push(obj);
+        }
+    }
 
 
 

@@ -1,26 +1,47 @@
 package com.team10.game;
+
+import java.lang.annotation.Inherited;
+
 public class Burger extends Food {
 
-    private Boolean isFlipped; //because Burger must be flipped, need to know if that's been done
-    private Boolean needsSalad;
-    private Boolean hasSalad;
+    //    private Boolean isFlipped; //This is an extra step that could be added later to add spice to the game.
+//    private Boolean needsSalad;
+//    private Boolean hasSalad;
+    private Boolean isCooked;
 
     public Burger(Integer id) {
         super(id);
+        isCooked = false;
     }
 
 
-    public Boolean getIsFlipped(){
-        return isFlipped;
+
+
+
+
+
+    public Boolean getIsCooked(){
+        return isCooked;
     }
 
-    public Boolean getNeedsSalad(){
-        return needsSalad;
+    public void setIsCooked(){
+        isCooked = true;
     }
 
-    public Boolean getHasSalad(){
-        return hasSalad;
-    }
+
+//    public Boolean getIsFlipped(){
+//        return isFlipped;
+//    }
+//
+//    public Boolean getNeedsSalad(){
+//        return needsSalad;
+//    }
+//
+//    public Boolean getHasSalad(){
+//        return hasSalad;
+//    }
+
+
 
 
 }

@@ -23,6 +23,7 @@ public class CustomerController {
     Texture texture = new Texture(Gdx.files.internal("Customer.png"));
     BitmapFont font = new BitmapFont();
     BitmapFont font2 = new BitmapFont();
+    int queuePos;
 
     // array of names of the different possible recipes
     String recipes[] = {"burger", "salad"};
@@ -84,12 +85,13 @@ public class CustomerController {
     public void drawCustomers(SpriteBatch batch){
         for (int i = 0; i < customers.size(); i++) {
             batch.draw(texture, 4, customers.get(i).yPos, 2.0f, 2.0f);
+            queuePos = 9 - (3*i);
 
             // move the customers up to their position in the queue from the bottom of the screen
-            if(customers.get(i).yPos < 9 - (3*i)){
+            if(customers.get(i).yPos < queuePos){
                 customers.get(i).yPos += 0.2f;
             }
-            if(i == 0 && customers.get(0).yPos >= 9 - (3*i)){
+            if(i == 0 && customers.get(0).yPos >= queuePos){
                 font2.draw(batch, customers.get(i).recipe, 0, customers.get(i).yPos + 1.75f);
             }
         }

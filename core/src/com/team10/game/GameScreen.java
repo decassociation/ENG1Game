@@ -86,8 +86,8 @@ public class GameScreen extends Eng1Screen {
         renderer.render();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        chefController.drawChefs(batch);
         customerController.update(batch);
+        chefController.drawChefs(batch);
         batch.end();
     }
 

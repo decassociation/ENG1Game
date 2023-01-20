@@ -2,25 +2,16 @@ package com.team10.menus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.team10.game.Eng1Game;
 import com.team10.game.Eng1Screen;
 import com.team10.game.GameScreen;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 
 public class MainMenuScreen extends Eng1Screen {
     MenuButton startGame;
     MenuButton settingsMenuButton;
     MenuButton creditsMenuButton;
 
-    BitmapFont font;
 
     private final Texture backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
 
@@ -28,7 +19,7 @@ public class MainMenuScreen extends Eng1Screen {
         super(game);
         startGame = new ChangeScreenButton(350, 200, 100, 50, "Start Game", batch, camera, game, "game");
         settingsMenuButton = new ChangeScreenButton(350, 125, 100, 50, "Settings", batch, camera, game, "settings");
-        creditsMenuButton = new ChangeScreenButton(500, 50, 100, 50, "Credits", batch, camera, game, "credits");
+        creditsMenuButton = new CreditScreenButton(350, 50, 100, 50, "Credits", batch, camera);
     }
 
     private void setScreen(GameScreen gameScreen) {
@@ -44,9 +35,11 @@ public class MainMenuScreen extends Eng1Screen {
         batch.draw(backgroundImage, 0, 0, 800, 480);
         startGame.draw();
         settingsMenuButton.draw();
+        creditsMenuButton.draw();
         batch.end();
         startGame.onClick();
         settingsMenuButton.onClick();
+        creditsMenuButton.onClick();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 
@@ -59,7 +52,7 @@ public class MainMenuScreen extends Eng1Screen {
         // Dispose of the background image to prevent memory leaks
         backgroundImage.dispose();
 
-        // Dispose of the SpriteBatch object
+        // Dispose of the spriteBatch object
         batch.dispose();
     }
 }

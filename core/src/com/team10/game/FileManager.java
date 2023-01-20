@@ -35,9 +35,17 @@ public class FileManager {
      * Create the file in appdata if it does not already exist, revert to defaults if there are fewer lines than expected
      */
     public FileManager(){
-        String filepath = System.getenv("APPDATA") + "/PiazzaPanic/desktop_settings.txt";
+        System.out.println(System.getProperty("os.name"));
+        String directoryPath;
+        if(System.getProperty("os.name").equals("Linux")){
+            directoryPath = "/etc/PiazzaPanic";
+        }
+        else{
+            directoryPath = System.getenv("APPDATA") + "/PiazzaPanic";
+        }
+        String filepath = directoryPath + "/desktop_settings.txt";
         file = new File(filepath);
-        String directoryPath = System.getenv("APPDATA") + "/PiazzaPanic";
+        
         File dir = new File(directoryPath);
         try {
             if(dir.mkdir() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 8){

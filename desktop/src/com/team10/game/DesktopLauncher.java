@@ -6,6 +6,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 public class DesktopLauncher {
 		public static void main (String[] arg){
+			System.out.println(System.getProperty("os.name"));
 			FileManager fileManager = new FileManager();		// create instance of fileManager class to manage the desktop settings file
 
 			Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();

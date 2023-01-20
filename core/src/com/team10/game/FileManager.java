@@ -35,7 +35,6 @@ public class FileManager {
      * Create the file in appdata if it does not already exist, revert to defaults if there are fewer lines than expected
      */
     public FileManager(){
-        System.out.println(System.getProperty("os.name"));
         String directoryPath;
         if(System.getProperty("os.name").equals("Linux")){
             directoryPath = "/etc/PiazzaPanic";

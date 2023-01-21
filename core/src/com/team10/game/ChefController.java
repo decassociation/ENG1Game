@@ -241,27 +241,22 @@ public class ChefController {
         // The set of if statements control detection of whether the player is at a cooking station
         if(((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for ingredient station
-            Gdx.app.log("Ingredient Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("frying_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for frying station
-            Gdx.app.log("Frying Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for cutting station
-            Gdx.app.log("Cutting Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("baking_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for baking station
-            Gdx.app.log("Baking Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("serving_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for serving station
-            Gdx.app.log("Serving Station", "Current position");
         }
     }
 
@@ -293,26 +288,23 @@ public class ChefController {
 
 
     public void tryGetFood(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea() == true) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea()) {
             Burger b = new Burger(foodID);
             foodID += 1;
             chef.addFood(b);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("S")) & chef.getIsInIngredientsArea() == true) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getIsInIngredientsArea()) {
             Salad b = new Salad(foodID);
             foodID += 1;
             chef.addFood(b);
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf("L"))){ //outputs the inventory stack
-//            Stack<Object> m = new Stack<Object>();
 //
-//            int b = m.size();
-//            for(int x = 0; x < b; x++);{
-//                System.out.println(m.pop());
-//            }
-            System.out.println(chef.getInventory());
+            for(int x = 0; x < chef.getInventory().size(); x++){
+                System.out.println(chef.getInventory().get(x));
+            }
 
         }
 

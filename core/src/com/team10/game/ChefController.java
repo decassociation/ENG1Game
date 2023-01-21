@@ -288,26 +288,23 @@ public class ChefController {
 
 
     public void tryGetFood(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea() == true) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea()) {
             Burger b = new Burger(foodID);
             foodID += 1;
             chef.addFood(b);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("S")) & chef.getIsInIngredientsArea() == true) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getIsInIngredientsArea()) {
             Salad b = new Salad(foodID);
             foodID += 1;
             chef.addFood(b);
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf("L"))){ //outputs the inventory stack
-//            Stack<Object> m = new Stack<Object>();
 //
-//            int b = m.size();
-//            for(int x = 0; x < b; x++);{
-//                System.out.println(m.pop());
-//            }
-            System.out.println(chef.getInventory());
+            for(int x = 0; x < chef.getInventory().size(); x++){
+                System.out.println(chef.getInventory().get(x));
+            }
 
         }
 

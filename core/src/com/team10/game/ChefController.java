@@ -241,23 +241,20 @@ public class ChefController {
         // The set of if statements control detection of whether the player is at a cooking station
         if(((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for ingredient station
-        }
-
-        if(((TiledMapTileLayer) tileMap.getLayers().get("frying_stations")).getCell((int) chefx, (int) chefy) != null){
+            chef.setArea("ingredients_station");
+        } else if(((TiledMapTileLayer) tileMap.getLayers().get("frying_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for frying station
-        }
-
-        if(((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations")).getCell((int) chefx, (int) chefy) != null){
+            chef.setArea("frying_station");
+        } else if(((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for cutting station
-        }
-
-        if(((TiledMapTileLayer) tileMap.getLayers().get("baking_stations")).getCell((int) chefx, (int) chefy) != null){
+            chef.setArea("cutting_station");
+        } else if(((TiledMapTileLayer) tileMap.getLayers().get("baking_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for baking station
-        }
-
-        if(((TiledMapTileLayer) tileMap.getLayers().get("serving_stations")).getCell((int) chefx, (int) chefy) != null){
+            chef.setArea("baking_station");
+        } else if(((TiledMapTileLayer) tileMap.getLayers().get("serving_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for serving station
-        }
+            chef.setArea("serving_station");
+        } else {chef.setArea("not");}
     }
 
     public void update(){
@@ -288,13 +285,13 @@ public class ChefController {
 
 
     public void tryGetFood(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getIsInIngredientsArea()) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getArea() == "ingredients_station") {
             Burger b = new Burger(foodID);
             foodID += 1;
             chef.addFood(b);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getIsInIngredientsArea()) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getArea() == "ingredients_station") {
             Salad b = new Salad(foodID);
             foodID += 1;
             chef.addFood(b);

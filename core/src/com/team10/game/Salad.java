@@ -6,7 +6,7 @@ package com.team10.game;
  */
 
 
-public class Salad {
+public class Salad{
 
     private Integer saladID;  //identifier for Salad for later
     private Integer timeLeft;  //Will be done in seconds or milliseconds - either way integer is good enough

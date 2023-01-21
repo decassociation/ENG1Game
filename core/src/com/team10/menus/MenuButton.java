@@ -18,6 +18,7 @@ public class MenuButton {
     protected Camera camera;
     protected Boolean clicked;
     protected Boolean misclicked;
+    protected BitmapFont font;
 
     /**
      * Constructor for MenuButton
@@ -46,6 +47,8 @@ public class MenuButton {
         base_texture = new Texture(Gdx.files.internal("MenuButton.png"));
         clicked_texture = new Texture(Gdx.files.internal("MenuButtonClick.png"));
         active_texture = base_texture;
+
+        font = new BitmapFont();
     }
 
     public MenuButton(int xPos, int yPos, int width, int height, String text) {
@@ -111,7 +114,6 @@ public class MenuButton {
      * will call some methods from the batch so needs to know which to use
      */
     public void draw(){
-        BitmapFont font = new BitmapFont();
         batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
         batch.draw(active_texture, xPos, yPos, width, height);
         font.setColor(Color.BLACK);

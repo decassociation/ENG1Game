@@ -1,10 +1,13 @@
 package com.team10.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.team10.menus.MenuButton;
 
 public class GameScreen extends Eng1Screen {
     private Boolean paused = false;   //Useful for when we want to implement a pause function
@@ -21,6 +24,8 @@ public class GameScreen extends Eng1Screen {
 
     private Boolean mainmenu;
 
+    ArrayList<AddIngredientButton> addIngredientButtons = new ArrayList<>();
+
     /**
      * Sets the tilemap as the main screen for the game
      * @param game - game object for which the tilemap is set for
@@ -36,6 +41,10 @@ public class GameScreen extends Eng1Screen {
 
         chefController = new ChefController();
         customerController = new CustomerControllerScenario(5);
+
+        addIngredientButtons.add(new AddIngredientButton(0, "burger", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(5, "bun", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(10, "tomato", batch, camera, chefController));
 
         mainmenu = false;
     }
@@ -88,6 +97,10 @@ public class GameScreen extends Eng1Screen {
         batch.begin();
         customerController.update(batch);
         chefController.drawChefs(batch);
+        for (AddIngredientButton addIngredientButton : addIngredientButtons) {
+            addIngredientButton.update();
+        }
+        
         batch.end();
     }
 

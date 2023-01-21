@@ -30,11 +30,7 @@ public class Chef {
         chef.height = 36;
 
 
-        //This should be changed later ===============================================================================================================
-        isInFryingArea = true;
-        isInSaladArea = true;
-        isInCounterArea = true;
-        isInIngredientsArea = true;
+
 
     }
 

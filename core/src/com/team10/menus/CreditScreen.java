@@ -6,12 +6,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Screen;
 import com.team10.game.Eng1Game;
 
+
 public class CreditScreen implements Screen {
     public SpriteBatch batch;
     public Texture creditsImg;
+    private ChangeScreenButton mainMenuButton;
     public CreditScreen(Eng1Game game) {
         this.batch = game.batch;
         creditsImg = new Texture(Gdx.files.internal("Credits.png"));
+        mainMenuButton = new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
     }
 
 
@@ -26,6 +29,7 @@ public class CreditScreen implements Screen {
         // called every frame, use this to update and draw the screen
         batch.begin();
         batch.draw(creditsImg, 0, 0,650, 480);
+        mainMenuButton.draw();
         batch.end();
     }
 

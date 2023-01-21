@@ -3,7 +3,6 @@ package com.team10.menus;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
-import com.team10.game.GameScreen;
 
 public class ChangeScreenButton extends MenuButton{
     private final Eng1Game game;

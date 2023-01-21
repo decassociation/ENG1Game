@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.team10.menus.MenuButton;
 
 public class GameScreen extends Eng1Screen {
     private Boolean paused = false;   //Useful for when we want to implement a pause function
@@ -21,6 +22,8 @@ public class GameScreen extends Eng1Screen {
 
     private Boolean mainmenu;
 
+    ScreenButton ingredientButton;
+
     /**
      * Sets the tilemap as the main screen for the game
      * @param game - game object for which the tilemap is set for
@@ -36,6 +39,8 @@ public class GameScreen extends Eng1Screen {
 
         chefController = new ChefController();
         customerController = new CustomerControllerScenario(5);
+
+        ingredientButton = new ScreenButton(30, 10, 5, 5, "burger", batch, camera);
 
         mainmenu = false;
     }
@@ -82,12 +87,17 @@ public class GameScreen extends Eng1Screen {
         gameLogic(); //Extracts what is being done incase I need to do other none-game logic related things in the render function. This may be changed in future if it turns out nothing else needs doing.
         ScreenUtils.clear(1, 0, 0, 1);
 
+        if(chefController.atIngredientStation) ingredientButton.visible = true;
+        else ingredientButton.visible = false;
+        ingredientButton.onClick();
+
         renderer.setView(camera);
         renderer.render();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         customerController.update(batch);
         chefController.drawChefs(batch);
+        ingredientButton.draw();
         batch.end();
     }
 

@@ -8,7 +8,7 @@ public class Tomato extends Vegetable{
 
     public Tomato(Float x, Float y, Integer id){
         uncutImg = new Texture(Gdx.files.internal("tomato_uncut.png"));
-        cutImg = new Texture(Gdx.files.internal("tomato_uncut.png"));
+        cutImg = new Texture(Gdx.files.internal("tomato_uncut.png")); //This sprite will need updating
         activeImg = uncutImg;
         xPos = x;
         yPos = y;
@@ -18,7 +18,6 @@ public class Tomato extends Vegetable{
         ingredient = new Rectangle();
         ingredient.x = x;
         ingredient.y = y;
-        //Until sprites are created, this will be set to 50x50
         ingredient.width = 16;
         ingredient.height = 16;
     }

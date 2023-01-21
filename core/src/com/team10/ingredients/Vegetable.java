@@ -7,8 +7,9 @@ public class Vegetable extends Ingredient{
     protected Texture cutImg;
     private Boolean isCut = false;
 
-    public void cut() {
+    public void cut() { //Method for cutting any vegetable
         isCut = true;
         activeImg = cutImg;
     }
+    //Other veg-related methods go here
 }

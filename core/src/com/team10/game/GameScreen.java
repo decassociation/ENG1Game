@@ -49,7 +49,7 @@ public class GameScreen extends Eng1Screen {
     private void gameLogic(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("pause")))) {
             try {
-                game.changeScreen("pause");
+                game.changeScreen("pause", camera);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -67,7 +67,7 @@ public class GameScreen extends Eng1Screen {
 
     public void mainmenudraw(){
         try {
-            game.changeScreen("mainMenu");
+            game.changeScreen("mainMenu", camera);
         } catch (Exception e) {
             e.printStackTrace();
         }

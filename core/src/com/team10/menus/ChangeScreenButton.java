@@ -20,7 +20,7 @@ public class ChangeScreenButton extends MenuButton{
     @Override
     public void clickFunction(){
         try{
-            game.changeScreen(screen);
+            game.changeScreen(screen, camera);
         } catch (Exception e) {
             e.printStackTrace();
         }

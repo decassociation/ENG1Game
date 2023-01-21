@@ -2,8 +2,6 @@ package com.team10.menus;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.Screen;
 import com.team10.game.Eng1Game;
 
 public class CreditScreenButton extends MenuButton {
@@ -17,6 +15,6 @@ public class CreditScreenButton extends MenuButton {
 
     @Override
     public void clickFunction() {
-        game.setScreen(new CreditScreen(game));
+        game.setScreen(new CreditScreen(game, camera));
     }
 }

@@ -2,11 +2,8 @@ package com.team10.menus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
 import com.team10.game.Eng1Screen;
 import com.team10.game.FileManager;
@@ -44,7 +41,7 @@ public class PauseScreen extends Eng1Screen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("pause")))) {
             try {
-                game.changeScreen("game");
+                game.changeScreen("game", camera);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

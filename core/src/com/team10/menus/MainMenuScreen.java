@@ -24,7 +24,7 @@ public class MainMenuScreen extends Eng1Screen {
 
     private void setScreen(GameScreen gameScreen) {
         try{
-            game.changeScreen("game");
+            game.changeScreen("game", camera);
         } catch (Exception e) {
             e.printStackTrace();
         }

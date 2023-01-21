@@ -1,5 +1,6 @@
 package com.team10.menus;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,7 +12,7 @@ public class CreditScreen implements Screen {
     public SpriteBatch batch;
     public Texture creditsImg;
     private ChangeScreenButton mainMenuButton;
-    public CreditScreen(Eng1Game game) {
+    public CreditScreen(Eng1Game game, Camera camera) {
         this.batch = game.batch;
         creditsImg = new Texture(Gdx.files.internal("Credits.png"));
         mainMenuButton = new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
@@ -28,8 +29,9 @@ public class CreditScreen implements Screen {
     public void render(float delta) {
         // called every frame, use this to update and draw the screen
         batch.begin();
-        batch.draw(creditsImg, 0, 0,650, 480);
+        batch.draw(creditsImg, 0, 0,800, 480);
         mainMenuButton.draw();
+        mainMenuButton.onClick();
         batch.end();
     }
 

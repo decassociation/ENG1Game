@@ -3,6 +3,7 @@ package com.team10.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.menus.CreditScreen;
 import com.team10.menus.MainMenuScreen;
@@ -40,7 +41,7 @@ public class Eng1Game extends Game {
 
     }
 
-    public void changeScreen(String screenName) throws Exception {
+    public void changeScreen(String screenName, Camera camera) throws Exception {
         switch (screenName) {
             case "game" -> {
                 if (gameScreen == null) {
@@ -68,7 +69,7 @@ public class Eng1Game extends Game {
             }
             case "credits" -> {
                 if (creditScreen == null) {
-                    creditScreen = new CreditScreen(this);
+                    creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
             }

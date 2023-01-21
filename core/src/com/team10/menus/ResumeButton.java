@@ -1,7 +1,5 @@
 package com.team10.menus;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.game.Eng1Game;
@@ -41,7 +39,7 @@ public class ResumeButton extends MenuButton {
     @Override
     public void clickFunction() {
         try {
-            game.changeScreen("game");
+            game.changeScreen("game", camera);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -43,8 +43,13 @@ public class GameScreen extends Eng1Screen {
         customerController = new CustomerControllerScenario(5);
 
         addIngredientButtons.add(new AddIngredientButton(0, "burger", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(5, "bun", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(10, "tomato", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(3, "bun", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(6, "cheese", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(9, "sauce", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(12, "lettuce", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(15, "onion", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(18, "tomato", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(21, "carrot", batch, camera, chefController));
 
         mainmenu = false;
     }

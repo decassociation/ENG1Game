@@ -8,7 +8,7 @@ public class AddIngredientButton extends ScreenButton{
     ChefController chefController;
 
     public AddIngredientButton(int yPos, String ingredient, SpriteBatch batch, Camera camera, ChefController chefController){
-        super(30, yPos, 5, 5, ingredient, batch, camera);
+        super(32, yPos, 3, 3, ingredient, batch, camera);
 
         this.ingredient = ingredient;
         this.chefController = chefController;

@@ -14,7 +14,8 @@ public class ScreenButton extends MenuButton{
     public ScreenButton(int xPos, int yPos, int width, int height, String text, SpriteBatch batch, Camera camera){
         super(xPos, yPos, width, height, text, batch, camera);
         visible = false;
-        font.getData().setScale(0.1f, 0.15f);
+        float fontScale = 1f/60f;
+        font.getData().setScale(((float) width) * fontScale, ((float) height) * fontScale);
     }
 
     @Override

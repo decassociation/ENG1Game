@@ -19,6 +19,7 @@ public class ChefController {
     private ArrayList<Texture> chefTextures;
     private TiledMap tileMap = new TmxMapLoader().load("tilemap_V3.tmx");
     Chef chef;
+    private Texture chefPointerTexture;
 
     FileManager fileManager = new FileManager();
 
@@ -34,6 +35,8 @@ public class ChefController {
         chefTextures = new ArrayList<Texture>();
         chefTextures.add(new Texture(Gdx.files.internal("chefA.png"))); //chef1 takes chef1(version 2) texture
         chefTextures.add(new Texture(Gdx.files.internal("chefB.png"))); //chef2 takes chef2(version 2) texture
+
+        chefPointerTexture = new Texture(Gdx.files.internal("ChefPointer.png"));
     }
 
     /**
@@ -272,6 +275,7 @@ public class ChefController {
             batch.draw(chefTextures.get(i), chefs.get(i).getX(), chefs.get(i).getY(), 1.0f, 3.0f);
             // float parameters scale down the chef images
         }
+        batch.draw(chefPointerTexture, chef.getX()-0.15f, chef.getY()+3.5f, 1.5f, 1.5f);
     }
 
     /**

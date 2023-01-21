@@ -1,5 +1,7 @@
 package com.team10.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.*;
@@ -22,7 +24,7 @@ public class GameScreen extends Eng1Screen {
 
     private Boolean mainmenu;
 
-    ScreenButton ingredientButton;
+    ArrayList<AddIngredientButton> addIngredientButtons = new ArrayList<>();
 
     /**
      * Sets the tilemap as the main screen for the game
@@ -40,7 +42,8 @@ public class GameScreen extends Eng1Screen {
         chefController = new ChefController();
         customerController = new CustomerControllerScenario(5);
 
-        ingredientButton = new ScreenButton(30, 10, 5, 5, "burger", batch, camera);
+        addIngredientButtons.add(new AddIngredientButton(0, "burger", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(10, "bun", batch, camera, chefController));
 
         mainmenu = false;
     }
@@ -87,17 +90,16 @@ public class GameScreen extends Eng1Screen {
         gameLogic(); //Extracts what is being done incase I need to do other none-game logic related things in the render function. This may be changed in future if it turns out nothing else needs doing.
         ScreenUtils.clear(1, 0, 0, 1);
 
-        if(chefController.atIngredientStation) ingredientButton.visible = true;
-        else ingredientButton.visible = false;
-        ingredientButton.onClick();
-
         renderer.setView(camera);
         renderer.render();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         customerController.update(batch);
         chefController.drawChefs(batch);
-        ingredientButton.draw();
+        for (AddIngredientButton addIngredientButton : addIngredientButtons) {
+            addIngredientButton.update();
+        }
+        
         batch.end();
     }
 

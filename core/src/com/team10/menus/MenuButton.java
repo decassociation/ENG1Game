@@ -48,6 +48,9 @@ public class MenuButton {
         active_texture = base_texture;
     }
 
+    public MenuButton(int xPos, int yPos, int width, int height, String text) {
+    }
+
     /**
      * Check if the button has been clicked
      * 

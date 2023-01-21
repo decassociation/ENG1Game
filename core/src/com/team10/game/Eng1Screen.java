@@ -14,6 +14,7 @@ public class Eng1Screen implements Screen{
     protected MenuButton startGame;
     protected Eng1Game game;
 
+
     public Eng1Screen(Eng1Game game) {
         // Create a SpriteBatch object for rendering
         batch = new SpriteBatch();
@@ -29,7 +30,7 @@ public class Eng1Screen implements Screen{
 
     @Override
     public void render(float delta) {
-        // TODO Auto-generated method stub
+        batch = new SpriteBatch();
         
     }
 

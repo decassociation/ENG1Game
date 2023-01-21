@@ -6,14 +6,9 @@ import com.team10.game.Eng1Game;
 import com.team10.game.GameScreen;
 
 public class ChangeScreenButton extends MenuButton{
-    private Eng1Game game;
-    private String screen;
+    private final Eng1Game game;
+    private final String screen;
 
-    /**
-     * Constructor for ChangeScreenButton
-     * 
-     * @param game the Eng1Game object
-     */
     public ChangeScreenButton(int xPos, int yPos, int width, int height, String text, SpriteBatch batch, Camera camera, Eng1Game game, String screen){
         super(xPos, yPos, width, height, text, batch, camera);
         this.game = game;

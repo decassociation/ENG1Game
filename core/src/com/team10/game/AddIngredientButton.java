@@ -20,4 +20,9 @@ public class AddIngredientButton extends ScreenButton{
         onClick();
         draw();
     }
+
+    @Override
+    public void clickFunction(){
+        System.out.println("AddIngredientButton.java clickFunction() add ingredient: " + ingredient);
+    }
 }

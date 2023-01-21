@@ -43,7 +43,8 @@ public class GameScreen extends Eng1Screen {
         customerController = new CustomerControllerScenario(5);
 
         addIngredientButtons.add(new AddIngredientButton(0, "burger", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(10, "bun", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(5, "bun", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(10, "tomato", batch, camera, chefController));
 
         mainmenu = false;
     }

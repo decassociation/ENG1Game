@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Rectangle;
 public class Onion extends Vegetable{
 
     public Onion(Float x, Float y, Integer id){
-        uncutImg = new Texture(Gdx.files.internal("onion.png"));
-        cutImg = new Texture(Gdx.files.internal("onion_cut.png"));
+        uncutImg = new Texture(Gdx.files.internal("temp_food.png"));
+        cutImg = new Texture(Gdx.files.internal("temp_food.png"));
         activeImg = uncutImg;
         xPos = x;
         yPos = y;
@@ -18,8 +18,7 @@ public class Onion extends Vegetable{
         ingredient = new Rectangle();
         ingredient.x = x;
         ingredient.y = y;
-        //Until sprites are created, this will be set to 50x50
-        ingredient.width = 50;
-        ingredient.height = 50;
+        ingredient.width = 16;
+        ingredient.height = 16;
     }
 }

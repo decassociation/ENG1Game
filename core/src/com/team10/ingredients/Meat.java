@@ -10,6 +10,7 @@ public class Meat extends Ingredient{
 
     public void flip() {
         isFlipped = !isFlipped;
-    }
+    } //Changes if the burger is flipped or not
 
+    //isCooked has not been implemented yet, other meat methods can be implemented here.
 }

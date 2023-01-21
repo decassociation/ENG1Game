@@ -25,7 +25,7 @@ public class CreditScreen implements Screen {
     public void render(float delta) {
         // called every frame, use this to update and draw the screen
         batch.begin();
-        batch.draw(creditsImg, 0, 0);
+        batch.draw(creditsImg, 0, 0,800, 480);
         batch.end();
     }
 

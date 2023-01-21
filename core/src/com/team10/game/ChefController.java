@@ -241,27 +241,22 @@ public class ChefController {
         // The set of if statements control detection of whether the player is at a cooking station
         if(((TiledMapTileLayer) tileMap.getLayers().get("ingredient_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for ingredient station
-            Gdx.app.log("Ingredient Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("frying_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for frying station
-            Gdx.app.log("Frying Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("cutting_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for cutting station
-            Gdx.app.log("Cutting Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("baking_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for baking station
-            Gdx.app.log("Baking Station", "Current position");
         }
 
         if(((TiledMapTileLayer) tileMap.getLayers().get("serving_stations")).getCell((int) chefx, (int) chefy) != null){
             // Do something for serving station
-            Gdx.app.log("Serving Station", "Current position");
         }
     }
 

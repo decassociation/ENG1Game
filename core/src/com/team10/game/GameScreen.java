@@ -102,10 +102,11 @@ public class GameScreen extends Eng1Screen {
         batch.begin();
         customerController.update(batch);
         chefController.drawChefs(batch);
+        chefController.drawInventory(batch);
         for (AddIngredientButton addIngredientButton : addIngredientButtons) {
             addIngredientButton.update();
         }
-        
+
         batch.end();
     }
 

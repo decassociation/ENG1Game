@@ -2,6 +2,7 @@ package com.team10.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.team10.ingredients.Ingredient;
 
 import java.util.Stack;
 
@@ -10,7 +11,11 @@ public class Chef {
     private float xPos;
     private float yPos;
     private Boolean isWorking;
-    private Stack inventory; //Where the items the chef is carrying can be stored
+    private Boolean isInFryingArea; //for frying burgers
+    private Boolean isInSaladArea; //Where they can chop salad
+    private Boolean isInIngredientsArea; //Where they can get ingredients
+    private Boolean isInCounterArea; //Where they can interact with customers
+    private Stack<Ingredient> inventory; //Where the items the chef is carrying can be stored
     private String area;
 
 
@@ -33,7 +38,6 @@ public class Chef {
 
 
     }
-
     /*
      * This is the gets and sets for locating the chefs.
      * This can be expanded if further areas are required.
@@ -54,12 +58,16 @@ public class Chef {
         return(inventory);
     }
 
-    public void addFood(Object obj){
-        if(obj instanceof Salad){
-            inventory.push(obj);
-        } else if (obj instanceof Burger) {
-            inventory.push(obj);
+    //Adds food to the inventory
+    public void addFood(Ingredient ing) {
+        if (inventory.size() < 6) {
+            inventory.push(ing);
         }
+    }
+
+    //Removes top food from inventory and returns it
+    public Object popFood() {
+            return inventory.pop();
     }
 
 

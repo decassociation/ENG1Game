@@ -6,16 +6,18 @@ package com.team10.game;
  */
 
 
-public class Salad{
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.team10.ingredients.Ingredient;
 
-    private Integer saladID;  //identifier for Salad for later
+public class Salad extends Ingredient {
     private Integer timeLeft;  //Will be done in seconds or milliseconds - either way integer is good enough
     //turns out Salad will be more complicated that the others, since it requires ingredients and such, which also need to be prepared
     /*
      * Salad will need:
      *
      * lettuce
-     * tomat
+     * tomato
      * carrots
      * sauce
      *
@@ -28,7 +30,7 @@ public class Salad{
 
 
     public Integer getID(){
-        return(saladID);
+        return(ingID);
     }
 
     public Salad(Integer salno){
@@ -36,7 +38,8 @@ public class Salad{
         tomato = false;
         carrots = false;
         sauce = false;
-        saladID = salno;
+        ingID = salno;
+        activeImg = new Texture(Gdx.files.internal("temp_food.png"));
     }
 
 
@@ -46,7 +49,7 @@ public class Salad{
     }
 
     public void setID(Integer id){
-        saladID = id;
+        ingID = id;
     }
 
 

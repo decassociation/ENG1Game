@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.team10.ingredients.Ingredient;
+import com.team10.ingredients.Tomato;
 
 public class ChefController {
     private int foodID = 0;
@@ -18,6 +20,7 @@ public class ChefController {
     private ArrayList<Chef> chefs;
     private ArrayList<Texture> chefTextures;
     private TiledMap tileMap = new TmxMapLoader().load("tilemap_V3.tmx");
+    private Stack<Ingredient> inventory;
     Chef chef;
     private Texture chefPointerTexture;
 
@@ -276,6 +279,17 @@ public class ChefController {
             // float parameters scale down the chef images
         }
         batch.draw(chefPointerTexture, chef.getX()-0.15f, chef.getY()+3.5f, 1.5f, 1.5f);
+
+    }
+
+    //Shows the contents of a chef's inventory on screen
+    public void drawInventory(SpriteBatch batch) {
+        for (int i = 0; i < chefCount; i++) { //For each chef:
+            inventory = chefs.get(i).getInventory(); //Check inventory
+            for (int j = 0; j < inventory.size(); j++) { //For each ingredient in inventory:
+                batch.draw((inventory.get(j)).getImg(), (chefs.get(i).getX())+1, (chefs.get(i).getY())+(1*j), 1.0f, 1.0f);
+            }
+        }
     }
 
     /**
@@ -297,6 +311,13 @@ public class ChefController {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getArea() == "ingredients_station") {
             Salad b = new Salad(foodID);
+            foodID += 1;
+            chef.addFood(b);
+        }
+
+        //This was for testing purposes, can be deleted
+        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("E")) & chef.getArea() == "ingredients_station") {
+            Tomato b = new Tomato(chefs.get(currentChef).getX(), chefs.get(currentChef).getY(), foodID);
             foodID += 1;
             chef.addFood(b);
         }

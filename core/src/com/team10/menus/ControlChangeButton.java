@@ -29,8 +29,6 @@ public class ControlChangeButton extends MenuButton{
 
     /**
      * Get the next button pressed and set it as the key for the control corresponding to the button
-     * 
-     * Must be called in render() separately to draw() and onClick()
      */
     public void getInput(){
         if (waitingForInput){
@@ -42,6 +40,15 @@ public class ControlChangeButton extends MenuButton{
                 }
             }
         }
+    }
+
+    /**
+     * Add getInput to the procedures called by update()
+     */
+    @Override
+    public void update(){
+        getInput();
+        super.update();
     }
 
     

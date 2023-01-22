@@ -60,7 +60,7 @@ public class MenuButton {
      * Should be called every frame in render(), will check if the mouse has been clicked
      * inside of the button, and then will call the button's clickFunction()
      */
-    public void onClick(){
+    protected void onClick(){
         if(Gdx.input.isTouched()){
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -113,11 +113,21 @@ public class MenuButton {
      * This is why we need to pass the batch and camera as parameters to the constructor, because draw()
      * will call some methods from the batch so needs to know which to use
      */
-    public void draw(){
+    protected void draw(){
         batch.setProjectionMatrix(camera.combined);     // fixes something to do with the batch coordinates not being the same as the camera coordinates
         batch.draw(active_texture, xPos, yPos, width, height);
         font.setColor(Color.BLACK);
         font.draw(this.batch, text, xPos + 10, yPos + height/2 + 5);
+    }
+
+    /**
+     * Call the onClick and draw procedures
+     * 
+     * Should be called in render() in the batch, reduces lines of code since you don't need to call both separately
+     */
+    public void update(){
+        onClick();
+        draw();
     }
 
 

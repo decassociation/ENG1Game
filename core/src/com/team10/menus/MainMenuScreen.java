@@ -33,13 +33,10 @@ public class MainMenuScreen extends Eng1Screen {
     public void render(float delta) {
         batch.begin();
         batch.draw(backgroundImage, 0, 0, 800, 480);
-        startGame.draw();
-        settingsMenuButton.draw();
-        creditsMenuButton.draw();
+        startGame.update();
+        settingsMenuButton.update();
+        creditsMenuButton.update();
         batch.end();
-        startGame.onClick();
-        settingsMenuButton.onClick();
-        creditsMenuButton.onClick();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }
 

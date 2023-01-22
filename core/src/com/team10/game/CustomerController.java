@@ -84,7 +84,7 @@ public class CustomerController {
      */
     public void drawCustomers(SpriteBatch batch){
         for (int i = 0; i < customers.size(); i++) {
-            batch.draw(texture, 4, customers.get(i).yPos, 2.0f, 2.0f);
+            batch.draw(texture, 4, customers.get(i).yPos, 4f, 4f);
             queuePos = 9 - (3*i);
 
             // move the customers up to their position in the queue from the bottom of the screen

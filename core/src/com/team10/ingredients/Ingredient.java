@@ -10,6 +10,11 @@ public class Ingredient {
     protected Float yPos;
     public Integer ingID; //ID for specific ingredient item
 
+    // booleans for checking ingredient compatibility with cooking stations
+    public boolean frying_station = false;
+    public boolean cutting_station = false;
+    public boolean baking_station = false;
+
     public Texture getImg() {
         return activeImg;
     }

@@ -25,6 +25,7 @@ public class GameScreen extends Eng1Screen {
     private Boolean mainmenu;
 
     ArrayList<AddIngredientButton> addIngredientButtons = new ArrayList<>();
+    UseIngredientButton useIngredientButton;
 
     /**
      * Sets the tilemap as the main screen for the game
@@ -50,6 +51,8 @@ public class GameScreen extends Eng1Screen {
         addIngredientButtons.add(new AddIngredientButton(15, "onion", batch, camera, chefController));
         addIngredientButtons.add(new AddIngredientButton(18, "tomato", batch, camera, chefController));
         addIngredientButtons.add(new AddIngredientButton(21, "carrot", batch, camera, chefController));
+
+        useIngredientButton = new UseIngredientButton(32, 0, 3, 3, batch, camera, chefController);
 
         mainmenu = false;
     }
@@ -106,6 +109,7 @@ public class GameScreen extends Eng1Screen {
         for (AddIngredientButton addIngredientButton : addIngredientButtons) {
             addIngredientButton.update();
         }
+        useIngredientButton.update();
 
         batch.end();
     }

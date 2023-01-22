@@ -14,6 +14,8 @@ public class Onion extends Vegetable{
         yPos = y;
         ingID = id;
 
+        cutting_station = true;
+
         //Onion Instantiation
         ingredient = new Rectangle();
         ingredient.x = x;

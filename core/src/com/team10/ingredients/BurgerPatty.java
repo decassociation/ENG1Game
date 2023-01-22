@@ -13,6 +13,8 @@ public class BurgerPatty extends Meat{
         yPos = y;
         ingID =id;
 
+        frying_station = true;
+
         //Patty Instantiation
         ingredient = new Rectangle();
         ingredient.x = x;

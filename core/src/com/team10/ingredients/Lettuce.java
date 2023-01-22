@@ -14,6 +14,8 @@ public class Lettuce extends Vegetable{
         yPos = y;
         ingID = id;
 
+        cutting_station = true;
+
         //Lettuce instantiation (can this be put in Ingredient class?)
         ingredient = new Rectangle();
         ingredient.x = x;

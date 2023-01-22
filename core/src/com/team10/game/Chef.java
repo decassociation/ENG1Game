@@ -54,7 +54,7 @@ public class Chef {
 
     //Inventory thing. Kinda temporary cos I think lucy is working on a better one,
     //but I needed one to test the burger and zone stuff
-    public Stack getInventory(){
+    public Stack<Ingredient> getInventory(){
         return(inventory);
     }
 

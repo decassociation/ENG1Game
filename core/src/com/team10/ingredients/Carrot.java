@@ -12,6 +12,8 @@ public class Carrot extends Vegetable{
         xPos = x;
         yPos = y;
         ingID = id;
+        
+        cutting_station = true;
 
         //Carrot Instantiation
         ingredient = new Rectangle();

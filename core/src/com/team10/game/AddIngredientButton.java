@@ -2,6 +2,7 @@ package com.team10.game;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.team10.ingredients.BurgerPatty;
 
 // Class for ScreenButtons which add ingredients to a chef's inventory
 public class AddIngredientButton extends ScreenButton{
@@ -43,5 +44,8 @@ public class AddIngredientButton extends ScreenButton{
     @Override
     public void clickFunction(){
         System.out.println("AddIngredientButton.java clickFunction() add ingredient: " + ingredient);
+        if(ingredient.equals("burger")){
+            chefController.chef.addFood(new BurgerPatty(0f, 0f, 0));
+        }
     }
 }

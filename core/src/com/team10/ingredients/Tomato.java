@@ -14,6 +14,8 @@ public class Tomato extends Vegetable{
         yPos = y;
         ingID = id;
 
+        cutting_station = true;
+
         //Tomato Instantiation
         ingredient = new Rectangle();
         ingredient.x = x;

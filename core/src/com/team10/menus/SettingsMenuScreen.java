@@ -31,15 +31,15 @@ public class SettingsMenuScreen extends Eng1Screen{
         fileManager = new FileManager();
         buttons = new ArrayList<>();
 
-        buttons.add(new FullscreenModeButton(25, 405, 100, 50, "fullscreen: " + fileManager.read("fullscreen"), batch, camera));
+        buttons.add(new FullscreenModeButton(25, 405, 150, 50, "fullscreen: " + fileManager.read("fullscreen"), batch, camera));
         buttons.add(new ControlChangeButton(25, 330, 100, 50, "up: " + fileManager.read("up"), batch, camera, "up"));
         buttons.add(new ControlChangeButton(25, 255, 100, 50, "down: " + fileManager.read("down"), batch, camera, "down"));
         buttons.add(new ControlChangeButton(25, 180, 100, 50, "left: " + fileManager.read("left"), batch, camera, "left"));
         buttons.add(new ControlChangeButton(25, 105, 100, 50, "right: " + fileManager.read("right"), batch, camera, "right"));
-        buttons.add(new ControlChangeButton(150, 405, 100, 50, "pause: " + fileManager.read("pause"), batch, camera, "pause"));
-        buttons.add(new ControlChangeButton(150, 330, 100, 50, "changeChef: " + fileManager.read("changeChef"), batch, camera, "changeChef"));
+        buttons.add(new ControlChangeButton(250, 405, 100, 50, "pause: " + fileManager.read("pause"), batch, camera, "pause"));
+        buttons.add(new ControlChangeButton(250, 330, 150, 50, "changeChef: " + fileManager.read("changeChef"), batch, camera, "changeChef"));
         buttons.add(new VolumeSlider(575, 20, 200, 20, "volume: " + Integer.toString(Math.round(Float.valueOf(fileManager.read("volume")))), batch, camera));
-        buttons.add(new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu"));
+        buttons.add(new ChangeScreenButton(25, 25, 150, 50, "Return to Main Menu", batch, camera, game, "mainMenu"));
 
     }
 

@@ -87,6 +87,8 @@ public class MenuSlider extends MenuButton{
             // limit sliderValue to the ends of the slider if the mouse goes beyond them
             else if(touchPos.x < xPos && clicked) sliderValue = 0;
             else if (touchPos.x > xPos + width && clicked) sliderValue = width;
+
+            if(sliderValue < 0) sliderValue = 0;
 		}
 
         else{

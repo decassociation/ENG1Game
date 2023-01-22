@@ -30,8 +30,7 @@ public class CreditScreen implements Screen {
         // called every frame, use this to update and draw the screen
         batch.begin();
         batch.draw(creditsImg, 0, 0,800, 480);
-        mainMenuButton.draw();
-        mainMenuButton.onClick();
+        mainMenuButton.update();
         batch.end();
     }
 

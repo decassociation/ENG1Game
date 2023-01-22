@@ -30,14 +30,12 @@ public class PauseScreen extends Eng1Screen {
         // Draw the background image
         batch.draw(backgroundImage, 0, 0, 800, 480);
 
-        // Draw return to main menu button
-        goMain.draw();
+        // Update return to main menu button
+        goMain.update();
 
 
         // End rendering
         batch.end();
-
-        goMain.onClick();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf(fileManager.read("pause")))) {
             try {

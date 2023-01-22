@@ -15,7 +15,7 @@ public class CreditScreen implements Screen {
     public CreditScreen(Eng1Game game, Camera camera) {
         this.batch = game.batch;
         creditsImg = new Texture(Gdx.files.internal("Credits.png"));
-        mainMenuButton = new ChangeScreenButton(25, 25, 100, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
+        mainMenuButton = new ChangeScreenButton(20, 20, 100, 50, "Main Menu", batch, camera, game, "mainMenu");
     }
 
 

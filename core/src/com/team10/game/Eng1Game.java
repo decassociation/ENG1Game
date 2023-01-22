@@ -43,37 +43,37 @@ public class Eng1Game extends Game {
 
     public void changeScreen(String screenName, Camera camera) throws Exception {
         switch (screenName) {
-            case "game" -> {
+            case "game":
                 if (gameScreen == null) {
                     gameScreen = new GameScreen(this);
                 }
                 setScreen(gameScreen);
-            }
-            case "mainMenu" -> {
+                
+            case "mainMenu":
                 if (mainMenuScreen == null) {
                     mainMenuScreen = new MainMenuScreen(this);
                 }
                 setScreen(mainMenuScreen);
-            }
-            case "pause" -> {
+                
+            case "pause":
                 if (pauseScreen == null) {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
-            }
-            case "settings" -> {
+                
+            case "settings":
                 if (settingsMenuScreen == null) {
                     settingsMenuScreen = new SettingsMenuScreen(this);
                 }
                 setScreen(settingsMenuScreen);
-            }
-            case "credits" -> {
+
+            case "credits":
                 if (creditScreen == null) {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
-            }
-            default -> throw new Exception("Invalid screen name");
+
+            default: throw new Exception("Invalid screen name");
         }
     }
 

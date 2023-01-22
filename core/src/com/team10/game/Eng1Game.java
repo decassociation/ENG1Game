@@ -48,30 +48,35 @@ public class Eng1Game extends Game {
                     gameScreen = new GameScreen(this);
                 }
                 setScreen(gameScreen);
+                break;
                 
             case "mainMenu":
                 if (mainMenuScreen == null) {
                     mainMenuScreen = new MainMenuScreen(this);
                 }
                 setScreen(mainMenuScreen);
+                break;
                 
             case "pause":
                 if (pauseScreen == null) {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
+                break;
                 
             case "settings":
                 if (settingsMenuScreen == null) {
                     settingsMenuScreen = new SettingsMenuScreen(this);
                 }
                 setScreen(settingsMenuScreen);
+                break;
 
             case "credits":
                 if (creditScreen == null) {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
+                break;
 
             default: throw new Exception("Invalid screen name");
         }

@@ -3,6 +3,10 @@ package com.team10.game;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.team10.ingredients.BurgerPatty;
+import com.team10.ingredients.Carrot;
+import com.team10.ingredients.Lettuce;
+import com.team10.ingredients.Onion;
+import com.team10.ingredients.Tomato;
 
 // Class for ScreenButtons which add ingredients to a chef's inventory
 public class AddIngredientButton extends ScreenButton{
@@ -47,5 +51,18 @@ public class AddIngredientButton extends ScreenButton{
         if(ingredient.equals("burger")){
             chefController.chef.addFood(new BurgerPatty(0f, 0f, 0));
         }
+        else if(ingredient.equals("lettuce")){
+            chefController.chef.addFood(new Lettuce(0f, 0f, 0));
+        }
+        else if(ingredient.equals("onion")){
+            chefController.chef.addFood(new Onion(0f, 0f, 0));
+        }
+        else if(ingredient.equals("tomato")){
+            chefController.chef.addFood(new Tomato(0f, 0f, 0));
+        }
+        else if(ingredient.equals("carrot")){
+            chefController.chef.addFood(new Carrot(0f, 0f, 0));
+        }
+
     }
 }

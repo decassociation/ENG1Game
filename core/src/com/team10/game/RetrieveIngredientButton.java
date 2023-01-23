@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class RetrieveIngredientButton extends UseIngredientButton{
 
-    public RetrieveIngredientButton(int xPos, int yPos, int width, int height, SpriteBatch batch, Camera camera, ChefController chefController, CookingStation fryingStation, CookingStation bakingStation, CookingStation cuttingStation){
-        super(xPos, yPos, width, height, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
+    public RetrieveIngredientButton(int yPos, SpriteBatch batch, Camera camera, ChefController chefController, CookingStation fryingStation, CookingStation bakingStation, CookingStation cuttingStation){
+        super(yPos, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
     }
 
     /**

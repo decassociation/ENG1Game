@@ -25,7 +25,7 @@ public class AddIngredientButton extends ScreenButton{
        add ingredients to chefs' inventories
      */
     public AddIngredientButton(int yPos, String ingredient, SpriteBatch batch, Camera camera, ChefController chefController){
-        super(32, yPos, 3, 3, ingredient, batch, camera);
+        super(720, yPos, 70, 48, ingredient, batch, camera);
 
         this.ingredient = ingredient;
         this.chefController = chefController;

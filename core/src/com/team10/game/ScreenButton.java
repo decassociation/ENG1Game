@@ -27,24 +27,17 @@ public class ScreenButton extends MenuButton{
     public ScreenButton(int xPos, int yPos, int width, int height, String text, SpriteBatch batch, Camera camera){
         super(xPos, yPos, width, height, text, batch, camera);
         visible = false;
-
-        // automatically scale the font of the button to the size of the button
-        float fontScale = 1f/60f;
-        font.getData().setScale(((float) width) * fontScale, ((float) height) * fontScale);
     }
 
     /**
      * Draw the button and its text to the screen
      * 
-     * Differs to the draw procedure in MenuButton in that it only draws if visible is true and no longer projects to the camera
-     * as the game screen renders differently to the menu screens
+     * Only draws if visible
      */
     @Override
     protected void draw(){
         if(visible){
-            batch.draw(active_texture, xPos, yPos, width, height);
-            font.setColor(Color.BLACK);
-            font.draw(this.batch, text, xPos, yPos+3);
+            super.draw();
         }
     }
 

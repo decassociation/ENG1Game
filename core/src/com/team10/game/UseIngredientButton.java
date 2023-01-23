@@ -9,8 +9,8 @@ public class UseIngredientButton extends ScreenButton{
     CookingStation bakingStation;
     CookingStation cuttingStation;
     
-    public UseIngredientButton(int xPos, int yPos, int width, int height, SpriteBatch batch, Camera camera, ChefController chefController, CookingStation fryingStation, CookingStation bakingStation, CookingStation cuttingStation){
-        super(xPos, yPos, width, height, "", batch, camera);
+    public UseIngredientButton(int yPos, SpriteBatch batch, Camera camera, ChefController chefController, CookingStation fryingStation, CookingStation bakingStation, CookingStation cuttingStation){
+        super(720, yPos, 70, 48, "", batch, camera);
         this.chefController = chefController;
         this.fryingStation = fryingStation;
         this.bakingStation = bakingStation;

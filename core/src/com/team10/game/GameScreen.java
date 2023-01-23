@@ -2,6 +2,9 @@ package com.team10.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -32,6 +35,9 @@ public class GameScreen extends Eng1Screen {
     CookingStation bakingStation;
     CookingStation cuttingStation;
 
+    OrthographicCamera camera2;
+    SpriteBatch batch2;
+
     /**
      * Sets the tilemap as the main screen for the game
      * @param game - game object for which the tilemap is set for
@@ -45,24 +51,28 @@ public class GameScreen extends Eng1Screen {
 
         camera.setToOrtho(false, 35, 30);
 
+        camera2 = new OrthographicCamera();
+        camera2.setToOrtho(false, 800, 480);
+        batch2 = new SpriteBatch();
+
         chefController = new ChefController();
         customerController = new CustomerControllerScenario(5);
 
-        addIngredientButtons.add(new AddIngredientButton(0, "burger", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(3, "bun", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(6, "cheese", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(9, "sauce", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(12, "lettuce", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(15, "onion", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(18, "tomato", batch, camera, chefController));
-        addIngredientButtons.add(new AddIngredientButton(21, "carrot", batch, camera, chefController));
+        addIngredientButtons.add(new AddIngredientButton(0, "burger", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(48, "bun", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(96, "cheese", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(144, "sauce", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(192, "lettuce", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(240, "onion", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(288, "tomato", batch2, camera2, chefController));
+        addIngredientButtons.add(new AddIngredientButton(336, "carrot", batch2, camera2, chefController));
 
         fryingStation = new CookingStation("fryingStation", 5000, 19, 25);
         bakingStation = new CookingStation("bakingStation", 5000, 29, 25);
         cuttingStation = new CookingStation("cuttingStation", 5000, 8, 20);
 
-        useIngredientButton = new UseIngredientButton(32, 0, 3, 3, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
-        retrieveIngredientButton = new RetrieveIngredientButton(32, 3, 3, 3, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
+        useIngredientButton = new UseIngredientButton(0, batch2, camera2, chefController, fryingStation, bakingStation, cuttingStation);
+        retrieveIngredientButton = new RetrieveIngredientButton(48, batch2, camera2, chefController, fryingStation, bakingStation, cuttingStation);
 
         mainmenu = false;
     }
@@ -112,23 +122,32 @@ public class GameScreen extends Eng1Screen {
         renderer.setView(camera);
         renderer.render();
         batch.setProjectionMatrix(camera.combined);
+        batch2.setProjectionMatrix(camera2.combined);
+
         batch.begin();
         customerController.update(batch);
 
-        useIngredientButton.update();
-        retrieveIngredientButton.update();
+        
         fryingStation.update(batch);
         bakingStation.update(batch);
         cuttingStation.update(batch);
 
         chefController.drawChefs(batch);
         chefController.drawInventory(batch);
+        
+
+        batch.end();
+
+        batch2.begin();
+        useIngredientButton.update();
+        retrieveIngredientButton.update();
         for (AddIngredientButton addIngredientButton : addIngredientButtons) {
             addIngredientButton.update();
         }
-
-        batch.end();
+        customerController.drawText(batch2);
+        batch2.end();
     }
+        
 
     @Override
     public void dispose() {

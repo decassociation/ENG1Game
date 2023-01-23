@@ -41,10 +41,10 @@ public class CustomerController {
         customers = new ArrayList<Customer>();
 
         font.setColor(Color.BLACK);
-        font.getData().setScale(0.1f, 0.05f);
+        font.getData().setScale(2f, 2f);
 
         font2.setColor(Color.BLACK);
-        font2.getData().setScale(0.1f, 0.05f);
+        font2.getData().setScale(2f, 2f);
 
     }
 
@@ -63,8 +63,7 @@ public class CustomerController {
      * @param batch the spriteBatch to draw all the customers and text to
      */
     public void update(SpriteBatch batch){
-        // draw timer
-        font.draw(batch, Long.toString(getCurrentTime()/1000), 1, 30);
+        
 
         // create new customers
         createCustomers();
@@ -75,6 +74,17 @@ public class CustomerController {
         /* need some code along the lines of:
          * if (customers.get(0).isServed()) customers.remove(0);
          */
+    }
+
+    public void drawText(SpriteBatch batch){
+        // draw timer
+        font.draw(batch, Long.toString(getCurrentTime()/1000), 15, 470);
+
+        for (int i = 0; i < customers.size(); i++) {
+            if(i == 0 && customers.get(0).yPos >= queuePos){
+                font2.draw(batch, customers.get(i).recipe, 160, customers.get(i).yPos * 16 + 55f);
+            }
+        }
     }
 
     /**
@@ -90,9 +100,7 @@ public class CustomerController {
             if(customers.get(i).yPos < queuePos){
                 customers.get(i).yPos += 0.2f;
             }
-            if(i == 0 && customers.get(0).yPos >= queuePos){
-                font2.draw(batch, customers.get(i).recipe, 0, customers.get(i).yPos + 1.75f);
-            }
+            
             // increment the frame with delay
             if(System.currentTimeMillis() - lastFrameChange > frameDelay){
                 currentFrame = (currentFrame + 1) % 3;

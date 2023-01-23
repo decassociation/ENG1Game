@@ -57,15 +57,7 @@ public class CookingStation {
         if(times.size() > 0){
             for (int i = 0; i < times.size(); i++) {
                 if((timer.millis() - times.get(i)) >= timeToCook){
-                    if(type.equals("frying_station")){
-                        ingredients.get(i).fried = true;
-                    }
-                    else if(type.equals("baking_station")){
-                        ingredients.get(i).baked = true;
-                    }
-                    else if(type.equals("cutting_station")){
-                        ingredients.get(i).cut = true;
-                    }
+                    ingredients.get(i).process();
                     done = true;
                 }
             }

@@ -12,5 +12,10 @@ public class Meat extends Ingredient{
         isFlipped = !isFlipped;
     } //Changes if the burger is flipped or not
 
+    @Override
+    public void process(){
+        fried = true;
+    }
+
     //isCooked has not been implemented yet, other meat methods can be implemented here.
 }

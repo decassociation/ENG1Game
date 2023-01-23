@@ -35,6 +35,7 @@ public class GameScreen extends Eng1Screen {
     CookingStation bakingStation;
     CookingStation cuttingStation;
 
+    // second batch and camera deal with ui elements separately to game elements
     OrthographicCamera camera2;
     SpriteBatch batch2;
 

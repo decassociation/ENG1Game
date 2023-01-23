@@ -30,4 +30,8 @@ public class Ingredient {
     public Float getY() {
         return yPos;
     }
+
+    public void process(){
+        
+    }
 }

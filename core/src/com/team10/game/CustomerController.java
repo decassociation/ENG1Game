@@ -1,15 +1,14 @@
 package com.team10.game;
 
-import java.time.Clock;
-import java.util.ArrayList;
-import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import java.time.Clock;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class CustomerController {
 
@@ -18,7 +17,7 @@ public class CustomerController {
     long timeOfLastCustomer;
     ArrayList<Customer> customers;
     int customerCount;
-    Texture texture[] = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
+    Texture[] texture = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
     BitmapFont font = new BitmapFont();
     BitmapFont font2 = new BitmapFont();
     int queuePos;
@@ -27,7 +26,7 @@ public class CustomerController {
     long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
 
     // array of names of the different possible recipes
-    String recipes[] = {"burger", "salad"};
+    String[] recipes = {"burger", "salad"};
 
     Random generator = new Random();
 
@@ -42,10 +41,10 @@ public class CustomerController {
         customers = new ArrayList<Customer>();
 
         font.setColor(Color.BLACK);
-        font.getData().setScale(0.1f, 0.15f);
+        font.getData().setScale(0.1f, 0.05f);
 
         font2.setColor(Color.BLACK);
-        font2.getData().setScale(0.1f, 0.1f);
+        font2.getData().setScale(0.1f, 0.05f);
 
     }
 

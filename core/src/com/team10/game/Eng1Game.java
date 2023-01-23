@@ -5,10 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.team10.menus.CreditScreen;
-import com.team10.menus.MainMenuScreen;
-import com.team10.menus.PauseScreen;
-import com.team10.menus.SettingsMenuScreen;
+import com.team10.menus.*;
 import com.badlogic.gdx.audio.Music;
 
 
@@ -20,6 +17,7 @@ public class Eng1Game extends Game {
     private Screen pauseScreen;
     private Screen settingsMenuScreen;
     private Screen creditScreen;
+    private Screen tutorialScreen;
 
     private Music KitchenMusic;
     @Override
@@ -76,6 +74,13 @@ public class Eng1Game extends Game {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
+                break;
+
+            case "tutorial":
+                if (tutorialScreen == null) {
+                    tutorialScreen = new TutorialScreen(this, camera);
+                }
+                setScreen(tutorialScreen);
                 break;
 
             default: throw new Exception("Invalid screen name");

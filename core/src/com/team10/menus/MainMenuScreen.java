@@ -12,6 +12,9 @@ public class MainMenuScreen extends Eng1Screen {
     MenuButton settingsMenuButton;
     MenuButton creditsMenuButton;
 
+    MenuButton exitGame;
+
+    MenuButton tutorialButton;
 
     private final Texture backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
 
@@ -20,6 +23,8 @@ public class MainMenuScreen extends Eng1Screen {
         startGame = new ChangeScreenButton(350, 200, 100, 50, "Start Game", batch, camera, game, "game");
         settingsMenuButton = new ChangeScreenButton(350, 125, 100, 50, "Settings", batch, camera, game, "settings");
         creditsMenuButton = new ChangeScreenButton(350, 50, 100, 50, "Credits", batch, camera, game, "credits");
+        tutorialButton = new ChangeScreenButton(350, 275, 100, 50, "Tutorial", batch, camera, game, "tutorial");
+        exitGame = new ExitGameButton(350, -25, 100, 50, "Exit Game", batch, camera, game);
     }
 
     private void setScreen(GameScreen gameScreen) {

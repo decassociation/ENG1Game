@@ -1,13 +1,13 @@
 package com.team10.game;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.maps.tiled.*;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.team10.menus.MenuButton;
+
+import java.util.ArrayList;
 
 public class GameScreen extends Eng1Screen {
     private Boolean paused = false;   //Useful for when we want to implement a pause function

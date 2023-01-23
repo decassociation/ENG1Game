@@ -1,10 +1,8 @@
 package com.team10.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.team10.menus.ChangeScreenButton;
 import com.team10.menus.MenuButton;
 
 public class Eng1Screen implements Screen{

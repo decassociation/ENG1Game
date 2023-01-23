@@ -20,12 +20,13 @@ public class MainMenuScreen extends Eng1Screen {
 
     public MainMenuScreen(Eng1Game game) {
         super(game);
-        startGame = new ChangeScreenButton(350, 200, 100, 50, "Start Game", batch, camera, game, "game");
-        settingsMenuButton = new ChangeScreenButton(350, 125, 100, 50, "Settings", batch, camera, game, "settings");
-        creditsMenuButton = new ChangeScreenButton(350, 50, 100, 50, "Credits", batch, camera, game, "credits");
-        tutorialButton = new ChangeScreenButton(100, 350, 100, 50, "Tutorial", batch, camera, game, "tutorial");
-        exitGameButton = new ExitGameButton(100, 275, 100, 50, "Exit", batch, camera, game, "Exit");
+        startGame = new ChangeScreenButton(350, 300, 100, 50, "Start Game", batch, camera, game, "game");
+        settingsMenuButton = new ChangeScreenButton(350, 250, 100, 50, "Settings", batch, camera, game, "settings");
+        creditsMenuButton = new ChangeScreenButton(350, 200, 100, 50, "Credits", batch, camera, game, "credits");
+        tutorialButton = new ChangeScreenButton(350, 150, 100, 50, "Tutorial", batch, camera, game, "tutorial");
+        exitGameButton = new ExitGameButton(350, 35, 100, 50, "Exit", batch, camera, game, "Exit");
     }
+
 
     private void setScreen(GameScreen gameScreen) {
         try{

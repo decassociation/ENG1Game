@@ -12,7 +12,7 @@ public class MainMenuScreen extends Eng1Screen {
     MenuButton settingsMenuButton;
     MenuButton creditsMenuButton;
 
-    MenuButton exitGame;
+    ExitGameButton exitGameButton;
 
     MenuButton tutorialButton;
 
@@ -23,8 +23,8 @@ public class MainMenuScreen extends Eng1Screen {
         startGame = new ChangeScreenButton(350, 200, 100, 50, "Start Game", batch, camera, game, "game");
         settingsMenuButton = new ChangeScreenButton(350, 125, 100, 50, "Settings", batch, camera, game, "settings");
         creditsMenuButton = new ChangeScreenButton(350, 50, 100, 50, "Credits", batch, camera, game, "credits");
-        tutorialButton = new ChangeScreenButton(350, 275, 100, 50, "Tutorial", batch, camera, game, "tutorial");
-        exitGame = new ExitGameButton(350, -25, 100, 50, "Exit Game", batch, camera, game);
+        tutorialButton = new ChangeScreenButton(100, 350, 100, 50, "Tutorial", batch, camera, game, "tutorial");
+        exitGameButton = new ExitGameButton(100, 275, 100, 50, "Exit", batch, camera, game, "Exit");
     }
 
     private void setScreen(GameScreen gameScreen) {
@@ -41,6 +41,8 @@ public class MainMenuScreen extends Eng1Screen {
         startGame.update();
         settingsMenuButton.update();
         creditsMenuButton.update();
+        tutorialButton.update();
+        exitGameButton.update();
         batch.end();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }

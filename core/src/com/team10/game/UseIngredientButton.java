@@ -5,10 +5,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class UseIngredientButton extends ScreenButton{
     ChefController chefController;
+    CookingStation fryingStation;
+    CookingStation bakingStation;
+    CookingStation cuttingStation;
     
-    public UseIngredientButton(int xPos, int yPos, int width, int height, SpriteBatch batch, Camera camera, ChefController chefController){
+    public UseIngredientButton(int xPos, int yPos, int width, int height, SpriteBatch batch, Camera camera, ChefController chefController, CookingStation fryingStation, CookingStation bakingStation, CookingStation cuttingStation){
         super(xPos, yPos, width, height, "", batch, camera);
         this.chefController = chefController;
+        this.fryingStation = fryingStation;
+        this.bakingStation = bakingStation;
+        this.cuttingStation = cuttingStation;
     }
 
     /**
@@ -24,11 +30,15 @@ public class UseIngredientButton extends ScreenButton{
             else visible = false;
 
             // dynamically change the text based on what item is on the top of the stack
-            if(visible) text = "Use " + chefController.chef.getInventory().peek().ingID;
+            setText();
         }
         else visible = false;
         onClick();
         draw();
+    }
+
+    protected void setText(){
+        if(visible) text = "Use " + chefController.chef.getInventory().peek().ingID;
     }
 
     /**
@@ -37,6 +47,9 @@ public class UseIngredientButton extends ScreenButton{
     @Override
     public void clickFunction(){
         System.out.println("UseIngredientButton.java clickFunction() use ingredient: " + chefController.chef.getInventory().peek());
-        chefController.chef.getInventory().pop();
+        
+        if(chefController.chef.getArea().equals("frying_station")) fryingStation.addIngredient(chefController.chef.getInventory().pop());
+        if(chefController.chef.getArea().equals("baking_station")) bakingStation.addIngredient(chefController.chef.getInventory().pop());
+        if(chefController.chef.getArea().equals("cutting_station")) cuttingStation.addIngredient(chefController.chef.getInventory().pop());
     }
 }

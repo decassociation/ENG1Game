@@ -15,6 +15,11 @@ public class Ingredient {
     public boolean cutting_station = false;
     public boolean baking_station = false;
 
+    // booleans for states after being used at cooking station
+    public boolean fried = false;
+    public boolean baked = false;
+    public boolean cut = false;
+
     public Texture getImg() {
         return activeImg;
     }

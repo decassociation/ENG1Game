@@ -26,6 +26,11 @@ public class GameScreen extends Eng1Screen {
 
     ArrayList<AddIngredientButton> addIngredientButtons = new ArrayList<>();
     UseIngredientButton useIngredientButton;
+    RetrieveIngredientButton retrieveIngredientButton;
+
+    CookingStation fryingStation;
+    CookingStation bakingStation;
+    CookingStation cuttingStation;
 
     /**
      * Sets the tilemap as the main screen for the game
@@ -52,7 +57,12 @@ public class GameScreen extends Eng1Screen {
         addIngredientButtons.add(new AddIngredientButton(18, "tomato", batch, camera, chefController));
         addIngredientButtons.add(new AddIngredientButton(21, "carrot", batch, camera, chefController));
 
-        useIngredientButton = new UseIngredientButton(32, 0, 3, 3, batch, camera, chefController);
+        fryingStation = new CookingStation("fryingStation", 5000, 19, 25);
+        bakingStation = new CookingStation("bakingStation", 5000, 29, 25);
+        cuttingStation = new CookingStation("cuttingStation", 5000, 8, 20);
+
+        useIngredientButton = new UseIngredientButton(32, 0, 3, 3, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
+        retrieveIngredientButton = new RetrieveIngredientButton(32, 3, 3, 3, batch, camera, chefController, fryingStation, bakingStation, cuttingStation);
 
         mainmenu = false;
     }
@@ -104,12 +114,18 @@ public class GameScreen extends Eng1Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         customerController.update(batch);
+
+        useIngredientButton.update();
+        retrieveIngredientButton.update();
+        fryingStation.update(batch);
+        bakingStation.update(batch);
+        cuttingStation.update(batch);
+
         chefController.drawChefs(batch);
         chefController.drawInventory(batch);
         for (AddIngredientButton addIngredientButton : addIngredientButtons) {
             addIngredientButton.update();
         }
-        useIngredientButton.update();
 
         batch.end();
     }

@@ -1,14 +1,15 @@
 package com.team10.game;
 
+import java.time.Clock;
+import java.util.ArrayList;
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import java.time.Clock;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class CustomerController {
 
@@ -17,14 +18,16 @@ public class CustomerController {
     long timeOfLastCustomer;
     ArrayList<Customer> customers;
     int customerCount;
-    Texture[] texture = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
+    Texture texture[] = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
     BitmapFont font = new BitmapFont();
     BitmapFont font2 = new BitmapFont();
     int queuePos;
     int currentFrame = 0;
+    int frameDelay = 250; // delay between each frame change in milliseconds
+    long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
 
     // array of names of the different possible recipes
-    String[] recipes = {"burger", "salad"};
+    String recipes[] = {"burger", "salad"};
 
     Random generator = new Random();
 
@@ -36,7 +39,7 @@ public class CustomerController {
         timer = Clock.systemUTC();
         startTime = timer.millis();
         timeOfLastCustomer = 0;
-        customers = new ArrayList<>();
+        customers = new ArrayList<Customer>();
 
         font.setColor(Color.BLACK);
         font.getData().setScale(0.1f, 0.15f);
@@ -55,7 +58,7 @@ public class CustomerController {
 
     /**
      * Function for updating customers
-     * <p>
+     *
      * Draw the timer, draw the customers, manage the creation and deletion of customers. Should be called in render()
      *
      * @param batch the spriteBatch to draw all the customers and text to
@@ -91,16 +94,19 @@ public class CustomerController {
             if(i == 0 && customers.get(0).yPos >= queuePos){
                 font2.draw(batch, customers.get(i).recipe, 0, customers.get(i).yPos + 1.75f);
             }
-            // increment the frame
-            currentFrame = (currentFrame + 1) % 3;
+            // increment the frame with delay
+            if(System.currentTimeMillis() - lastFrameChange > frameDelay){
+                currentFrame = (currentFrame + 1) % 3;
+                lastFrameChange = System.currentTimeMillis();
+            }
         }
     }
 
-    /**
-     * Procedure for managing the behaviour of creating customers, such as when to add a new one
-     * Should be overwritten in a new subclass to allow for different styles of game
-     */
-    protected void createCustomers(){
-
+    protected void createCustomers() {
+        // if the time since the last customer is greater than 5 seconds, create a new customer
+        if(getCurrentTime() - timeOfLastCustomer > 5000){
+            customers.add(new Customer(recipes[generator.nextInt(recipes.length)]));
+            timeOfLastCustomer = getCurrentTime();
+        }
     }
 }

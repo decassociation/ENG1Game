@@ -49,6 +49,7 @@ public class ControlChangeButton extends MenuButton{
     public void update(){
         getInput();
         super.update();
+        width = text.length()*12;
     }
 
     

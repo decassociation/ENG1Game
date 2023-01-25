@@ -58,7 +58,7 @@ public class GameScreen extends Eng1Screen {
         batch2 = new SpriteBatch();
 
         chefController = new ChefController();
-        customerController = new CustomerControllerScenario(5);
+        customerController = new CustomerControllerScenario(5, game, camera);
 
         // buttons for adding each ingredient to the chef's inventory
         addIngredientButtons.add(new AddIngredientButton(0, "burger", batch2, camera2, chefController));

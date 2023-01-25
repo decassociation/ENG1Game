@@ -18,6 +18,7 @@ public class Eng1Game extends Game {
     private Screen settingsMenuScreen;
     private Screen creditScreen;
     private Screen tutorialScreen;
+    private Screen scenarioVictoryScreen;
 
     private Music KitchenMusic;
     @Override
@@ -81,6 +82,13 @@ public class Eng1Game extends Game {
                     tutorialScreen = new TutorialScreen(this, camera);
                 }
                 setScreen(tutorialScreen);
+                break;
+
+            case "scenarioVictory":
+                if (scenarioVictoryScreen == null) {
+                    scenarioVictoryScreen = new ScenarioVictoryScreen(this, camera);
+                }
+                setScreen(scenarioVictoryScreen);
                 break;
 
             default: throw new Exception("Invalid screen name");

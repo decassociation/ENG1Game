@@ -26,6 +26,7 @@ public class CustomerController {
     int frameDelay = 250; // delay between each frame change in milliseconds
     long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
     ArrayList<Ingredient> servedIngredients;
+    Eng1Game game;
 
     // array of names of the different possible recipes
     String[] recipes = {"burger", "salad"};
@@ -36,12 +37,13 @@ public class CustomerController {
     /**
      * Constructor for CustomerController
      */
-    public CustomerController(){
+    public CustomerController(Eng1Game game){
         timer = Clock.systemUTC();
         startTime = timer.millis();
         timeOfLastCustomer = 0;
         customers = new ArrayList<Customer>();
         servedIngredients = new ArrayList<>();
+        this.game = game;
 
         font.setColor(Color.BLACK);
         font.getData().setScale(2f, 2f);
@@ -71,11 +73,14 @@ public class CustomerController {
         // create new customers
         createCustomers();
 
-        // draw customers
-        drawCustomers(batch);
+        if(!customers.isEmpty()){
 
-        // check for wanted ingredients
-        serve();
+            // draw customers
+            drawCustomers(batch);
+
+            // check for wanted ingredients
+            serve();
+        }
 
         /* need some code along the lines of:
          * if (customers.get(0).isServed()) customers.remove(0);
@@ -146,7 +151,7 @@ public class CustomerController {
                     if(current.name.equals("Sauce")){
                         sauce = true;
                     }
-                    if(current.name.equals("Cheese")){
+                    if(current.name.equals("Cut Cheese")){
                         cheese = true;
                     }
                 }

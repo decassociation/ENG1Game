@@ -11,20 +11,22 @@ public class Chef {
     private float xPos;
     private float yPos;
     private Boolean isWorking;
-    private Boolean isInFryingArea; //for frying burgers
-    private Boolean isInSaladArea; //Where they can chop salad
-    private Boolean isInIngredientsArea; //Where they can get ingredients
-    private Boolean isInCounterArea; //Where they can interact with customers
     private Stack<Ingredient> inventory; //Where the items the chef is carrying can be stored
     private String area;
 
 
 
+    /**
+     * Constructor for the chef class
+     * 
+     * @param x the initial x coordinate
+     * @param y the initial y coordinate
+     */
     public Chef(Integer x, Integer y) {
         xPos = x;
         yPos = y;
         isWorking = false;
-        inventory = new Stack();
+        inventory = new Stack<Ingredient>();
         area = "";
 
         //Chef instantiation

@@ -54,6 +54,9 @@ public class CookingStation {
      * @param batch the SpriteBatch to draw the ready marker to
      */
     public void update(SpriteBatch batch){
+
+        // if there are ingredients in the cooking station, check if each has been in for long enough to be processed
+        // if it has, process it and set the done flag in order to display the ready marker
         if(times.size() > 0){
             for (int i = 0; i < times.size(); i++) {
                 if((timer.millis() - times.get(i)) >= timeToCook){
@@ -62,7 +65,7 @@ public class CookingStation {
                 }
             }
             
-
+            // if the first item is not done then none of them will be done and so set the done flag to false
             if((timer.millis() - times.get(0)) < timeToCook){
                 done = false;
             }

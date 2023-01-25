@@ -18,6 +18,7 @@ public class Eng1Game extends Game {
     private Screen settingsMenuScreen;
     private Screen creditScreen;
     private Screen tutorialScreen;
+    private Screen scenarioVictoryScreen;
     private Music KitchenMusic;
     @Override
     public void create() {
@@ -41,43 +42,56 @@ public class Eng1Game extends Game {
         //this sets up each different screen, allowing us to switch between them, which is implemented using buttons
     public void changeScreen(String screenName, Camera camera) throws Exception {
         switch (screenName) {
-            case "game" -> {
+            case "game":
                 if (gameScreen == null) {
                     gameScreen = new GameScreen(this);
                 }
                 setScreen(gameScreen);
-            }
-            case "mainMenu" -> {
+                break;
+                
+            case "mainMenu":
                 if (mainMenuScreen == null) {
                     mainMenuScreen = new MainMenuScreen(this);
                 }
                 setScreen(mainMenuScreen);
-            }
-            case "pause" -> {
+                break;
+                
+            case "pause":
                 if (pauseScreen == null) {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
-            }
-            case "settings" -> {
+                break;
+                
+            case "settings":
                 if (settingsMenuScreen == null) {
                     settingsMenuScreen = new SettingsMenuScreen(this);
                 }
                 setScreen(settingsMenuScreen);
-            }
-            case "credits" -> {
+                break;
+                
+            case "credits":
                 if (creditScreen == null) {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
-            }
-            case "tutorial" -> {
+                break;
+
+            case "tutorial":
                 if (tutorialScreen == null) {
                     tutorialScreen = new TutorialScreen(this, camera);
                 }
                 setScreen(tutorialScreen);
-            }
-            default -> throw new Exception("Invalid screen name");
+                break;
+
+            case "scenarioVictory":
+                if (scenarioVictoryScreen == null) {
+                    scenarioVictoryScreen = new ScenarioVictoryScreen(this, camera);
+                }
+                setScreen(scenarioVictoryScreen);
+                break;
+
+            default: throw new Exception("Invalid screen name");
         }
     }
 

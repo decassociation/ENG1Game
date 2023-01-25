@@ -19,13 +19,14 @@ public class CustomerController {
     ArrayList<Customer> customers;
     int customerCount;
     Texture[] texture = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
-    BitmapFont font = new BitmapFont();
-    BitmapFont font2 = new BitmapFont();
+    BitmapFont font = new BitmapFont();     // font for the timer
+    BitmapFont font2 = new BitmapFont();    // font for the request
     int queuePos;
     int currentFrame = 0;
     int frameDelay = 250; // delay between each frame change in milliseconds
     long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
     ArrayList<Ingredient> servedIngredients;
+    Eng1Game game;
 
     // array of names of the different possible recipes
     String[] recipes = {"burger", "salad"};
@@ -35,13 +36,16 @@ public class CustomerController {
 
     /**
      * Constructor for CustomerController
+     * 
+     * @param game - Eng1Game object used to change the screen to victory or failure screens
      */
-    public CustomerController(){
+    public CustomerController(Eng1Game game){
         timer = Clock.systemUTC();
         startTime = timer.millis();
         timeOfLastCustomer = 0;
         customers = new ArrayList<Customer>();
         servedIngredients = new ArrayList<>();
+        this.game = game;
 
         font.setColor(Color.BLACK);
         font.getData().setScale(2f, 2f);
@@ -71,25 +75,32 @@ public class CustomerController {
         // create new customers
         createCustomers();
 
-        // draw customers
-        drawCustomers(batch);
+        if(!customers.isEmpty()){
 
-        // check for wanted ingredients
-        serve();
+            // draw customers
+            drawCustomers(batch);
+
+            // check for wanted ingredients
+            serve();
+        }
 
         /* need some code along the lines of:
          * if (customers.get(0).isServed()) customers.remove(0);
          */
     }
 
+    /**
+     * Draw the timer and request text to the screen
+     * 
+     * @param batch the SpriteBatch to draw to
+     */
     public void drawText(SpriteBatch batch){
         // draw timer
         font.draw(batch, Long.toString(getCurrentTime()/1000), 15, 470);
 
-        for (int i = 0; i < customers.size(); i++) {
-            if(i == 0 && customers.get(0).yPos >= queuePos){
-                font2.draw(batch, customers.get(i).recipe, 160, customers.get(i).yPos * 16 + 55f);
-            }
+        // draw the request next to the front customer once they reach the front of the queue
+        if(customers.get(0).yPos >= 9){
+            font2.draw(batch, customers.get(0).recipe, 160, customers.get(0).yPos * 16 + 55f);
         }
     }
 
@@ -115,6 +126,9 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Define behaviour for creating new customers such as how often
+     */
     protected void createCustomers() {
         // if the time since the last customer is greater than 5 seconds, create a new customer
         if(getCurrentTime() - timeOfLastCustomer > 5000){
@@ -146,7 +160,7 @@ public class CustomerController {
                     if(current.name.equals("Sauce")){
                         sauce = true;
                     }
-                    if(current.name.equals("Cheese")){
+                    if(current.name.equals("Cut Cheese")){
                         cheese = true;
                     }
                 }

@@ -8,6 +8,14 @@ public class GiveIngredientButton extends ScreenButton{
     ChefController chefController;
     CustomerController customerController;
 
+    /**
+     * Constructor for GiveIngredienButton
+     * 
+     * @param batch the SpriteBatch to draw the button to
+     * @param camera the camera to project the batch to
+     * @param chefController the chefController to get ingredients from
+     * @param customerController the customerController to give the ingredients to
+     */
     public GiveIngredientButton(SpriteBatch batch, Camera camera, ChefController chefController, CustomerController customerController){
         super(650, 0, 140, 48, "", batch, camera);
         this.chefController = chefController;
@@ -44,9 +52,6 @@ public class GiveIngredientButton extends ScreenButton{
         System.out.println("UseIngredientButton.java clickFunction() give ingredient: " + chefController.chef.getInventory().peek());
         
         customerController.servedIngredients.add(chefController.chef.popFood());
-        for (Ingredient ingredient : customerController.servedIngredients) {
-            System.out.println(ingredient.name);
-        }
     }
     
 }

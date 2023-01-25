@@ -32,7 +32,7 @@ public class FileManager {
     /**
      * Default constructor for FileManager, default to desktop_settings.txt
      * 
-     * Create the file in appdata if it does not already exist, revert to defaults if there are fewer lines than expected
+     * Create the file in appdata or /etc if it does not already exist, revert to defaults if there are fewer lines than expected
      */
     public FileManager(){
         String directoryPath;

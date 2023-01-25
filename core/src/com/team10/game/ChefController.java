@@ -298,38 +298,9 @@ public class ChefController {
         }
     }
 
-    /**
-     * This section will detect actions attempted by the player, such as grabbing an ingredient.
-     * It will check if the button has been pressed, i.e. b for a burger, and if they are in the
-     * appropriate zone (indicated by the chef-object's "isIn[location]"), then they will be able
-     * to pick things up.
-     */
-
-
-
-
+    
     public void tryGetFood(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getArea() == "ingredients_station") {
-            Burger b = new Burger();
-            foodID += 1;
-            chef.addFood(b);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getArea() == "ingredients_station") {
-            Salad b = new Salad();
-            foodID += 1;
-            chef.addFood(b);
-        }
-
-        //This was for testing purposes, can be deleted
-        if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("E")) & chef.getArea() == "ingredients_station") {
-            Tomato b = new Tomato();
-            foodID += 1;
-            chef.addFood(b);
-        }
-
         if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf("L"))){ //outputs the inventory stack
-//
             for(int x = 0; x < chef.getInventory().size(); x++){
                 System.out.println(chef.getInventory().get(x));
             }

@@ -16,6 +16,8 @@ public class MainMenuScreen extends Eng1Screen {
 
     MenuButton tutorialMenuButton;
 
+    websiteButton websiteButton;
+
     private final Texture backgroundImage = new Texture(Gdx.files.internal("MenuTitle.png"));
 
     public MainMenuScreen(Eng1Game game) {
@@ -25,6 +27,7 @@ public class MainMenuScreen extends Eng1Screen {
         creditsMenuButton = new ChangeScreenButton(350, 200, 100, 50, "Credits", batch, camera, game, "credits");
         tutorialMenuButton = new ChangeScreenButton(350, 150, 100, 50, "Tutorial", batch, camera, game, "tutorial");
         exitGameButton = new ExitGameButton(350, 35, 100, 50, "Exit", batch, camera, game, "Exit");
+        websiteButton = new websiteButton(350, 100, 100, 50, "Website", batch, camera, game, "Website");
     }
 
 
@@ -44,6 +47,7 @@ public class MainMenuScreen extends Eng1Screen {
         creditsMenuButton.update();
         tutorialMenuButton.update();
         exitGameButton.update();
+        websiteButton.update();
         batch.end();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();//allows you to close the game when fullscreen
     }

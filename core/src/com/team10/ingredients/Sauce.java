@@ -5,6 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Sauce extends Ingredient {
+    private float xPos;
+    private float yPos;
+    private int ingID;
+
     public Sauce(Float x, Float y, Integer id) {
         activeImg = new Texture(Gdx.files.internal("temp_food.png"));
         xPos = x;

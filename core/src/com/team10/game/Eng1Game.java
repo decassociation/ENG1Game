@@ -19,7 +19,6 @@ public class Eng1Game extends Game {
     private Screen creditScreen;
     private Screen tutorialScreen;
     private Screen scenarioVictoryScreen;
-
     private Music KitchenMusic;
     @Override
     public void create() {
@@ -40,6 +39,7 @@ public class Eng1Game extends Game {
 
     }
 
+        //this sets up each different screen, allowing us to switch between them, which is implemented using buttons
     public void changeScreen(String screenName, Camera camera) throws Exception {
         switch (screenName) {
             case "game":
@@ -47,35 +47,30 @@ public class Eng1Game extends Game {
                     gameScreen = new GameScreen(this);
                 }
                 setScreen(gameScreen);
-                break;
                 
             case "mainMenu":
                 if (mainMenuScreen == null) {
                     mainMenuScreen = new MainMenuScreen(this);
                 }
                 setScreen(mainMenuScreen);
-                break;
                 
             case "pause":
                 if (pauseScreen == null) {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
-                break;
                 
             case "settings":
                 if (settingsMenuScreen == null) {
                     settingsMenuScreen = new SettingsMenuScreen(this);
                 }
                 setScreen(settingsMenuScreen);
-                break;
-
+                
             case "credits":
                 if (creditScreen == null) {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
-                break;
 
             case "tutorial":
                 if (tutorialScreen == null) {

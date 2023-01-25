@@ -18,6 +18,9 @@ public class Eng1Game extends Game {
     private Screen settingsMenuScreen;
     private Screen creditScreen;
     private Screen tutorialScreen;
+    private Screen tutorialScreen2;
+
+    private Screen tutorialScreen3;
 
     private Music KitchenMusic;
     @Override
@@ -41,49 +44,43 @@ public class Eng1Game extends Game {
 
     public void changeScreen(String screenName, Camera camera) throws Exception {
         switch (screenName) {
-            case "game":
+            case "game" -> {
                 if (gameScreen == null) {
                     gameScreen = new GameScreen(this);
                 }
                 setScreen(gameScreen);
-                break;
-                
-            case "mainMenu":
+            }
+            case "mainMenu" -> {
                 if (mainMenuScreen == null) {
                     mainMenuScreen = new MainMenuScreen(this);
                 }
                 setScreen(mainMenuScreen);
-                break;
-                
-            case "pause":
+            }
+            case "pause" -> {
                 if (pauseScreen == null) {
                     pauseScreen = new PauseScreen(this);
                 }
                 setScreen(pauseScreen);
-                break;
-                
-            case "settings":
+            }
+            case "settings" -> {
                 if (settingsMenuScreen == null) {
                     settingsMenuScreen = new SettingsMenuScreen(this);
                 }
                 setScreen(settingsMenuScreen);
-                break;
-
-            case "credits":
+            }
+            case "credits" -> {
                 if (creditScreen == null) {
                     creditScreen = new CreditScreen(this, camera);
                 }
                 setScreen(creditScreen);
-                break;
-
-            case "tutorial":
+            }
+            case "tutorial" -> {
                 if (tutorialScreen == null) {
                     tutorialScreen = new TutorialScreen(this, camera);
                 }
                 setScreen(tutorialScreen);
-                break;
-
-            default: throw new Exception("Invalid screen name");
+            }
+            default -> throw new Exception("Invalid screen name");
         }
     }
 

@@ -11,6 +11,7 @@ public class ExitGameButton extends MenuButton {
         super(xPos, yPos, width, height, text, batch, camera);
         this.game = game;
     }
+    //this is the exit button, which exits the game when clicked, and is used in the main menu only.
     @Override
     protected void onClick(){
         super.onClick();

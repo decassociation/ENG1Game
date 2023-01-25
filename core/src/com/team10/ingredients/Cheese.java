@@ -6,16 +6,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Cheese extends Ingredient {
 
-    public Cheese(Float x, Float y, Integer id) {
+    public Cheese() {
         activeImg = new Texture(Gdx.files.internal("temp_food.png"));
-        xPos = x;
-        yPos = y;
-        ingID = id;
-
-        ingredient = new Rectangle();
-        ingredient.x = x;
-        ingredient.y = y;
-        ingredient.width = 16;
-        ingredient.height = 16;
+        name = "Cheese";
     }
 }

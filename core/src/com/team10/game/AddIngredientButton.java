@@ -62,6 +62,11 @@ public class AddIngredientButton extends ScreenButton{
         else if(ingredient.equals("bun")){
             chefController.chef.addFood(new BurgerBun());
         }
-
+        else if(ingredient.equals("sauce")){
+            chefController.chef.addFood(new Sauce(0f, 0f, 0));
+        }
+        else if(ingredient.equals("cheese")){
+            chefController.chef.addFood(new Cheese(0f, 0f, 0));
+        }
     }
 }

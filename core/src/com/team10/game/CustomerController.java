@@ -159,5 +159,40 @@ public class CustomerController {
 
             }
         }
+
+        // salad recipe
+        if(customers.get(0).recipe.equals("salad")){
+            boolean lettuce = false;
+            boolean tomato = false;
+            boolean carrot = false;
+            boolean onion = false;
+            Ingredient current;
+
+            // check if top items are correct items
+            if(servedIngredients.size() >= 4){
+                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {
+                    current = servedIngredients.get(i);
+                    if(current.name.equals("Cut Lettuce")){
+                        lettuce = true;
+                    }
+                    if(current.name.equals("Cut Tomato")){
+                        tomato = true;
+                    }
+                    if(current.name.equals("Cut Carrot")){
+                        carrot = true;
+                    }
+                    if(current.name.equals("Cut Onion")){
+                        onion = true;
+                    }
+                }
+            }
+
+            // if all ingredients present, remove customer and the ingredients
+            if (carrot && tomato && lettuce && onion){
+                customers.remove(0);
+                servedIngredients.clear();
+
+            }
+        }
     }
 }

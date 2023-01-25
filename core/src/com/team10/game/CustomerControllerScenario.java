@@ -27,7 +27,7 @@ public class CustomerControllerScenario extends CustomerController{
      */
     @Override
     protected void createCustomers(){
-        if (customers.size() == 0 || getCurrentTime()-timeOfLastCustomer >= customerDelay && customerCount < totalCustomers){
+        if (customerCount == 0 || getCurrentTime()-timeOfLastCustomer >= customerDelay && customerCount < totalCustomers){
             customers.add(new Customer(recipes[generator.nextInt(recipes.length)]));
             customerCount += 1;
             timeOfLastCustomer = getCurrentTime();
@@ -40,7 +40,7 @@ public class CustomerControllerScenario extends CustomerController{
     public void update(SpriteBatch batch){
         if(customerCount == totalCustomers && customers.isEmpty())
             try {
-                game.changeScreen("scenarioVictoryScreen", camera);
+                game.changeScreen("scenarioVictory", camera);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

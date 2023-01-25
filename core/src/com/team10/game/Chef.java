@@ -66,7 +66,7 @@ public class Chef {
     }
 
     //Removes top food from inventory and returns it
-    public Object popFood() {
+    public Ingredient popFood() {
             return inventory.pop();
     }
 

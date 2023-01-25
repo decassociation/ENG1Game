@@ -30,6 +30,7 @@ public class GameScreen extends Eng1Screen {
     ArrayList<AddIngredientButton> addIngredientButtons = new ArrayList<>();
     UseIngredientButton useIngredientButton;
     RetrieveIngredientButton retrieveIngredientButton;
+    GiveIngredientButton giveIngredientButton;
 
     CookingStation fryingStation;
     CookingStation bakingStation;
@@ -59,6 +60,7 @@ public class GameScreen extends Eng1Screen {
         chefController = new ChefController();
         customerController = new CustomerControllerScenario(5);
 
+        // buttons for adding each ingredient to the chef's inventory
         addIngredientButtons.add(new AddIngredientButton(0, "burger", batch2, camera2, chefController));
         addIngredientButtons.add(new AddIngredientButton(48, "bun", batch2, camera2, chefController));
         addIngredientButtons.add(new AddIngredientButton(96, "cheese", batch2, camera2, chefController));
@@ -68,12 +70,15 @@ public class GameScreen extends Eng1Screen {
         addIngredientButtons.add(new AddIngredientButton(288, "tomato", batch2, camera2, chefController));
         addIngredientButtons.add(new AddIngredientButton(336, "carrot", batch2, camera2, chefController));
 
+        // cooking stations, pass to use and retrieve buttons
         fryingStation = new CookingStation("fryingStation", 5000, 19, 25);
         bakingStation = new CookingStation("bakingStation", 5000, 29, 25);
         cuttingStation = new CookingStation("cuttingStation", 5000, 8, 20);
 
+        // use, retrieve and give buttons
         useIngredientButton = new UseIngredientButton(0, batch2, camera2, chefController, fryingStation, bakingStation, cuttingStation);
         retrieveIngredientButton = new RetrieveIngredientButton(48, batch2, camera2, chefController, fryingStation, bakingStation, cuttingStation);
+        giveIngredientButton = new GiveIngredientButton(batch2, camera2, chefController, customerController);
 
         mainmenu = false;
     }
@@ -142,6 +147,7 @@ public class GameScreen extends Eng1Screen {
         batch2.begin();
         useIngredientButton.update();
         retrieveIngredientButton.update();
+        giveIngredientButton.update();
         for (AddIngredientButton addIngredientButton : addIngredientButtons) {
             addIngredientButton.update();
         }

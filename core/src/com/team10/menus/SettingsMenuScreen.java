@@ -30,7 +30,7 @@ public class SettingsMenuScreen extends Eng1Screen{
         super(game);
         fileManager = new FileManager();
         buttons = new ArrayList<>();
-
+        //array of every button for the settings menu
         buttons.add(new FullscreenModeButton(25, 405, 150, 50, "fullscreen: " + fileManager.read("fullscreen"), batch, camera));
         buttons.add(new ControlChangeButton(25, 330, 100, 50, "up: " + fileManager.read("up"), batch, camera, "up"));
         buttons.add(new ControlChangeButton(25, 255, 100, 50, "down: " + fileManager.read("down"), batch, camera, "down"));

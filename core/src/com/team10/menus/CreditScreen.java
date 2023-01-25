@@ -9,9 +9,12 @@ import com.team10.game.Eng1Game;
 
 
 public class CreditScreen implements Screen {
+
     public SpriteBatch batch;
     public Texture creditsImg;
     private ChangeScreenButton mainMenuButton;
+
+    //this sets the credits to a static image, which can be edited here, making it easier for edits to credits to be made
     public CreditScreen(Eng1Game game, Camera camera) {
         this.batch = game.batch;
         creditsImg = new Texture(Gdx.files.internal("Credits.png"));

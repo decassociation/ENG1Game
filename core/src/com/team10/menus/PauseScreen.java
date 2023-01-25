@@ -18,6 +18,7 @@ public class PauseScreen extends Eng1Screen {
     public PauseScreen(Eng1Game game) {
         super(game);
 
+        // this allows players to switch back to the main menu
         goMain = new ChangeScreenButton(350, 200, 100, 50, "Main Menu", batch, camera, game, "mainMenu");
 
     }

@@ -9,7 +9,7 @@ public class GiveIngredientButton extends ScreenButton{
     CustomerController customerController;
 
     public GiveIngredientButton(SpriteBatch batch, Camera camera, ChefController chefController, CustomerController customerController){
-        super(720, 0, 70, 48, "", batch, camera);
+        super(650, 0, 140, 48, "", batch, camera);
         this.chefController = chefController;
         this.customerController = customerController;
     }

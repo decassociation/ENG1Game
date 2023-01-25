@@ -74,6 +74,9 @@ public class CustomerController {
         // draw customers
         drawCustomers(batch);
 
+        // check for wanted ingredients
+        serve();
+
         /* need some code along the lines of:
          * if (customers.get(0).isServed()) customers.remove(0);
          */
@@ -125,32 +128,34 @@ public class CustomerController {
         // burger recipe
         if(customers.get(0).recipe.equals("burger")){
             boolean burger = false;
-            int burgerIndex = -1;
             boolean cutBun = false;
-            int bunIndex = -1;
             boolean sauce = false;
-            int sauceIndex = -1;
+            boolean cheese = false;
             Ingredient current;
-            for (int i = 0; i < servedIngredients.size(); i++) {
-                current = servedIngredients.get(i);
-                if(current.name.equals("cooked burger")){
-                    burger = true;
-                    burgerIndex = i;
-                }
-                if(current.name.equals("cut bun")){
-                    cutBun = true;
-                    bunIndex = i;
-                }
-                if(current.name.equals("sauce")){
-                    sauce = true;
-                    sauceIndex = i;
+
+            // check if top items are correct items
+            if(servedIngredients.size() >= 4){
+                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {
+                    current = servedIngredients.get(i);
+                    if(current.name.equals("Cooked Burger")){
+                        burger = true;
+                    }
+                    if(current.name.equals("Cut Bun")){
+                        cutBun = true;
+                    }
+                    if(current.name.equals("Sauce")){
+                        sauce = true;
+                    }
+                    if(current.name.equals("Cheese")){
+                        cheese = true;
+                    }
                 }
             }
-            if (burger && cutBun && sauce){
+
+            // if all ingredients present, remove customer and the ingredients
+            if (burger && cutBun && sauce && cheese){
                 customers.remove(0);
-                servedIngredients.remove(burgerIndex);
-                servedIngredients.remove(sauceIndex);
-                servedIngredients.remove(bunIndex);
+                servedIngredients.clear();
 
             }
         }

@@ -29,16 +29,15 @@ public class Salad extends Ingredient {
 
 
 
-    public Integer getID(){
-        return(ingID);
+    public String getName(){
+        return(name);
     }
 
-    public Salad(Integer salno){
+    public Salad(){
         lettuce = false;
         tomato = false;
         carrots = false;
         sauce = false;
-        ingID = salno;
         activeImg = new Texture(Gdx.files.internal("temp_food.png"));
     }
 
@@ -46,10 +45,6 @@ public class Salad extends Ingredient {
 
     public Integer checkTime(){
         return(timeLeft);
-    }
-
-    public void setID(Integer id){
-        ingID = id;
     }
 
 

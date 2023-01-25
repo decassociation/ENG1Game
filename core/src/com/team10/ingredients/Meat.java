@@ -15,6 +15,8 @@ public class Meat extends Ingredient{
     @Override
     public void process(){
         fried = true;
+        name = "Cooked " + name;
+        super.process();
     }
 
     //isCooked has not been implemented yet, other meat methods can be implemented here.

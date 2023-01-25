@@ -10,6 +10,8 @@ public class Vegetable extends Ingredient{
     public void process() { //Method for cutting any vegetable
         cut = true;
         activeImg = cutImg;
+        name = "Cut " + name;
+        super.process();
     }
     //Other veg-related methods go here
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.team10.ingredients.Ingredient;
 
 import java.time.Clock;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class CustomerController {
     int currentFrame = 0;
     int frameDelay = 250; // delay between each frame change in milliseconds
     long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
+    ArrayList<Ingredient> servedIngredients;
 
     // array of names of the different possible recipes
     String[] recipes = {"burger", "salad"};
@@ -39,6 +41,7 @@ public class CustomerController {
         startTime = timer.millis();
         timeOfLastCustomer = 0;
         customers = new ArrayList<Customer>();
+        servedIngredients = new ArrayList<>();
 
         font.setColor(Color.BLACK);
         font.getData().setScale(2f, 2f);
@@ -70,6 +73,9 @@ public class CustomerController {
 
         // draw customers
         drawCustomers(batch);
+
+        // check for wanted ingredients
+        serve();
 
         /* need some code along the lines of:
          * if (customers.get(0).isServed()) customers.remove(0);
@@ -114,6 +120,79 @@ public class CustomerController {
         if(getCurrentTime() - timeOfLastCustomer > 5000){
             customers.add(new Customer(recipes[generator.nextInt(recipes.length)]));
             timeOfLastCustomer = getCurrentTime();
+        }
+    }
+
+    // check if customer is served correct recipe
+    protected void serve(){
+        // burger recipe
+        if(customers.get(0).recipe.equals("burger")){
+            boolean burger = false;
+            boolean cutBun = false;
+            boolean sauce = false;
+            boolean cheese = false;
+            Ingredient current;
+
+            // check if top items are correct items
+            if(servedIngredients.size() >= 4){
+                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {
+                    current = servedIngredients.get(i);
+                    if(current.name.equals("Cooked Burger")){
+                        burger = true;
+                    }
+                    if(current.name.equals("Cut Bun")){
+                        cutBun = true;
+                    }
+                    if(current.name.equals("Sauce")){
+                        sauce = true;
+                    }
+                    if(current.name.equals("Cheese")){
+                        cheese = true;
+                    }
+                }
+            }
+
+            // if all ingredients present, remove customer and the ingredients
+            if (burger && cutBun && sauce && cheese){
+                customers.remove(0);
+                servedIngredients.clear();
+
+            }
+        }
+
+        // salad recipe
+        if(customers.get(0).recipe.equals("salad")){
+            boolean lettuce = false;
+            boolean tomato = false;
+            boolean carrot = false;
+            boolean onion = false;
+            Ingredient current;
+
+            // check if top items are correct items
+            if(servedIngredients.size() >= 4){
+                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {
+                    current = servedIngredients.get(i);
+                    if(current.name.equals("Cut Lettuce")){
+                        lettuce = true;
+                    }
+                    if(current.name.equals("Cut Tomato")){
+                        tomato = true;
+                    }
+                    if(current.name.equals("Cut Carrot")){
+                        carrot = true;
+                    }
+                    if(current.name.equals("Cut Onion")){
+                        onion = true;
+                    }
+                }
+            }
+
+            // if all ingredients present, remove customer and the ingredients
+            if (carrot && tomato && lettuce && onion){
+                customers.remove(0);
+                servedIngredients.clear();
+
+            }
         }
     }
 }

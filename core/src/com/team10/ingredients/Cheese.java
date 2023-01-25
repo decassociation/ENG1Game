@@ -2,15 +2,24 @@ package com.team10.ingredients;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 
 public class Cheese extends Ingredient {
-    private float xPos;
-    private float yPos;
-    private int ingID;
+    Texture cutImg;
+    Texture uncutImg;
 
     public Cheese() {
-        activeImg = new Texture(Gdx.files.internal("temp_food.png"));
+        uncutImg = new Texture(Gdx.files.internal("cheese.png"));
+        cutImg = new Texture(Gdx.files.internal("cutCheese.png"));
+        activeImg = uncutImg;
         name = "Cheese";
+    }
+
+    @Override
+    public void process() {
+        cut = true;
+        activeImg = cutImg;
+        name = "Cut " + name;
+        super.process();
+        System.out.println(name);
     }
 }

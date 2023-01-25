@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.team10.ingredients.Ingredient;
 
 import java.time.Clock;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class CustomerController {
     int currentFrame = 0;
     int frameDelay = 250; // delay between each frame change in milliseconds
     long lastFrameChange = System.currentTimeMillis(); // time of the last frame change
+    ArrayList<Ingredient> servedIngredients;
 
     // array of names of the different possible recipes
     String[] recipes = {"burger", "salad"};
@@ -39,6 +41,7 @@ public class CustomerController {
         startTime = timer.millis();
         timeOfLastCustomer = 0;
         customers = new ArrayList<Customer>();
+        servedIngredients = new ArrayList<>();
 
         font.setColor(Color.BLACK);
         font.getData().setScale(2f, 2f);
@@ -114,6 +117,42 @@ public class CustomerController {
         if(getCurrentTime() - timeOfLastCustomer > 5000){
             customers.add(new Customer(recipes[generator.nextInt(recipes.length)]));
             timeOfLastCustomer = getCurrentTime();
+        }
+    }
+
+    // check if customer is served correct recipe
+    protected void serve(){
+        // burger recipe
+        if(customers.get(0).recipe.equals("burger")){
+            boolean burger = false;
+            int burgerIndex = -1;
+            boolean cutBun = false;
+            int bunIndex = -1;
+            boolean sauce = false;
+            int sauceIndex = -1;
+            Ingredient current;
+            for (int i = 0; i < servedIngredients.size(); i++) {
+                current = servedIngredients.get(i);
+                if(current.name.equals("cooked burger")){
+                    burger = true;
+                    burgerIndex = i;
+                }
+                if(current.name.equals("cut bun")){
+                    cutBun = true;
+                    bunIndex = i;
+                }
+                if(current.name.equals("sauce")){
+                    sauce = true;
+                    sauceIndex = i;
+                }
+            }
+            if (burger && cutBun && sauce){
+                customers.remove(0);
+                servedIngredients.remove(burgerIndex);
+                servedIngredients.remove(sauceIndex);
+                servedIngredients.remove(bunIndex);
+
+            }
         }
     }
 }

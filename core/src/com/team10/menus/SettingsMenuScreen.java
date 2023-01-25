@@ -38,6 +38,7 @@ public class SettingsMenuScreen extends Eng1Screen{
         buttons.add(new ControlChangeButton(25, 105, 100, 50, "right: " + fileManager.read("right"), batch, camera, "right"));
         buttons.add(new ControlChangeButton(250, 405, 100, 50, "pause: " + fileManager.read("pause"), batch, camera, "pause"));
         buttons.add(new ControlChangeButton(250, 330, 150, 50, "changeChef: " + fileManager.read("changeChef"), batch, camera, "changeChef"));
+        buttons.add(new ControlChangeButton(250, 255, 150, 50, "discardItem: " + fileManager.read("discardItem"), batch, camera, "discardItem"));
         buttons.add(new VolumeSlider(575, 20, 200, 20, "volume: " + Integer.toString(Math.round(Float.valueOf(fileManager.read("volume")))), batch, camera));
         buttons.add(new ChangeScreenButton(25, 25, 150, 50, "Return to Main Menu", batch, camera, game, "mainMenu"));
 

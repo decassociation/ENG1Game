@@ -70,6 +70,11 @@ public class ChefController {
         Integer left = Input.Keys.valueOf(fileManager.read("left"));
         Integer down = Input.Keys.valueOf(fileManager.read("down"));
         Integer right = Input.Keys.valueOf(fileManager.read("right"));
+        Integer discardItem = Input.Keys.valueOf(fileManager.read("discardItem"));
+
+        if(Gdx.input.isKeyJustPressed(discardItem)){
+            chef.popFood();
+        }
 
         if (Gdx.input.isKeyPressed(up) || Gdx.input.isKeyPressed(left) || Gdx.input.isKeyPressed(down) || Gdx.input.isKeyPressed(right)) {
             // play 'step.mp3' sound file
@@ -305,20 +310,20 @@ public class ChefController {
 
     public void tryGetFood(){
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("B")) & chef.getArea() == "ingredients_station") {
-            Burger b = new Burger(foodID);
+            Burger b = new Burger();
             foodID += 1;
             chef.addFood(b);
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("N")) & chef.getArea() == "ingredients_station") {
-            Salad b = new Salad(foodID);
+            Salad b = new Salad();
             foodID += 1;
             chef.addFood(b);
         }
 
         //This was for testing purposes, can be deleted
         if (Gdx.input.isKeyJustPressed(Input.Keys.valueOf("E")) & chef.getArea() == "ingredients_station") {
-            Tomato b = new Tomato(chefs.get(currentChef).getX(), chefs.get(currentChef).getY(), foodID);
+            Tomato b = new Tomato();
             foodID += 1;
             chef.addFood(b);
         }

@@ -47,8 +47,8 @@ public class FileManager {
         
         File dir = new File(directoryPath);
         try {
-            if(dir.mkdir() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 8){
-                if(file.createNewFile() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 8){
+            if(dir.mkdir() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 9){
+                if(file.createNewFile() || Files.readAllLines(file.toPath(), StandardCharsets.UTF_8).size() < 9){
                     write("fullscreen", "false");
                     write("up", "W");
                     write("down", "S");
@@ -56,6 +56,7 @@ public class FileManager {
                     write("right", "D");
                     write("pause", "P");
                     write("changeChef", "Tab");
+                    write("discardItem", "Q");
                     write("volume", "50.0");
                 }
             }

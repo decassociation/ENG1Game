@@ -6,21 +6,12 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Tomato extends Vegetable{
 
-    public Tomato(Float x, Float y, Integer id){
+    public Tomato(){
         uncutImg = new Texture(Gdx.files.internal("tomato_uncut.png"));
         cutImg = new Texture(Gdx.files.internal("tomato_cut.png")); //This sprite will need updating
         activeImg = uncutImg;
-        xPos = x;
-        yPos = y;
-        ingID = id;
+        name = "Tomato";
 
         cutting_station = true;
-
-        //Tomato Instantiation
-        ingredient = new Rectangle();
-        ingredient.x = x;
-        ingredient.y = y;
-        ingredient.width = 16;
-        ingredient.height = 16;
     }
 }

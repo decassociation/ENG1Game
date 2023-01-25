@@ -38,7 +38,7 @@ public class UseIngredientButton extends ScreenButton{
     }
 
     protected void setText(){
-        if(visible) text = "Use " + chefController.chef.getInventory().peek().ingID;
+        if(visible) text = "Use " + chefController.chef.getInventory().peek().name;
     }
 
     /**

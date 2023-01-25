@@ -57,7 +57,7 @@ public class CookingStation {
         if(times.size() > 0){
             for (int i = 0; i < times.size(); i++) {
                 if((timer.millis() - times.get(i)) >= timeToCook){
-                    ingredients.get(i).process();
+                    if(!ingredients.get(i).processed) ingredients.get(i).process();
                     done = true;
                 }
             }

@@ -31,9 +31,9 @@ public class RetrieveIngredientButton extends UseIngredientButton{
     protected void setText(){
         if(visible){
             text = "Get ";
-            if (chefController.chef.getArea().equals("frying_station")) text += fryingStation.ingredients.get(0).ingID;
-            if (chefController.chef.getArea().equals("baking_station")) text += bakingStation.ingredients.get(0).ingID;
-            if (chefController.chef.getArea().equals("cutting_station")) text += cuttingStation.ingredients.get(0).ingID;
+            if (chefController.chef.getArea().equals("frying_station")) text += fryingStation.ingredients.get(0).name;
+            if (chefController.chef.getArea().equals("baking_station")) text += bakingStation.ingredients.get(0).name;
+            if (chefController.chef.getArea().equals("cutting_station")) text += cuttingStation.ingredients.get(0).name;
         }
     }
 

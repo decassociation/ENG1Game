@@ -13,8 +13,8 @@ public class Burger extends Ingredient {
 //    private Boolean hasSalad;
     private Boolean isCooked;
 
-    public Burger(Integer id) {
-        ingID =  id;
+    public Burger() {
+        name = "Burger";
         isCooked = false;
         activeImg = new Texture(Gdx.files.internal("temp_food.png"));
     }

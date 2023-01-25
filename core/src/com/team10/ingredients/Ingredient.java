@@ -6,9 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Ingredient {
     protected Rectangle ingredient;
     protected Texture activeImg;
-    protected Float xPos;
-    protected Float yPos;
-    public Integer ingID; //ID for specific ingredient item
+    public String name; //ID for specific ingredient item
 
     // booleans for checking ingredient compatibility with cooking stations
     public boolean frying_station = false;
@@ -19,19 +17,16 @@ public class Ingredient {
     public boolean fried = false;
     public boolean baked = false;
     public boolean cut = false;
+    public boolean processed = false;
 
     public Texture getImg() {
         return activeImg;
     }
 
-    public Float getX() {
-        return xPos;
-    }
-    public Float getY() {
-        return yPos;
-    }
-
     public void process(){
-        
+        frying_station = false;
+        cutting_station = false;
+        baking_station = false;
+        processed = true;
     }
 }

@@ -8,8 +8,8 @@ public class BurgerBun extends Ingredient{
     Texture uncutImg;
 
     public BurgerBun(){
-        cutImg = new Texture(Gdx.files.internal("temp_food.png"));
-        uncutImg = new Texture(Gdx.files.internal("temp_food.png"));
+        cutImg = new Texture(Gdx.files.internal("cutBun.png"));
+        uncutImg = new Texture(Gdx.files.internal("bun.png"));
         activeImg = uncutImg;
         name = "Bun";
 

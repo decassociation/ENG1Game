@@ -12,6 +12,8 @@ public class Cheese extends Ingredient {
         cutImg = new Texture(Gdx.files.internal("cutCheese.png"));
         activeImg = uncutImg;
         name = "Cheese";
+
+        cutting_station = true;
     }
 
     @Override

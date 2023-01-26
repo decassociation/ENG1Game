@@ -99,7 +99,7 @@ public class CustomerController {
         font.draw(batch, Long.toString(getCurrentTime()/1000), 15, 470);
 
         // draw the request next to the front customer once they reach the front of the queue
-        if(customers.get(0).yPos >= 9){
+        if(!customers.isEmpty() && customers.get(0).yPos >= 9){
             font2.draw(batch, customers.get(0).recipe, 160, customers.get(0).yPos * 16 + 55f);
         }
     }
@@ -140,7 +140,7 @@ public class CustomerController {
     // check if customer is served correct recipe
     protected void serve(){
         // burger recipe
-        if(customers.get(0).recipe.equals("burger")){
+        if(!customers.isEmpty() && customers.get(0).recipe.equals("burger")){
             boolean burger = false;
             boolean cutBun = false;
             boolean sauce = false;
@@ -149,7 +149,7 @@ public class CustomerController {
 
             // check if top items are correct items
             if(servedIngredients.size() >= 4){
-                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {
+                for (int i = servedIngredients.size() - 4; i < servedIngredients.size(); i++) {     // need to do a second check for list emptiness because for some reason it can get past the first one somehow
                     current = servedIngredients.get(i);
                     if(current.name.equals("Cooked Burger")){
                         burger = true;
@@ -175,7 +175,7 @@ public class CustomerController {
         }
 
         // salad recipe
-        if(customers.get(0).recipe.equals("salad")){
+        if(!customers.isEmpty() && customers.get(0).recipe.equals("salad")){
             boolean lettuce = false;
             boolean tomato = false;
             boolean carrot = false;

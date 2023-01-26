@@ -20,6 +20,7 @@ public class Eng1Game extends Game {
     private Screen tutorialScreen;
     private Screen scenarioVictoryScreen;
     private Music KitchenMusic;
+    
     @Override
     public void create() {
         setScreen(new MainMenuScreen(this));
@@ -86,7 +87,7 @@ public class Eng1Game extends Game {
 
             case "scenarioVictory":
                 if (scenarioVictoryScreen == null) {
-                    scenarioVictoryScreen = new ScenarioVictoryScreen(this, camera);
+                    scenarioVictoryScreen = new ScenarioVictoryScreen(this);
                 }
                 setScreen(scenarioVictoryScreen);
                 break;

@@ -31,8 +31,8 @@ public class ChefController {
         chefCount = 2;
 
         chefs = new ArrayList<Chef>();
-        chefs.add(new Chef(5,5));
-        chefs.add(new Chef(10,10));
+        chefs.add(new Chef(13,13));
+        chefs.add(new Chef(15,15));
 
         currentChef = 0;
 
@@ -78,7 +78,7 @@ public class ChefController {
 
         if (Gdx.input.isKeyPressed(up) || Gdx.input.isKeyPressed(left) || Gdx.input.isKeyPressed(down) || Gdx.input.isKeyPressed(right)) {
             // play 'step.mp3' sound file
-            
+
             SoundManager.playStepSound();
         }
 
@@ -98,7 +98,7 @@ public class ChefController {
 
         boolean topRightCollision=false, topLeftCollision=false, bottomRightCollision=false, bottomLeftCollision=false,
                 middleRightCollision=false, middleLeftCollision=false;
-        
+
 
         // The below creates an ArrayList of all the layers that the player could collide with (identified by a
         // tile with a "Collider" property - only the layers below have tiles with this property)
@@ -298,7 +298,7 @@ public class ChefController {
         }
     }
 
-    
+
     public void tryGetFood(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.valueOf("L"))){ //outputs the inventory stack
             for(int x = 0; x < chef.getInventory().size(); x++){

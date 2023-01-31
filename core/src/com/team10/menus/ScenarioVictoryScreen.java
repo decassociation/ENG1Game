@@ -13,12 +13,15 @@ import com.team10.game.Eng1Screen;
 public class ScenarioVictoryScreen extends Eng1Screen{
 
     ChangeScreenButton mainMenuButton;
+
+    ExitGameButton exitGameButton;
     BitmapFont font;
     Texture background;
 
     public ScenarioVictoryScreen(Eng1Game game){
         super(game);
         mainMenuButton = new ChangeScreenButton(25, 25, 150, 50, "Return to Main Menu", batch, camera, game, "mainMenu");
+        exitGameButton = new ExitGameButton(625, 25, 150, 50, "Exit", batch, camera, game, "Exit");
         font = new BitmapFont();
         font.getData().setScale(3, 3);
         background = new Texture(Gdx.files.internal("BlurredMenu.png"));
@@ -32,6 +35,7 @@ public class ScenarioVictoryScreen extends Eng1Screen{
         font.setColor(Color.BLACK);
         font.draw(this.batch, "You Win", 400 - 80, 350);
         mainMenuButton.update();
+        exitGameButton.update();
         batch.end();
     }
 }

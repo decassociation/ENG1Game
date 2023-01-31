@@ -8,6 +8,10 @@ public class Ingredient {
     protected Texture activeImg;
     public String name; //ID for specific ingredient item
 
+    public Ingredient(){
+        ingredient = new Rectangle();
+    }
+
     // booleans for checking ingredient compatibility with cooking stations
     public boolean frying_station = false;
     public boolean cutting_station = false;

@@ -18,7 +18,9 @@ public class CustomerController {
     long timeOfLastCustomer;
     ArrayList<Customer> customers;
     int customerCount;
-    Texture[] texture = {new Texture(Gdx.files.internal("customer1.png")), new Texture(Gdx.files.internal("customer2.png")), new Texture(Gdx.files.internal("customer3.png"))};
+    Texture[] texture = {new Texture(Gdx.files.internal("Customer1.png")),
+            new Texture(Gdx.files.internal("Customer2.png")),
+            new Texture(Gdx.files.internal("Customer3.png"))};
     BitmapFont font = new BitmapFont();     // font for the timer
     BitmapFont font2 = new BitmapFont();    // font for the request
     int queuePos;

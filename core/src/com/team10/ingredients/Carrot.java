@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Carrot extends Vegetable{
     public Carrot(){
         uncutImg = new Texture(Gdx.files.internal("carrot.png"));
-        cutImg = new Texture(Gdx.files.internal("cutCarrot.png"));
+        cutImg = new Texture(Gdx.files.internal("CutCarrot.png"));
         activeImg = uncutImg;
         name = "Carrot";
         

@@ -7,7 +7,7 @@ public class Lettuce extends Vegetable{
 
     public Lettuce(){
         uncutImg = new Texture(Gdx.files.internal("lettuce.png"));
-        cutImg = new Texture(Gdx.files.internal("cutLettuce.png"));
+        cutImg = new Texture(Gdx.files.internal("CutLettuce.png"));
         activeImg = uncutImg;
         name = "Lettuce";
 

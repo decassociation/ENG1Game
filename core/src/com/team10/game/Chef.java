@@ -69,7 +69,10 @@ public class Chef {
 
     //Removes top food from inventory and returns it
     public Ingredient popFood() {
+        if (inventory.size() > 0) {
             return inventory.pop();
+        }
+        return null;
     }
 
 

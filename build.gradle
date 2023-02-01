@@ -13,6 +13,11 @@ buildscript {
 
     }
 }
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ["--enable-preview"]
+    options.compilerArgs << "-source" << "11"
+    options.compilerArgs << "-target" << "11"
+}
 
 allprojects {
     apply plugin: "eclipse"

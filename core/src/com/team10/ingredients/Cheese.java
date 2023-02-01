@@ -9,7 +9,7 @@ public class Cheese extends Ingredient {
 
     public Cheese() {
         uncutImg = new Texture(Gdx.files.internal("cheese.png"));
-        cutImg = new Texture(Gdx.files.internal("cutCheese.png"));
+        cutImg = new Texture(Gdx.files.internal("CutCheese.png"));
         activeImg = uncutImg;
         name = "Cheese";
 

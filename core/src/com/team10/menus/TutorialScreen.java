@@ -29,7 +29,7 @@ public class TutorialScreen implements Screen {
     public void render(float delta) {
         // called every frame, use this to update and draw the screen
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            if (currentImage < 4) {
+            if (currentImage < 5) {
                 currentImage++;
                 TutorialImg = new Texture(Gdx.files.internal("Tutorial" + currentImage + ".png"));
             }
